@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+    >
+<item android:id="@+id/dropdown_menu_logined" android:icon="@drawable/profile" app:showAsAction="ifRoom" android:title="Profile Settings">
+    <menu>
+        <item android:id="@+id/user_info" android:title="User Info"></item>
+        <item android:id="@+id/my_surveys" android:title="My Surveys"
+            ></item>
+
+        <item android:id="@+id/log_out" android:title="Log Out"></item>
+
+    </menu>
+
+
+</item>
+
+
+</menu>
