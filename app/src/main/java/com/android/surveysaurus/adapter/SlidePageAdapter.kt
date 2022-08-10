@@ -1,12 +1,8 @@
-package com.selincengiz.surveysaurus.adapter
+package com.android.surveysaurus.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-
-import androidx.lifecycle.Lifecycle
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class SlidePageAdapter (list: ArrayList<Fragment>,manager: FragmentManager ):FragmentPagerAdapter(manager){
    private val fragmentList:ArrayList<Fragment> = list

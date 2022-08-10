@@ -1,23 +1,16 @@
-package com.selincengiz.surveysaurus.activity
+package com.android.surveysaurus.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import androidx.appcompat.widget.ActionMenuView
-import androidx.core.view.get
 
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.*
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.viewpager.widget.ViewPager
-import com.selincengiz.surveysaurus.R
-import com.selincengiz.surveysaurus.adapter.SlidePageAdapter
-import com.selincengiz.surveysaurus.databinding.ActivityMainBinding
-import com.selincengiz.surveysaurus.fragment.HomeFragment
-import com.selincengiz.surveysaurus.fragment.SurveysFragment
-import com.selincengiz.surveysaurus.fragment.ViewPagerFragment
-import com.selincengiz.surveysaurus.fragment.ViewPagerFragmentDirections
+import com.android.surveysaurus.R
+
+import com.android.surveysaurus.databinding.ActivityMainBinding
+
 
 
 class MainActivity : AppCompatActivity() {

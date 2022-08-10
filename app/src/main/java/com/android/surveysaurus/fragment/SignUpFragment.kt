@@ -1,11 +1,11 @@
-package com.selincengiz.surveysaurus.fragment
+package com.android.surveysaurus.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.selincengiz.surveysaurus.R
+import com.android.surveysaurus.R
 
 
 class SignUpFragment : Fragment() {

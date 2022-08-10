@@ -1,15 +1,12 @@
-package com.selincengiz.surveysaurus.fragment
+package com.android.surveysaurus.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-import com.google.android.material.navigation.NavigationView
-import com.selincengiz.surveysaurus.databinding.FragmentHomeBinding
+import com.android.surveysaurus.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {

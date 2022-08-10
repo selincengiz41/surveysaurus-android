@@ -1,18 +1,12 @@
-package com.selincengiz.surveysaurus.fragment
+package com.android.surveysaurus.fragment
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Lifecycle
-import androidx.navigation.Navigation
-import androidx.viewpager.widget.ViewPager
-import com.selincengiz.surveysaurus.R
-import com.selincengiz.surveysaurus.adapter.SlidePageAdapter
-import com.selincengiz.surveysaurus.databinding.FragmentHomeBinding
-import com.selincengiz.surveysaurus.databinding.FragmentViewPagerBinding
+import com.android.surveysaurus.adapter.SlidePageAdapter
+import com.android.surveysaurus.databinding.FragmentViewPagerBinding
 
 
 class ViewPagerFragment : Fragment() {

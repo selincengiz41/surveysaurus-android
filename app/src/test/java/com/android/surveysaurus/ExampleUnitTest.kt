@@ -1,4 +1,4 @@
-package com.selincengiz.surveysaurus
+package com.android.surveysaurus
 
 import org.junit.Test
 

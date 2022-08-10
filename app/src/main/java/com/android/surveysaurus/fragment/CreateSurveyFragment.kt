@@ -1,0 +1,83 @@
+package com.android.surveysaurus.fragment
+
+
+
+import android.R
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+
+import com.android.surveysaurus.adapter.OptionAdapter
+import com.android.surveysaurus.databinding.AddOptionLayBinding
+import com.android.surveysaurus.databinding.FragmentCreateSurveyBinding
+
+
+class CreateSurveyFragment : Fragment() {
+    private  var _binding: FragmentCreateSurveyBinding?=null
+    private val binding get() = _binding!!
+    private var isThereAdditional :Boolean=false
+private lateinit var optionAdapter: OptionAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        _binding = FragmentCreateSurveyBinding.inflate(inflater, container, false)
+
+        val view = binding.root
+   binding.additionalOptions.layoutManager=LinearLayoutManager(view.context)
+ optionAdapter= OptionAdapter()
+        binding.additionalOptions.adapter=optionAdapter
+
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.addOptionText.setOnClickListener{
+ optionAdapter.recycleAdd(1)
+            optionAdapter.notifyDataSetChanged()
+            isThereAdditional=true
+
+        }
+
+        binding.createButton.setOnClickListener{
+            if(isThereAdditional) {
+                val holder: OptionAdapter.OptionHolder
+                holder =
+                    OptionAdapter.OptionHolder(binding = AddOptionLayBinding.bind(binding.root))
+                for (item in 0 until optionAdapter.itemCount) {
+                    val title = binding.additionalOptions
+                        .findViewHolderForAdapterPosition(item)
+                        ?.itemView
+                        ?.findViewById<TextView>(com.android.surveysaurus.R.id.add_optional)
+                        ?.text
+
+                    println(title)
+                }
+            }
+            println(binding.addOption1.text)
+            println(binding.addOption2.text)
+            println(binding.addOption3.text)
+            println(binding.addDescription.text)
+            println(binding.addQuestion.text)
+
+        }
+
+    }
+
+
+}
