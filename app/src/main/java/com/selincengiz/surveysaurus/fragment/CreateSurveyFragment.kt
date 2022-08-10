@@ -39,7 +39,7 @@ class CreateSurveyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addOptionText.setOnClickListener{
-            val constraintLayout: ConstraintLayout =  bindingOption.constraintOptional
+       /*     val constraintLayout: ConstraintLayout =  bindingOption.constraintOptional
             val constraintSet = ConstraintSet()
             constraintSet.clone(constraintLayout)
             constraintSet.connect(
@@ -59,7 +59,7 @@ class CreateSurveyFragment : Fragment() {
             constraintSet.applyTo(constraintLayout)
 
            binding.addedLayout.addView(constraintLayout)
-
+*/
         }
     }
 
