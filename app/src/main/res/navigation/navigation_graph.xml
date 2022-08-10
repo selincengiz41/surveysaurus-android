@@ -9,7 +9,11 @@
         android:id="@+id/createSurveyFragment"
         android:name="com.android.surveysaurus.fragment.CreateSurveyFragment"
         android:label="fragment_create_survey"
-        tools:layout="@layout/fragment_create_survey" />
+        tools:layout="@layout/fragment_create_survey" >
+        <action
+            android:id="@+id/action_createSurveyFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
         android:name="com.android.surveysaurus.fragment.ViewPagerFragment"
@@ -23,10 +27,18 @@
         android:id="@+id/loginFragment"
         android:name="com.android.surveysaurus.fragment.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.android.surveysaurus.fragment.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

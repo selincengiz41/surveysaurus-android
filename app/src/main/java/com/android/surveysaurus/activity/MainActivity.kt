@@ -16,7 +16,7 @@ import com.android.surveysaurus.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 private  lateinit var profileActionMenuView: ActionMenuView
     private  lateinit var barActionMenuView: ActionMenuView
-    private var isLogin:Boolean=false
+    public var isLogin:Boolean=false
 
 private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {

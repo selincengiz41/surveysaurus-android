@@ -8,8 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.surveysaurus.activity.MainActivity
 
 import com.android.surveysaurus.adapter.OptionAdapter
 import com.android.surveysaurus.databinding.AddOptionLayBinding
@@ -20,6 +23,7 @@ class CreateSurveyFragment : Fragment() {
     private  var _binding: FragmentCreateSurveyBinding?=null
     private val binding get() = _binding!!
     private var isThereAdditional :Boolean=false
+    private var optionList:ArrayList<String> = ArrayList()
 private lateinit var optionAdapter: OptionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +59,19 @@ private lateinit var optionAdapter: OptionAdapter
         }
 
         binding.createButton.setOnClickListener{
+            val mainActivity:MainActivity=MainActivity()
+            val question=binding.addQuestion.text
+            val description =binding.addDescription.text
+if(!binding.addOption1.text.toString().isNullOrEmpty())
+    optionList.add(binding.addOption1.text.toString())
+
+            if(!binding.addOption2.text.toString().isNullOrEmpty())
+                optionList.add(binding.addOption2.text.toString())
+
+            if(!binding.addOption3.text.toString().isNullOrEmpty())
+                optionList.add(binding.addOption3.text.toString())
+
+
             if(isThereAdditional) {
                 val holder: OptionAdapter.OptionHolder
                 holder =
@@ -66,14 +83,28 @@ private lateinit var optionAdapter: OptionAdapter
                         ?.findViewById<TextView>(com.android.surveysaurus.R.id.add_optional)
                         ?.text
 
-                    println(title)
+                    if(!title.toString().isNullOrEmpty())
+                   optionList.add(title.toString())
                 }
             }
-            println(binding.addOption1.text)
-            println(binding.addOption2.text)
-            println(binding.addOption3.text)
-            println(binding.addDescription.text)
-            println(binding.addQuestion.text)
+            if(!question.isNullOrEmpty()&&optionList.size>=2){
+                if( mainActivity.isLogin){
+
+                }
+                else{
+                    val action=CreateSurveyFragmentDirections.actionCreateSurveyFragmentToLoginFragment()
+                    Navigation.findNavController(it).navigate(action)
+                }
+            }
+            else{
+                Toast.makeText(view.context,
+                            "Fill in the question field and add at least two options", Toast.LENGTH_SHORT).show();
+
+            }
+
+
+
+
 
         }
 
