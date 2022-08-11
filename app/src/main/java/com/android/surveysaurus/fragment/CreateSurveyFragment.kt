@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.surveysaurus.LoginSingleton
 import com.android.surveysaurus.activity.MainActivity
 
 import com.android.surveysaurus.adapter.OptionAdapter
@@ -24,7 +25,7 @@ class CreateSurveyFragment : Fragment() {
     private val binding get() = _binding!!
     private var isThereAdditional :Boolean=false
     private var optionList:ArrayList<String> = ArrayList()
-  private  val mainActivity:MainActivity=MainActivity()
+  //private  val mainActivity:MainActivity=MainActivity()
 private lateinit var optionAdapter: OptionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,7 +89,7 @@ if(!binding.addOption1.text.toString().isNullOrEmpty())
                 }
             }
             if(!question.isNullOrEmpty()&&optionList.size>=2){
-                if( mainActivity.isLogin){
+                if(LoginSingleton.isLogin){
 
                 }
                 else{
