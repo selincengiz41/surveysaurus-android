@@ -15,6 +15,9 @@ import com.android.surveysaurus.activity.MainActivity
 import com.android.surveysaurus.databinding.FragmentHomeBinding
 import com.android.surveysaurus.databinding.FragmentLoginBinding
 import com.android.surveysaurus.databinding.FragmentSignUpBinding
+import com.android.surveysaurus.model.SignUpModel
+import com.android.surveysaurus.service.ApiService
+import com.android.surveysaurus.singleton.LoginSingleton
 
 
 class SignUpFragment : Fragment() {
@@ -34,7 +37,7 @@ class SignUpFragment : Fragment() {
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val spinner: Spinner = view.findViewById(R.id.spinner_gender)
+        val spinnerGender: Spinner = view.findViewById(R.id.spinner_gender)
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
             view.context,
@@ -44,7 +47,33 @@ class SignUpFragment : Fragment() {
             // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             // Apply the adapter to the spinner
-            spinner.adapter = adapter
+            spinnerGender.adapter = adapter
+        }
+
+        val spinnerCountry: Spinner = view.findViewById(R.id.spinner_country)
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            view.context,
+            R.array.Country,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinnerCountry.adapter = adapter
+        }
+
+        val spinnerCity: Spinner = view.findViewById(R.id.spinner_city)
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            view.context,
+            R.array.City,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinnerCity.adapter = adapter
         }
         return view
     }
@@ -62,12 +91,30 @@ binding.donTHave.setOnClickListener {
             val email=binding.editTextTextEmailAddress.text
             val password=binding.editTextTextPassword.text
             val gender =binding.spinnerGender.selectedItem.toString()
-            if (!name.isNullOrEmpty() && !email.isNullOrEmpty()&&!password.isNullOrEmpty()&&!gender.isNullOrEmpty()){
+            val country =binding.spinnerCountry.selectedItem.toString()
+            val city =binding.spinnerCity.selectedItem.toString()
+            if (!name.isNullOrEmpty() && !email.isNullOrEmpty()&&!password.isNullOrEmpty()&&!gender.isNullOrEmpty()&&!country.isNullOrEmpty()&&!city.isNullOrEmpty()){
+                val apiService = ApiService()
+              var signUpModel:SignUpModel= SignUpModel(
+                name.toString(),
+                email.toString(),
+               password.toString(),
+                gender,
+                country,
+                city)
 
-                println(name)
-                println(email)
-                println(password)
-                println(gender)
+                apiService.postSignUp(signUpModel){
+                    if (it != null) {
+                        Toast.makeText(view.context,
+                            "Succesful",Toast.LENGTH_SHORT).show();
+                        val action=SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+                        Navigation.findNavController(view).navigate(action)
+                    } else {
+                        Toast.makeText(view.context,
+                            "Fail",Toast.LENGTH_SHORT).show();
+                    }
+                }
+
             }
             else{
                 Toast.makeText(view.context,

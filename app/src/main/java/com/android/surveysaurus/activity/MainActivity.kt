@@ -1,14 +1,11 @@
 package com.android.surveysaurus.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ActionMenuView
 import androidx.core.view.isVisible
-import androidx.fragment.app.*
 import androidx.navigation.findNavController
-import com.android.surveysaurus.LoginSingleton
+import com.android.surveysaurus.singleton.LoginSingleton
 import com.android.surveysaurus.R
 import com.android.surveysaurus.databinding.ActivityMainBinding
 

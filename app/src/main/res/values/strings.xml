@@ -24,6 +24,20 @@
         <item>Belirtmek istemiyorum</item>
     </string-array>
 
+    <string-array name="Country">
+        <item>Türkiye</item>
+        <item>Amerika</item>
+        <item>İngiltere</item>
+    </string-array>
+
+    <string-array name="City">
+        <item>İstanbul</item>
+        <item>Ankara</item>
+        <item>New York</item>
+        <item>Washington</item>
+        <item>Londra</item>
+    </string-array>
+
     <string name="Password">Password</string>
     <string name="star">*</string>
     <string name="d_sign_up">Don’t have an account? Sign up</string>
