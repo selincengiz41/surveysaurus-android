@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.android.surveysaurus.R
+import com.android.surveysaurus.activity.MainActivity
 import com.android.surveysaurus.databinding.FragmentHomeBinding
 import com.android.surveysaurus.databinding.FragmentLoginBinding
 
@@ -15,9 +16,9 @@ import com.android.surveysaurus.databinding.FragmentLoginBinding
 class LoginFragment : Fragment() {
     private  var _binding: FragmentLoginBinding?=null
     private val binding get() = _binding!!
+    private  val mainActivity: MainActivity = MainActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -32,6 +33,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
   binding.donTHave.setOnClickListener {
       val action=LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
       Navigation.findNavController(it).navigate(action)

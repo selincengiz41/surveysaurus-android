@@ -24,11 +24,11 @@ class CreateSurveyFragment : Fragment() {
     private val binding get() = _binding!!
     private var isThereAdditional :Boolean=false
     private var optionList:ArrayList<String> = ArrayList()
+  private  val mainActivity:MainActivity=MainActivity()
 private lateinit var optionAdapter: OptionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
     }
 
@@ -59,7 +59,7 @@ private lateinit var optionAdapter: OptionAdapter
         }
 
         binding.createButton.setOnClickListener{
-            val mainActivity:MainActivity=MainActivity()
+
             val question=binding.addQuestion.text
             val description =binding.addDescription.text
 if(!binding.addOption1.text.toString().isNullOrEmpty())

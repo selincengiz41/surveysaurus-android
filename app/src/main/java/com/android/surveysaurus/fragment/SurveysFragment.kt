@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.android.surveysaurus.R
+import com.android.surveysaurus.activity.MainActivity
 
 //
 class SurveysFragment : Fragment() {
-
+    private  val mainActivity: MainActivity = MainActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
     }
 
@@ -24,5 +24,9 @@ class SurveysFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_surveys, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
 
 }

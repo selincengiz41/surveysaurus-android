@@ -11,6 +11,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.android.surveysaurus.R
+import com.android.surveysaurus.activity.MainActivity
 import com.android.surveysaurus.databinding.FragmentHomeBinding
 import com.android.surveysaurus.databinding.FragmentLoginBinding
 import com.android.surveysaurus.databinding.FragmentSignUpBinding
@@ -20,9 +21,9 @@ class SignUpFragment : Fragment() {
 
     private  var _binding: FragmentSignUpBinding?=null
     private val binding get() = _binding!!
+    private  val mainActivity: MainActivity = MainActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(

@@ -6,15 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.android.surveysaurus.activity.MainActivity
 import com.android.surveysaurus.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
 private  var _binding: FragmentHomeBinding?=null
     private val binding get() = _binding!!
+    private  val mainActivity: MainActivity = MainActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
     }
 
@@ -30,6 +31,7 @@ private  var _binding: FragmentHomeBinding?=null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.createASurvey.setOnClickListener{
             val action=ViewPagerFragmentDirections.actionViewPagerFragmentToCreateSurveyFragment()
             Navigation.findNavController(it).navigate(action)

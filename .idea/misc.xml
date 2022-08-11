@@ -10,7 +10,7 @@
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/drawable-v24/roundedbutton.xml" value="0.1" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/drawable/create_button.xml" value="0.1" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/drawable/question.xml" value="0.1" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/add_option.xml" value="0.2734375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/add_option_lay.xml" value="0.2734375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/custom_toolbar.xml" value="0.2734375" />
@@ -20,6 +20,7 @@
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_login.xml" value="0.2604166666666667" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_sign_up.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_surveys.xml" value="0.12092391304347826" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_toolbar.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_view_pager.xml" value="0.176" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/navigation_header.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/sample_add.xml" value="0.264" />

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.android.surveysaurus.activity.MainActivity
 import com.android.surveysaurus.adapter.SlidePageAdapter
 import com.android.surveysaurus.databinding.FragmentViewPagerBinding
 
@@ -12,10 +13,9 @@ import com.android.surveysaurus.databinding.FragmentViewPagerBinding
 class ViewPagerFragment : Fragment() {
     private  var _binding: FragmentViewPagerBinding?=null
     private val binding get() = _binding!!
-
+    private  val mainActivity: MainActivity = MainActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
     }
 
@@ -40,6 +40,7 @@ class ViewPagerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val fragmentList= arrayListOf<Fragment>(
             HomeFragment(),
             SurveysFragment()
