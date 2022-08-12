@@ -41,4 +41,14 @@
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.android.surveysaurus.fragment.UserInfoFragment"
+        android:label="fragment_user_info"
+        tools:layout="@layout/fragment_user_info" />
+    <fragment
+        android:id="@+id/surveysFragment"
+        android:name="com.android.surveysaurus.fragment.SurveysFragment"
+        android:label="fragment_surveys"
+        tools:layout="@layout/fragment_surveys" />
 </navigation>

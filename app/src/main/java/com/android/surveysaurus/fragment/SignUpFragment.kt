@@ -93,27 +93,50 @@ binding.donTHave.setOnClickListener {
             val gender =binding.spinnerGender.selectedItem.toString()
             val country =binding.spinnerCountry.selectedItem.toString()
             val city =binding.spinnerCity.selectedItem.toString()
-            if (!name.isNullOrEmpty() && !email.isNullOrEmpty()&&!password.isNullOrEmpty()&&!gender.isNullOrEmpty()&&!country.isNullOrEmpty()&&!city.isNullOrEmpty()){
-                val apiService = ApiService()
-              var signUpModel:SignUpModel= SignUpModel(
-                name.toString(),
-                email.toString(),
-               password.toString(),
-                gender,
-                country,
-                city)
-
-                apiService.postSignUp(signUpModel){
-                    if (it != null) {
-                        Toast.makeText(view.context,
-                            "Succesful",Toast.LENGTH_SHORT).show();
-                        val action=SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
-                        Navigation.findNavController(view).navigate(action)
-                    } else {
-                        Toast.makeText(view.context,
-                            "Fail",Toast.LENGTH_SHORT).show();
-                    }
+            if (!name.isNullOrEmpty() && !email.isNullOrEmpty()&&!password.isNullOrEmpty()&&!gender.isNullOrEmpty()&&!country.isNullOrEmpty()&&!city.isNullOrEmpty())
+            {
+                if(!email.endsWith(".com") || !email.contains("@")) {
+                    Toast.makeText(
+                        view.context,
+                        "Please enter a correct email", Toast.LENGTH_SHORT
+                    ).show();
                 }
+                else if (password.length<8) {
+                    Toast.makeText(
+                        view.context,
+                        "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
+                    ).show();
+                }
+                else {
+                    try{/*
+                        val apiService = ApiService()
+                        var signUpModel:SignUpModel= SignUpModel(
+                            name.toString(),
+                            email.toString(),
+                            password.toString(),
+                            gender,
+                            country,
+                            city)
+
+                        apiService.postSignUp(signUpModel){
+                            if (it != null) {
+                                Toast.makeText(view.context,
+                                    "Succesful",Toast.LENGTH_SHORT).show();
+                                val action=SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+                                Navigation.findNavController(view).navigate(action)
+                            } else {
+                                Toast.makeText(view.context,
+                                    "Fail",Toast.LENGTH_SHORT).show();
+                            }
+                        }*/
+
+                    }
+                    catch (e:Exception){
+e.printStackTrace()
+                    }
+
+                }
+
 
             }
             else{

@@ -46,21 +46,45 @@ class LoginFragment : Fragment() {
             val email=binding.editTextTextEmailAddress.text
             val password=binding.editTextTextPassword.text
             if ( !email.isNullOrEmpty()&&!password.isNullOrEmpty()){
-                val apiService = ApiService()
-                var loginModel:LoginModel= LoginModel(email.toString()
-                ,password.toString())
-                apiService.postLogin(loginModel){
-                    if (it != null) {
-                        Toast.makeText(view.context,
-                            "Succesfully logined "+it.name,Toast.LENGTH_SHORT).show();
-                        LoginSingleton.isLogin=true
-                        mainActivity.MenuController()
 
-                    } else {
-                        Toast.makeText(view.context,
-                            "Fail",Toast.LENGTH_SHORT).show();
-                    }
+                if(!email.endsWith(".com") || !email.contains("@")) {
+                    Toast.makeText(
+                        view.context,
+                        "Please enter a correct email", Toast.LENGTH_SHORT
+                    ).show();
                 }
+                else if (password.length<8) {
+                    Toast.makeText(
+                        view.context,
+                        "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
+                    ).show();
+                }
+                else {
+                    try{
+                        /*
+                        val apiService = ApiService()
+                        var loginModel:LoginModel= LoginModel(email.toString()
+                            ,password.toString())
+                        apiService.postLogin(loginModel){
+                            if (it != null) {
+                                Toast.makeText(view.context,
+                                    "Succesfully logined "+it.name,Toast.LENGTH_SHORT).show();
+                                LoginSingleton.isLogin=true
+                                mainActivity.MenuController()
+
+                            } else {
+                                Toast.makeText(view.context,
+                                    "Fail",Toast.LENGTH_SHORT).show();
+                            }
+
+                        }*/
+                    }
+                    catch(e:Exception){
+                        e.printStackTrace()
+                    }
+
+                }
+
 
             }
             else{

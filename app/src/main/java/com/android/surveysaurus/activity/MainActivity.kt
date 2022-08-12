@@ -57,8 +57,8 @@ profileActionMenuView.isVisible=false
         profileLoginActionMenuView.setOnMenuItemClickListener {
             val item=it.itemId
             when (item){
-                R.id.user_info ->{  println("user info clicked "); true}
-                R.id.my_surveys -> {  println("my surveys clicked "); true}
+                R.id.user_info ->{binding.fragmentContainerView.findNavController().navigate(R.id.userInfoFragment); true}
+                R.id.my_surveys -> { binding.fragmentContainerView.findNavController().navigate(R.id.surveysFragment); true}
                 R.id.log_out -> {  LoginSingleton.isLogin=false
 
                    MenuController()
@@ -92,7 +92,7 @@ profileActionMenuView.isVisible=false
             val item=it.itemId
             when(item){
                 R.id.dropdown_menu -> {
-                    println("logine yönlendiriliyor");true}
+                    binding.fragmentContainerView.findNavController().navigate(R.id.loginFragment);true}
                 else->{
                     println("nothin");true}
             }

@@ -73,8 +73,7 @@ if(!binding.addOption1.text.toString().isNullOrEmpty())
 
             if(isThereAdditional) {
                 val holder: OptionAdapter.OptionHolder
-                holder =
-                    OptionAdapter.OptionHolder(binding = AddOptionLayBinding.bind(binding.root))
+                holder = OptionAdapter.OptionHolder(binding = AddOptionLayBinding.bind(binding.root))
                 for (item in 0 until optionAdapter.itemCount) {
                     val title = binding.additionalOptions
                         .findViewHolderForAdapterPosition(item)
