@@ -1,19 +1,17 @@
 package com.android.surveysaurus.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.InputType
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.android.surveysaurus.R
 import com.android.surveysaurus.activity.MainActivity
-import com.android.surveysaurus.databinding.FragmentHomeBinding
 import com.android.surveysaurus.databinding.FragmentLoginBinding
-import com.android.surveysaurus.model.LoginModel
-import com.android.surveysaurus.service.ApiService
-import com.android.surveysaurus.singleton.LoginSingleton
 
 
 class LoginFragment : Fragment() {
@@ -36,6 +34,21 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.visiblePassword.setOnTouchListener(OnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN ->{
+                    binding.editTextTextPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)// PRESSED
+                    println("bastım")
+                    return@OnTouchListener true }// if you want to handle the touch event
+                MotionEvent.ACTION_UP -> {
+                    binding.editTextTextPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)// RELEASED
+                    println("bıraktım")
+                    return@OnTouchListener true }// if you want to handle the touch event
+            }
+            false
+        })
+
 
   binding.donTHave.setOnClickListener {
       val action=LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
