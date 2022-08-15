@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner_gender"
         tools:ignore="MissingConstraints" />
 
-    <Spinner
+    <AutoCompleteTextView
         android:id="@+id/spinner_city"
         android:layout_width="193dp"
         android:layout_height="30dp"
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/city_textview2"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <Spinner
+    <AutoCompleteTextView
         android:id="@+id/spinner_country"
         android:layout_width="193dp"
         android:layout_height="30dp"
@@ -97,6 +97,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gender_textview"
         tools:ignore="TouchTargetSizeCheck" />
+
 
     <TextView
         android:id="@+id/textView7"
@@ -213,7 +214,6 @@
 
     <EditText
         android:id="@+id/editTextTextPassword"
-
         android:layout_width="193dp"
         android:layout_height="30dp"
         android:layout_marginStart="190dp"
@@ -222,12 +222,54 @@
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <View
+        android:id="@+id/visible_password"
+        android:layout_width="11dp"
+        android:layout_height="9dp"
+        android:layout_marginEnd="5dp"
+
+        android:background="@drawable/eye"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword" />
+
+    <View
+        android:id="@+id/spinner_city_point"
+        android:layout_width="12dp"
+        android:layout_height="5dp"
+        android:layout_marginEnd="5dp"
+
+        android:background="@drawable/ok"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_city"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_city"
+        app:layout_constraintTop_toTopOf="@+id/spinner_city" />
+
+    <View
+        android:id="@+id/spinner_country_point"
+        android:layout_width="12dp"
+        android:layout_height="5dp"
+        android:layout_marginEnd="5dp"
+
+        android:background="@drawable/ok"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_country"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_country"
+        app:layout_constraintTop_toTopOf="@+id/spinner_country" />
+    <View
+        android:id="@+id/spinner_gender_point"
+        android:layout_width="12dp"
+        android:layout_height="5dp"
+        android:layout_marginEnd="5dp"
+
+        android:background="@drawable/ok"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_gender"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_gender"
+        app:layout_constraintTop_toTopOf="@+id/spinner_gender" />
+
 
     <TextView
         android:id="@+id/textView3"

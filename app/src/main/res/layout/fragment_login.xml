@@ -69,22 +69,34 @@
     <!-- Password TextBox -->
     <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="199dp"
+        android:layout_width="190dp"
         android:layout_height="30dp"
         android:layout_marginStart="190dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
-        android:textSize="15sp"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck">
+
+    </EditText>
 
     <!-- Email TextBox -->
+
+    <View
+        android:id="@+id/visible_password"
+        android:layout_width="11dp"
+        android:layout_height="9dp"
+
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/eye"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword" />
+
     <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="193dp"
@@ -103,7 +115,7 @@
     <!-- Password Textview -->
     <TextView
         android:id="@+id/textView"
-        android:layout_width="65dp"
+        android:layout_width="wrap_content"
         android:layout_height="19dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
@@ -222,5 +234,6 @@
             android:src="@drawable/logo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

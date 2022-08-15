@@ -2,7 +2,6 @@ package com.android.surveysaurus.fragment
 
 
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.surveysaurus.LoginSingleton
-import com.android.surveysaurus.activity.MainActivity
+import com.android.surveysaurus.singleton.LoginSingleton
 
 import com.android.surveysaurus.adapter.OptionAdapter
 import com.android.surveysaurus.databinding.AddOptionLayBinding
@@ -75,8 +73,7 @@ if(!binding.addOption1.text.toString().isNullOrEmpty())
 
             if(isThereAdditional) {
                 val holder: OptionAdapter.OptionHolder
-                holder =
-                    OptionAdapter.OptionHolder(binding = AddOptionLayBinding.bind(binding.root))
+                holder = OptionAdapter.OptionHolder(binding = AddOptionLayBinding.bind(binding.root))
                 for (item in 0 until optionAdapter.itemCount) {
                     val title = binding.additionalOptions
                         .findViewHolderForAdapterPosition(item)
