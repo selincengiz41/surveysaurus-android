@@ -1,23 +1,19 @@
 package com.android.surveysaurus.fragment
 
 import android.os.Bundle
-
-import androidx.fragment.app.Fragment
+import android.text.InputType
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.android.surveysaurus.R
 import com.android.surveysaurus.activity.MainActivity
-import com.android.surveysaurus.databinding.FragmentHomeBinding
-import com.android.surveysaurus.databinding.FragmentLoginBinding
 import com.android.surveysaurus.databinding.FragmentSignUpBinding
-import com.android.surveysaurus.model.SignUpModel
-import com.android.surveysaurus.service.ApiService
-import com.android.surveysaurus.singleton.LoginSingleton
 
 
 class SignUpFragment : Fragment() {
@@ -37,7 +33,20 @@ class SignUpFragment : Fragment() {
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val spinnerGender: Spinner = view.findViewById(R.id.spinner_gender)
+        val countryAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
+            view.context,
+            android.R.layout.simple_dropdown_item_1line,getResources().getStringArray(R.array.Country)
+        )
+        binding.spinnerCountry.setAdapter(countryAdapter)
+
+        val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
+            view.context,
+            android.R.layout.simple_dropdown_item_1line,getResources().getStringArray(R.array.City)
+        )
+        binding.spinnerCity.setAdapter(cityAdapter)
+
+
+     val spinnerGender: Spinner = view.findViewById(R.id.spinner_gender)
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
             view.context,
@@ -50,37 +59,32 @@ class SignUpFragment : Fragment() {
             spinnerGender.adapter = adapter
         }
 
-        val spinnerCountry: Spinner = view.findViewById(R.id.spinner_country)
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
-            view.context,
-            R.array.Country,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinnerCountry.adapter = adapter
-        }
 
-        val spinnerCity: Spinner = view.findViewById(R.id.spinner_city)
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
-            view.context,
-            R.array.City,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinnerCity.adapter = adapter
-        }
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.spinnerCity.setOnClickListener {
+            binding.spinnerCity.showDropDown()
+        }
+        binding.spinnerCountry.setOnClickListener {
+            binding.spinnerCountry.showDropDown()
+        }
+        binding.visiblePassword.setOnTouchListener(View.OnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    binding.editTextTextPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)// PRESSED
+                    return@OnTouchListener true
+                }// if you want to handle the touch event
+                MotionEvent.ACTION_UP -> {
+                    binding.editTextTextPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)// RELEASED
+                    return@OnTouchListener true
+                }// if you want to handle the touch event
+            }
+            false
+        })
 binding.donTHave.setOnClickListener {
     val action=SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
     Navigation.findNavController(it).navigate(action)
@@ -91,8 +95,8 @@ binding.donTHave.setOnClickListener {
             val email=binding.editTextTextEmailAddress.text
             val password=binding.editTextTextPassword.text
             val gender =binding.spinnerGender.selectedItem.toString()
-            val country =binding.spinnerCountry.selectedItem.toString()
-            val city =binding.spinnerCity.selectedItem.toString()
+            val country =binding.spinnerCountry.text.toString()
+            val city =binding.spinnerCity.text.toString()
             if (!name.isNullOrEmpty() && !email.isNullOrEmpty()&&!password.isNullOrEmpty()&&!gender.isNullOrEmpty()&&!country.isNullOrEmpty()&&!city.isNullOrEmpty())
             {
                 if(!email.endsWith(".com") || !email.contains("@")) {
