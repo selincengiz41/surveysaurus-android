@@ -51,6 +51,7 @@ class FillSurveyFragment : Fragment() {
                 option1.id= View.generateViewId()
                 option1.text=survey.options.get(item)
                 option1.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.vector3,0,0,0)
+                option1.setPaddingRelative(20,0,0,0)
                 option1.setBackgroundResource(R.drawable.question)
                 option1.gravity=Gravity.CENTER
                 option1.textSize=15f
@@ -67,6 +68,11 @@ class FillSurveyFragment : Fragment() {
                 option1.requestLayout()
             }
         }
+
+        val params =  binding.doneLayout.layoutParams as ConstraintLayout.LayoutParams
+        params.topToBottom=optionList.get(optionList.lastIndex).id
+        params.topMargin=40
+        binding.doneLayout.requestLayout()
 
             for (item in 0 until optionList.size){
                 optionList.get(item).setOnClickListener {

@@ -14,12 +14,11 @@
         android:layout_width="87dp"
         android:layout_height="59dp"
 
-        android:layout_marginBottom="20dp"
         android:background="@drawable/create_button"
         android:elevation="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/options_fill">
 
         <TextView
             android:id="@+id/done_button"

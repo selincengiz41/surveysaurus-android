@@ -78,6 +78,8 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
         surveyAdapter.recycleAdd(surveyModel2)
         surveyAdapter.recycleAdd(surveyModel3)
         surveyAdapter.recycleAdd(surveyModel)
+        surveyAdapter.recycleAdd(surveyModel2)
+        surveyAdapter.recycleAdd(surveyModel3)
         surveyAdapter.notifyDataSetChanged()
     }
 
