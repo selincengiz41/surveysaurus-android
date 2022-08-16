@@ -39,7 +39,9 @@
     </string-array>
 
     <string name="Password">Password</string>
+    <string name="confirm_Password">Confirm your password</string>
     <string name="star">*</string>
     <string name="d_sign_up">Don’t have an account? Sign up</string>
     <string name="Sign_in">Already have an account? Sign in</string>
+    <string name="forgot_password">Forgot your password?</string>
 </resources>

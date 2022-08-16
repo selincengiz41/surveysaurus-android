@@ -53,11 +53,16 @@ class LoginFragment : Fragment() {
         })
 
 
-  binding.donTHave.setOnClickListener {
-      val action=LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
-      Navigation.findNavController(it).navigate(action)
+        binding.donTHave.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
 
-  }
+        binding.forgotPassword.setOnClickListener {
+            val action=LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
+            Navigation.findNavController(it).navigate(action)
+
+        }
         binding.button.setOnClickListener{
             val email=binding.editTextTextEmailAddress.text
             val password=binding.editTextTextPassword.text
@@ -67,13 +72,13 @@ class LoginFragment : Fragment() {
                     Toast.makeText(
                         view.context,
                         "Please enter a correct email", Toast.LENGTH_SHORT
-                    ).show();
+                    ).show()
                 }
                 else if (password.length<8) {
                     Toast.makeText(
                         view.context,
                         "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
-                    ).show();
+                    ).show()
                 }
                 else {
                     try{
@@ -99,13 +104,14 @@ class LoginFragment : Fragment() {
                         e.printStackTrace()
                     }
 
+
                 }
 
 
             }
             else{
                 Toast.makeText(view.context,
-                    "Please fill in the starred fields", Toast.LENGTH_SHORT).show();
+                    "Please fill in the starred fields", Toast.LENGTH_SHORT).show()
 
             }
 

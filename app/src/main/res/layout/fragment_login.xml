@@ -12,7 +12,18 @@
     <!-- Backgroundunu rectangle_6.xml dosyası olarak ayarlayamıyorum. -->
 
     <!-- Email Adress Textview -->
-
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="134dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/forgot_password"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
     <Button
         android:id="@+id/button_google"
         android:layout_width="wrap_content"
