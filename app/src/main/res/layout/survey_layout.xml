@@ -4,7 +4,7 @@
     android:id="@+id/survey_layout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="200dp"
-    android:layout_height="300dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:layout_editor_absoluteY="1dp">
 
@@ -25,12 +25,12 @@
         android:fontFamily="@font/roboto_bold"
         android:textAlignment="center"
 
-        android:textSize="14dp"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView13"></TextView>
-
-    <View
+    <!--
+      <View
 
         android:layout_width="match_parent"
         android:layout_height="4dp"
@@ -47,6 +47,9 @@
         android:background="@drawable/vector5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"></View>
+
+     -->
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

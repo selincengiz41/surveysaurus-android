@@ -61,7 +61,7 @@ class SurveyAdapter( private val listener:Listener):RecyclerView.Adapter<SurveyA
             option1.requestLayout()
         }
 
-        holder.itemView.setOnClickListener {
+        holder.binding.questionRecycle.setOnClickListener {
 
             listener.onItemClick(surveyList.get(position))
         }
