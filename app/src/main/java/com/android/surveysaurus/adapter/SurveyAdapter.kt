@@ -72,7 +72,6 @@ class SurveyAdapter( private val listener:Listener):RecyclerView.Adapter<SurveyA
         return surveyList.size
     }
 
-
     fun recycleAdd(item :SurveyModel){
         surveyList.add(item)
     }

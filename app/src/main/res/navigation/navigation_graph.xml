@@ -62,4 +62,13 @@
             android:name="surveyModel"
             app:argType="com.android.surveysaurus.model.SurveyModel" />
     </fragment>
+    <fragment
+        android:id="@+id/mySurveyFragment"
+        android:name="com.android.surveysaurus.fragment.MySurveyFragment"
+        android:label="fragment_my_survey"
+        tools:layout="@layout/fragment_my_survey" >
+        <action
+            android:id="@+id/action_mySurveyFragment_to_createSurveyFragment"
+            app:destination="@id/createSurveyFragment" />
+    </fragment>
 </navigation>

@@ -7,8 +7,8 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 <item android:id="@+id/dropdown_menu_logined" android:icon="@drawable/profile" app:showAsAction="ifRoom" android:title="Profile Settings">
     <menu>
         <item android:id="@+id/user_info" android:title="User Info"></item>
-        <item android:id="@+id/my_surveys" android:title="My Surveys"
-            ></item>
+        <item android:id="@+id/my_surveys" android:title="My Surveys"></item>
+        <item android:id="@+id/mySurveyFragment" android:title="My reallll Surveys"></item>
 
         <item android:id="@+id/log_out" android:title="Log Out"></item>
 

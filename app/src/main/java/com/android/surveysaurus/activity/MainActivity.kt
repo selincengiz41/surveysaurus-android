@@ -59,6 +59,7 @@ profileActionMenuView.isVisible=false
             when (item){
                 R.id.user_info ->{binding.fragmentContainerView.findNavController().navigate(R.id.userInfoFragment); true}
                 R.id.my_surveys -> { binding.fragmentContainerView.findNavController().navigate(R.id.surveysFragment); true}
+                R.id.mySurveyFragment -> { binding.fragmentContainerView.findNavController().navigate(R.id.mySurveyFragment); true}
                 R.id.log_out -> {  LoginSingleton.isLogin=false
 
                    MenuController()
