@@ -113,8 +113,8 @@ class SignUpFragment : Fragment() {
         binding.button.setOnClickListener {
             val name=    binding.nameTextview.text
             val email=binding.editTextTextEmailAddress.text
-            val password=binding.editTextTextPassword.text
-            val confirmPassword=binding.editTextTextPassword2.text
+            val password=binding.editTextTextPassword.text.toString()
+            val confirmPassword=binding.editTextTextPassword2.text.toString()
             val gender =binding.spinnerGender.selectedItem.toString()
             val country =binding.spinnerCountry.text.toString()
             val city =binding.spinnerCity.text.toString()
