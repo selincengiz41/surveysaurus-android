@@ -300,17 +300,17 @@
         android:layout_height="40dp"
         android:layout_marginStart="95dp"
         android:layout_marginEnd="95dp"
-        android:background="@drawable/roundedbutton"
-        android:backgroundTint="#AC6D6D"
+        android:background="@drawable/reactangle2"
+        android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/ic_google_logo"
         android:text="Continue with Google"
         android:textColor="@color/black"
-        android:theme="@style/Platform.MaterialComponents.Light"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="@color/white"
+
         tools:ignore="HardcodedText,RtlHardcoded,TouchTargetSizeCheck" />
 
     <!-- Email TextBox -->

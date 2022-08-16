@@ -13,10 +13,14 @@ class ApiService {
         retrofit.postLogin(loginModel).enqueue(
             object : Callback<LoginedModel> {
                 override fun onFailure(call: Call<LoginedModel>, t: Throwable) {
+                    println(t.message)
                     onResult(null)
+
                 }
                 override fun onResponse( call: Call<LoginedModel>, response: Response<LoginedModel>) {
                     val loginedUser = response.body()
+
+                    println( response.message())
                     onResult(loginedUser)
                 }
             }
@@ -28,10 +32,13 @@ class ApiService {
         retrofit.postSignUp(signUpModel).enqueue(
             object : Callback<SignUpModel> {
                 override fun onFailure(call: Call<SignUpModel>, t: Throwable) {
+                    println(t.message)
                     onResult(null)
                 }
                 override fun onResponse( call: Call<SignUpModel>, response: Response<SignUpModel>) {
                     val signUpedUser = response.body()
+                    println( response.message())
+
                     onResult(signUpedUser)
                 }
             }

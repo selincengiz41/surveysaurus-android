@@ -14,6 +14,8 @@ import androidx.navigation.Navigation
 import com.android.surveysaurus.R
 import com.android.surveysaurus.activity.MainActivity
 import com.android.surveysaurus.databinding.FragmentSignUpBinding
+import com.android.surveysaurus.model.SignUpModel
+import com.android.surveysaurus.service.ApiService
 
 
 class SignUpFragment : Fragment() {
@@ -112,9 +114,9 @@ binding.donTHave.setOnClickListener {
                     ).show();
                 }
                 else {
-                    try{/*
+                    try{
                         val apiService = ApiService()
-                        var signUpModel:SignUpModel= SignUpModel(
+                        var signUpModel: SignUpModel = SignUpModel(
                             name.toString(),
                             email.toString(),
                             password.toString(),
@@ -123,7 +125,8 @@ binding.donTHave.setOnClickListener {
                             city)
 
                         apiService.postSignUp(signUpModel){
-                            if (it != null) {
+
+                            if (it.toString() != null) {
                                 Toast.makeText(view.context,
                                     "Succesful",Toast.LENGTH_SHORT).show();
                                 val action=SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
@@ -131,8 +134,9 @@ binding.donTHave.setOnClickListener {
                             } else {
                                 Toast.makeText(view.context,
                                     "Fail",Toast.LENGTH_SHORT).show();
+                                it
                             }
-                        }*/
+                        }
 
                     }
                     catch (e:Exception){

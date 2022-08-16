@@ -16,6 +16,7 @@ import com.android.surveysaurus.singleton.LoginSingleton
 import com.android.surveysaurus.adapter.OptionAdapter
 import com.android.surveysaurus.databinding.AddOptionLayBinding
 import com.android.surveysaurus.databinding.FragmentCreateSurveyBinding
+import com.android.surveysaurus.model.SurveyModel
 
 
 class CreateSurveyFragment : Fragment() {
@@ -59,8 +60,8 @@ private lateinit var optionAdapter: OptionAdapter
 
         binding.createButton.setOnClickListener{
 
-            val question=binding.addQuestion.text
-            val description =binding.addDescription.text
+            val question=binding.addQuestion.text.toString()
+            val description =binding.addDescription.text.toString()
 if(!binding.addOption1.text.toString().isNullOrEmpty())
     optionList.add(binding.addOption1.text.toString())
 
@@ -87,6 +88,7 @@ if(!binding.addOption1.text.toString().isNullOrEmpty())
             }
             if(!question.isNullOrEmpty()&&optionList.size>=2){
                 if(LoginSingleton.isLogin){
+             var surveyModel:SurveyModel= SurveyModel(question, description,optionList)
 
                 }
                 else{
