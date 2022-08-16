@@ -48,7 +48,6 @@ class FillSurveyFragment : Fragment() {
                 option1.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.vector3,0,0,0)
                 option1.setBackgroundResource(R.drawable.question)
                 option1.gravity=Gravity.CENTER
-
                 option1.textSize=15f
                 binding.root.addView(option1)
                 optionList.add(option1)
