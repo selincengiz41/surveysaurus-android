@@ -168,7 +168,7 @@ class SignUpFragment : Fragment() {
                                     view.context,
                                     "Fail", Toast.LENGTH_SHORT
                                 ).show();
-                                it
+
                             }
                         }
 

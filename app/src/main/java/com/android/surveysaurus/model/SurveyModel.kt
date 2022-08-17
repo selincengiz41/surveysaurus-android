@@ -13,6 +13,6 @@ data class SurveyModel (
     val title :String,
 
     @SerializedName("choice")
-    val choice :Array<String>,
+    val choice :ArrayList<String>,
 
         ):Serializable
