@@ -43,15 +43,16 @@ class FillSurveyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var optionList: ArrayList<TextView> = ArrayList()
 
-
+         println("Control")
         arguments?.let {
             val survey = FillSurveyFragmentArgs.fromBundle(it).surveyModel
             binding.addQuestionFill.text = survey.question
             binding.addTitleFill.text = survey.title
-            for (item in 0 until survey.choice.size) {
+            for (item in 0 until survey.choices.size) {
+                println("Control")
                 val option1: TextView = TextView(view.context)
                 option1.id = View.generateViewId()
-                option1.text = survey.choice.get(item)
+                option1.text = survey.choices.get(item)
                 option1.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.vector3, 0, 0, 0)
                 option1.setPaddingRelative(20, 0, 0, 0)
                 option1.setBackgroundResource(R.drawable.question)

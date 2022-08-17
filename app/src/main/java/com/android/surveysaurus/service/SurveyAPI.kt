@@ -1,9 +1,6 @@
 package com.android.surveysaurus.service
 
-import com.android.surveysaurus.model.FillModel
-import com.android.surveysaurus.model.LoginModel
-import com.android.surveysaurus.model.SignUpModel
-import com.android.surveysaurus.model.SurveyModel
+import com.android.surveysaurus.model.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -28,8 +25,8 @@ interface SurveyAPI {
     fun postFillSurvey(@Body fillModel: FillModel ,@Header("authorization") token: String): Call<ResponseBody>
 
     @GET("api/user/mysurveys")
-    fun getMySurvey(@Header("authorization") token: String): Call<ResponseBody>
+    fun getMySurvey(@Header("authorization") token: String): Call<Response>
 
     @GET("api/survey/sample")
-    fun getSurveys(@Header("authorization") token: String): Call<ResponseBody>
+    fun getSurveys(@Header("authorization") token: String): Call<Response>
 }

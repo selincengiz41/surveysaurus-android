@@ -14,7 +14,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object LoginSingleton {
-    var isLogin: Boolean = true
+    var isLogin: Boolean = false
     var email: String = ""
     var name: String = ""
     var gender: String = ""
