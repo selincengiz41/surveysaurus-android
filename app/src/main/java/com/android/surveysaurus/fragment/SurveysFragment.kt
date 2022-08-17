@@ -22,7 +22,7 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
     private  var _binding: FragmentSurveysBinding?=null
     private val binding get() = _binding!!
     private lateinit var surveyAdapter: SurveyAdapter
-    private  val mainActivity: MainActivity = MainActivity()
+   private  var surveyModel: ArrayList<SurveyModel> =ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,7 +37,7 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
         val view = binding.root
 
         binding.surveysRecycler.layoutManager= GridLayoutManager(view.context,2)
-        surveyAdapter= SurveyAdapter(this@SurveysFragment)
+        surveyAdapter= SurveyAdapter(surveyModel,this@SurveysFragment)
         binding.surveysRecycler.adapter=surveyAdapter
 
 
@@ -46,14 +46,15 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       var options:ArrayList<String> =ArrayList()
+
+        var options:ArrayList<String> =ArrayList()
         options.add("Cat")
         options.add("Dog")
         options.add("Golden Fish")
         options.add("Dolphin")
         options.add("Rabbit")
-        var surveyModel:SurveyModel= SurveyModel("Which animals do you like most?","Yok",
-           options
+        var surveyModel1:SurveyModel= SurveyModel("Which animals do you like most?","Yok",
+            options
         )
 
         var options2:ArrayList<String> =ArrayList()
@@ -74,13 +75,16 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
         var surveyModel3:SurveyModel= SurveyModel("In which financial markets do you operate?","Yok",
             options3
         )
-        surveyAdapter.recycleAdd(surveyModel)
-        surveyAdapter.recycleAdd(surveyModel2)
-        surveyAdapter.recycleAdd(surveyModel3)
-        surveyAdapter.recycleAdd(surveyModel)
-        surveyAdapter.recycleAdd(surveyModel2)
-        surveyAdapter.recycleAdd(surveyModel3)
-        surveyAdapter.notifyDataSetChanged()
+
+        surveyModel.add(surveyModel1)
+        surveyModel.add(surveyModel2)
+        surveyModel.add(surveyModel3)
+        surveyModel.add(surveyModel1)
+        surveyModel.add(surveyModel2)
+
+
+
+       surveyAdapter.notifyDataSetChanged()
     }
 
     override fun onItemClick(surveyModel: SurveyModel) {

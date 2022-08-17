@@ -12,8 +12,10 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.android.surveysaurus.R
 import com.android.surveysaurus.databinding.FragmentFillSurveyBinding
+import com.android.surveysaurus.singleton.LoginSingleton
 import java.time.Duration
 
 
@@ -92,7 +94,14 @@ class FillSurveyFragment : Fragment() {
 
         binding.doneButton.setOnClickListener {
             if(index!=null){
-                println(optionList.get(index!!).text)
+                if(LoginSingleton.isLogin){
+                    println(optionList.get(index!!).text)
+                }
+                else{
+                    val action=FillSurveyFragmentDirections.actionFillSurveyFragmentToLoginFragment()
+                    Navigation.findNavController(it).navigate(action)
+                }
+
             }
             else{
                 Toast.makeText(view.context,"Please select one of options",Toast.LENGTH_SHORT).show()

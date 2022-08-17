@@ -61,6 +61,9 @@
         <argument
             android:name="surveyModel"
             app:argType="com.android.surveysaurus.model.SurveyModel" />
+        <action
+            android:id="@+id/action_fillSurveyFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/mySurveyFragment"
@@ -70,5 +73,8 @@
         <action
             android:id="@+id/action_mySurveyFragment_to_createSurveyFragment"
             app:destination="@id/createSurveyFragment" />
+        <action
+            android:id="@+id/action_mySurveyFragment_to_fillSurveyFragment"
+            app:destination="@id/fillSurveyFragment" />
     </fragment>
 </navigation>
