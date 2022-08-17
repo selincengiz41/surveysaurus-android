@@ -87,7 +87,7 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_description_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/add_title_layout" />
 
         <TextView
             android:id="@+id/question"
@@ -253,7 +253,7 @@
 
 
         <RelativeLayout
-            android:id="@+id/add_description_layout"
+            android:id="@+id/add_title_layout"
             android:layout_width="293dp"
             android:layout_height="39dp"
             android:layout_alignParentLeft="true"
@@ -267,7 +267,7 @@
             app:layout_constraintTop_toBottomOf="@+id/add_question_layout">
 
             <EditText
-                android:id="@+id/add_description"
+                android:id="@+id/add_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -277,7 +277,7 @@
                 android:fontFamily="@font/days_one"
                 android:gravity="center"
 
-                android:hint="Description(Optional)"
+                android:hint="Title"
 
                 android:textSize="15sp" />
 

@@ -7,6 +7,47 @@
     tools:context=".fragment.SignUpFragment">
 
     <!-- Continue with Google -->
+    <TextView
+        android:id="@+id/textView_yildiz5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="5dp"
+        android:text="@string/star"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword2"
+
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword2"
+        android:layout_width="193dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rounded_text"
+        android:ems="10"
+
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="50dp"
+
+        android:layout_marginTop="20dp"
+        android:text="@string/confirm_Password"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_city" />
 
     <TextView
         android:id="@+id/textView_yildiz4"
@@ -216,13 +257,12 @@
         android:id="@+id/editTextTextPassword"
         android:layout_width="193dp"
         android:layout_height="30dp"
-        android:layout_marginStart="190dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
-        android:hint="@string/password_hint"
+
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="TouchTargetSizeCheck" />
@@ -237,6 +277,16 @@
         app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
         app:layout_constraintTop_toTopOf="@+id/editTextTextPassword" />
+
+    <View
+        android:id="@+id/visible_password2"
+        android:layout_width="11dp"
+        android:layout_height="9dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/eye"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword2"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword2"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword2" />
 
     <View
         android:id="@+id/spinner_city_point"
@@ -259,6 +309,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/spinner_country"
         app:layout_constraintEnd_toEndOf="@+id/spinner_country"
         app:layout_constraintTop_toTopOf="@+id/spinner_country" />
+
     <View
         android:id="@+id/spinner_gender_point"
         android:layout_width="12dp"
@@ -285,12 +336,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="5dp"
 
         android:layout_marginTop="20dp"
         android:text="@string/Password"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_city" />
 
@@ -300,17 +350,17 @@
         android:layout_height="40dp"
         android:layout_marginStart="95dp"
         android:layout_marginEnd="95dp"
-        android:background="@drawable/roundedbutton"
-        android:backgroundTint="#AC6D6D"
+        android:background="@drawable/reactangle2"
+        android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/ic_google_logo"
         android:text="Continue with Google"
         android:textColor="@color/black"
-        android:theme="@style/Platform.MaterialComponents.Light"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="@color/white"
+
         tools:ignore="HardcodedText,RtlHardcoded,TouchTargetSizeCheck" />
 
     <!-- Email TextBox -->
@@ -340,11 +390,11 @@
         android:background="@drawable/rectangle_6"
         android:elevation="50dp"
         android:fontFamily="@font/laila_medium"
-        android:textSize="25sp"
-        android:textAlignment="center"
         android:outlineSpotShadowColor="@color/black"
         android:text="@string/Sign_up_button"
+        android:textAlignment="center"
         android:textColor="@color/white"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />

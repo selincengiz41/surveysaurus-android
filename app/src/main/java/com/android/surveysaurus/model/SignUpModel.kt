@@ -3,7 +3,7 @@ package com.android.surveysaurus.model
 import com.google.gson.annotations.SerializedName
 
 data class SignUpModel(
-    @SerializedName("name")
+    @SerializedName("userName")
     val name :String,
 
     @SerializedName("email")

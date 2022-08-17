@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_viewPagerFragment_to_createSurveyFragment"
             app:destination="@id/createSurveyFragment" />
+        <action
+            android:id="@+id/action_viewPagerFragment_to_fillSurveyFragment"
+            app:destination="@id/fillSurveyFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -51,4 +54,27 @@
         android:name="com.android.surveysaurus.fragment.SurveysFragment"
         android:label="fragment_surveys"
         tools:layout="@layout/fragment_surveys" />
+    <fragment
+        android:id="@+id/fillSurveyFragment"
+        android:name="com.android.surveysaurus.fragment.FillSurveyFragment"
+        android:label="FillSurveyFragment" >
+        <argument
+            android:name="surveyModel"
+            app:argType="com.android.surveysaurus.model.SurveyModel" />
+        <action
+            android:id="@+id/action_fillSurveyFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mySurveyFragment"
+        android:name="com.android.surveysaurus.fragment.MySurveyFragment"
+        android:label="fragment_my_survey"
+        tools:layout="@layout/fragment_my_survey" >
+        <action
+            android:id="@+id/action_mySurveyFragment_to_createSurveyFragment"
+            app:destination="@id/createSurveyFragment" />
+        <action
+            android:id="@+id/action_mySurveyFragment_to_fillSurveyFragment"
+            app:destination="@id/fillSurveyFragment" />
+    </fragment>
 </navigation>

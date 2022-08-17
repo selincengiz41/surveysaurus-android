@@ -11,9 +11,9 @@ import com.android.surveysaurus.databinding.FragmentViewPagerBinding
 
 
 class ViewPagerFragment : Fragment() {
-    private  var _binding: FragmentViewPagerBinding?=null
+    private var _binding: FragmentViewPagerBinding? = null
     private val binding get() = _binding!!
-    private  val mainActivity: MainActivity = MainActivity()
+    private val mainActivity: MainActivity = MainActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,13 +26,13 @@ class ViewPagerFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentViewPagerBinding.inflate(inflater, container, false)
         val view = binding.root
-        val fragmentList= arrayListOf<Fragment>(
+        val fragmentList = arrayListOf<Fragment>(
             HomeFragment(),
             SurveysFragment()
         )
-        val adapter= SlidePageAdapter(fragmentList,requireActivity().supportFragmentManager)
-        val viewPager =binding.viewPager
-        viewPager.adapter=adapter
+        val adapter = SlidePageAdapter(fragmentList, requireActivity().supportFragmentManager)
+        val viewPager = binding.viewPager
+        viewPager.adapter = adapter
 
 
         return view
@@ -41,24 +41,24 @@ class ViewPagerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fragmentList= arrayListOf<Fragment>(
+        val fragmentList = arrayListOf<Fragment>(
             HomeFragment(),
             SurveysFragment()
         )
-        val adapter= SlidePageAdapter(fragmentList,requireActivity().supportFragmentManager)
-        val viewPager =binding.viewPager
-        viewPager.adapter=adapter
+        val adapter = SlidePageAdapter(fragmentList, requireActivity().supportFragmentManager)
+        val viewPager = binding.viewPager
+        viewPager.adapter = adapter
 
     }
 
 
     override fun onResume() {
         super.onResume()
-        val fragmentList= arrayListOf<Fragment>(
+        val fragmentList = arrayListOf<Fragment>(
             HomeFragment(),
             SurveysFragment()
         )
-        val adapter= SlidePageAdapter(fragmentList,requireActivity().supportFragmentManager)
+        val adapter = SlidePageAdapter(fragmentList, requireActivity().supportFragmentManager)
         binding.viewPager.adapter = adapter
 
     }
@@ -69,10 +69,9 @@ class ViewPagerFragment : Fragment() {
     }
 
 
-
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding=null
+        _binding = null
 
     }
 

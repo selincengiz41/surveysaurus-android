@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:tools="http://schemas.android.com/tools"
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-tools:ignore="MissingDefaultResource">
-<item android:id="@+id/logined_bar" android:icon="@drawable/bar"
-    app:showAsAction="ifRoom" android:title="SelinCengiz">
-    <menu>
-        <item android:id="@+id/user_bar" android:title="Selin Cengiz"></item>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+    <item
+        android:id="@+id/logined_bar"
+        android:icon="@drawable/bar"
+        android:title="SelinCengiz"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/user_bar"
+                android:title="@string/user_name"></item>
 
-    </menu>
+        </menu>
 
-</item>
+    </item>
 </menu>

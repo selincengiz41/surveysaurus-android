@@ -9,6 +9,7 @@
     <string name="Enter_your_mail_adress">Enter your e-mail adress</string>
     <string name="Enter_name">Enter your name*</string>
     <string name="password_hint">password</string>
+    <string name="your_surveys">Your Surveys</string>
 
     <string name="Login">Login</string>
     <string name="Sign_up_button">Sign up</string>
@@ -39,7 +40,10 @@
     </string-array>
 
     <string name="Password">Password</string>
+    <string name="confirm_Password">Confirm your password</string>
     <string name="star">*</string>
     <string name="d_sign_up">Don’t have an account? Sign up</string>
     <string name="Sign_in">Already have an account? Sign in</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="user_name"></string>
 </resources>

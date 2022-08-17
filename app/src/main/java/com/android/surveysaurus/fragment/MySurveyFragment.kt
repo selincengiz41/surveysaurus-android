@@ -1,31 +1,26 @@
 package com.android.surveysaurus.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.surveysaurus.R
 import com.android.surveysaurus.activity.MainActivity
-import com.android.surveysaurus.adapter.OptionAdapter
 import com.android.surveysaurus.adapter.SurveyAdapter
-import com.android.surveysaurus.databinding.FragmentCreateSurveyBinding
+import com.android.surveysaurus.databinding.FragmentMySurveyBinding
 import com.android.surveysaurus.databinding.FragmentSurveysBinding
 import com.android.surveysaurus.model.SurveyModel
-import java.lang.reflect.Array
 
-//
-class SurveysFragment : Fragment(), SurveyAdapter.Listener {
-    private var _binding: FragmentSurveysBinding? = null
+
+class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
+    private var _binding: FragmentMySurveyBinding? = null
     private val binding get() = _binding!!
     private lateinit var surveyAdapter: SurveyAdapter
     private var surveyModel: ArrayList<SurveyModel> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -33,19 +28,18 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentSurveysBinding.inflate(inflater, container, false)
+
+        _binding = FragmentMySurveyBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        binding.surveysRecycler.layoutManager = GridLayoutManager(view.context, 2)
-        surveyAdapter = SurveyAdapter(surveyModel, this@SurveysFragment)
-        binding.surveysRecycler.adapter = surveyAdapter
-
+        binding.mySurveysRecycler.layoutManager = GridLayoutManager(view.context, 2)
+        surveyAdapter = SurveyAdapter(surveyModel, this@MySurveyFragment)
+        binding.mySurveysRecycler.adapter = surveyAdapter
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         var options: ArrayList<String> = ArrayList()
         options.add("Cat")
@@ -74,25 +68,28 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
         options3.add("Commodity")
         options3.add("Bond market")
         options3.add("Cryptocurrency market")
+        var options4: ArrayList<String> = ArrayList()
         var surveyModel3: SurveyModel = SurveyModel(
             "In which financial markets do you operate?", "Yok",
             options3
         )
+        var surveyModel4: SurveyModel = SurveyModel("", "", options4)
 
         surveyModel.add(surveyModel1)
         surveyModel.add(surveyModel2)
         surveyModel.add(surveyModel3)
         surveyModel.add(surveyModel1)
         surveyModel.add(surveyModel2)
-
+        surveyModel.add(surveyModel4)
 
 
         surveyAdapter.notifyDataSetChanged()
+
     }
 
     override fun onItemClick(surveyModel: SurveyModel) {
         val action =
-            ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(surveyModel)
+            MySurveyFragmentDirections.actionMySurveyFragmentToFillSurveyFragment(surveyModel)
         Navigation.findNavController(binding.root).navigate(action)
     }
 
