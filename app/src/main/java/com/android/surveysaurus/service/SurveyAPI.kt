@@ -6,6 +6,7 @@ import com.android.surveysaurus.model.SurveyModel
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface SurveyAPI {
@@ -19,6 +20,6 @@ interface SurveyAPI {
     fun postLogin(@Body loginModel: LoginModel): Call<ResponseBody>
 
     @POST("/api/survey/createSurvey")
-    fun postCreateSurvey(@Body surveyModel: SurveyModel): Call<ResponseBody>
+    fun postCreateSurvey(@Header("Authorization") token: String, @Body surveyModel: SurveyModel): Call<ResponseBody>
 
 }

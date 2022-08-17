@@ -96,7 +96,12 @@ class CreateSurveyFragment : Fragment() {
                     try {
 
                         val apiService = ApiService()
-                        var surveyModel: SurveyModel = SurveyModel(question, title, optionList)
+
+                        var optionArray :Array<String> =Array(optionList.size){ i -> "Number of index: $i"  }
+                        for(item in 0..optionList.size){
+                            optionArray[item]=optionList.get(item)
+                        }
+                        var surveyModel: SurveyModel = SurveyModel(question, title,optionArray)
                         apiService.postCreateSurvey(surveyModel) {
                             if (it != null) {
                                 Toast.makeText(
