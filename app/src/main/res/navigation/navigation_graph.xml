@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/viewPagerFragment">
+
+    <fragment
+        android:id="@+id/createSurveyFragment"
+        android:name="com.android.surveysaurus.fragment.CreateSurveyFragment"
+        android:label="fragment_create_survey"
+        tools:layout="@layout/fragment_create_survey" >
+        <action
+            android:id="@+id/action_createSurveyFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.android.surveysaurus.fragment.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_createSurveyFragment"
+            app:destination="@id/createSurveyFragment" />
+        <action
+            android:id="@+id/action_viewPagerFragment_to_fillSurveyFragment"
+            app:destination="@id/fillSurveyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.android.surveysaurus.fragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.android.surveysaurus.fragment.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.android.surveysaurus.fragment.UserInfoFragment"
+        android:label="fragment_user_info"
+        tools:layout="@layout/fragment_user_info" />
+    <fragment
+        android:id="@+id/surveysFragment"
+        android:name="com.android.surveysaurus.fragment.SurveysFragment"
+        android:label="fragment_surveys"
+        tools:layout="@layout/fragment_surveys" />
+    <fragment
+        android:id="@+id/fillSurveyFragment"
+        android:name="com.android.surveysaurus.fragment.FillSurveyFragment"
+        android:label="FillSurveyFragment" >
+        <argument
+            android:name="surveyModel"
+            app:argType="com.android.surveysaurus.model.SurveyModel" />
+        <action
+            android:id="@+id/action_fillSurveyFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mySurveyFragment"
+        android:name="com.android.surveysaurus.fragment.MySurveyFragment"
+        android:label="fragment_my_survey"
+        tools:layout="@layout/fragment_my_survey" >
+        <action
+            android:id="@+id/action_mySurveyFragment_to_createSurveyFragment"
+            app:destination="@id/createSurveyFragment" />
+        <action
+            android:id="@+id/action_mySurveyFragment_to_fillSurveyFragment"
+            app:destination="@id/fillSurveyFragment" />
+    </fragment>
+</navigation>
