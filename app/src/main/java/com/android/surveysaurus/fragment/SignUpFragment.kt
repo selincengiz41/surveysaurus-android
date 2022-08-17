@@ -20,9 +20,9 @@ import com.android.surveysaurus.service.ApiService
 
 class SignUpFragment : Fragment() {
 
-    private  var _binding: FragmentSignUpBinding?=null
+    private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
-    private  val mainActivity: MainActivity = MainActivity()
+    private val mainActivity: MainActivity = MainActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -37,13 +37,14 @@ class SignUpFragment : Fragment() {
 
         val countryAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
             view.context,
-            android.R.layout.simple_dropdown_item_1line,getResources().getStringArray(R.array.Country)
+            android.R.layout.simple_dropdown_item_1line,
+            getResources().getStringArray(R.array.Country)
         )
         binding.spinnerCountry.setAdapter(countryAdapter)
 
         val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
             view.context,
-            android.R.layout.simple_dropdown_item_1line,getResources().getStringArray(R.array.City)
+            android.R.layout.simple_dropdown_item_1line, getResources().getStringArray(R.array.City)
         )
         binding.spinnerCity.setAdapter(cityAdapter)
 
@@ -77,11 +78,13 @@ class SignUpFragment : Fragment() {
         binding.visiblePassword.setOnTouchListener(View.OnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    binding.editTextTextPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
+                    binding.editTextTextPassword.inputType =
+                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
                     return@OnTouchListener true
                 }// if you want to handle the touch event
                 MotionEvent.ACTION_UP -> {
-                    binding.editTextTextPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
+                    binding.editTextTextPassword.inputType =
+                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
                     return@OnTouchListener true
                 }// if you want to handle the touch event
             }
@@ -91,11 +94,13 @@ class SignUpFragment : Fragment() {
         binding.visiblePassword2.setOnTouchListener(View.OnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    binding.editTextTextPassword2.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
+                    binding.editTextTextPassword2.inputType =
+                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
                     return@OnTouchListener true
                 }// if you want to handle the touch event
                 MotionEvent.ACTION_UP -> {
-                    binding.editTextTextPassword2.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
+                    binding.editTextTextPassword2.inputType =
+                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
                     return@OnTouchListener true
                 }// if you want to handle the touch event
             }
@@ -106,42 +111,38 @@ class SignUpFragment : Fragment() {
 
 
         binding.donTHave.setOnClickListener {
-            val action=SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+            val action = SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
             Navigation.findNavController(it).navigate(action)
         }
 
         binding.button.setOnClickListener {
-            val name=    binding.nameTextview.text
-            val email=binding.editTextTextEmailAddress.text
-            val password=binding.editTextTextPassword.text.toString()
-            val confirmPassword=binding.editTextTextPassword2.text.toString()
-            val gender =binding.spinnerGender.selectedItem.toString()
-            val country =binding.spinnerCountry.text.toString()
-            val city =binding.spinnerCity.text.toString()
-            if (!name.isNullOrEmpty() && !email.isNullOrEmpty()&&!password.isNullOrEmpty()&&!gender.isNullOrEmpty()&&
-                !country.isNullOrEmpty()&&!city.isNullOrEmpty() && !confirmPassword.isNullOrEmpty())
-            {
-                if(!email.endsWith(".com") || !email.contains("@")) {
+            val name = binding.nameTextview.text
+            val email = binding.editTextTextEmailAddress.text
+            val password = binding.editTextTextPassword.text.toString()
+            val confirmPassword = binding.editTextTextPassword2.text.toString()
+            val gender = binding.spinnerGender.selectedItem.toString()
+            val country = binding.spinnerCountry.text.toString()
+            val city = binding.spinnerCity.text.toString()
+            if (!name.isNullOrEmpty() && !email.isNullOrEmpty() && !password.isNullOrEmpty() && !gender.isNullOrEmpty() &&
+                !country.isNullOrEmpty() && !city.isNullOrEmpty() && !confirmPassword.isNullOrEmpty()
+            ) {
+                if (!email.endsWith(".com") || !email.contains("@")) {
                     Toast.makeText(
                         view.context,
                         "Please enter a correct email", Toast.LENGTH_SHORT
                     ).show()
-                }
-                else if (!password.equals(confirmPassword)) {
+                } else if (!password.equals(confirmPassword)) {
                     Toast.makeText(
                         view.context,
                         "Your passwords needs to match", Toast.LENGTH_SHORT
                     ).show()
-                }
-                else if (password.length<8 ) {
+                } else if (password.length < 8) {
                     Toast.makeText(
                         view.context,
                         "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
                     ).show()
-                }
-
-                else {
-                    try{
+                } else {
+                    try {
                         val apiService = ApiService()
                         var signUpModel: SignUpModel = SignUpModel(
                             name.toString(),
@@ -149,37 +150,42 @@ class SignUpFragment : Fragment() {
                             password.toString(),
                             gender,
                             country,
-                            city)
+                            city
+                        )
 
-                        apiService.postSignUp(signUpModel){
+                        apiService.postSignUp(signUpModel) {
 
                             if (it.toString() != null) {
-                                Toast.makeText(view.context,
-                                    "Succesful",Toast.LENGTH_SHORT).show();
-                                val action=SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+                                Toast.makeText(
+                                    view.context,
+                                    "Succesful", Toast.LENGTH_SHORT
+                                ).show();
+                                val action =
+                                    SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
                                 Navigation.findNavController(view).navigate(action)
                             } else {
-                                Toast.makeText(view.context,
-                                    "Fail",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(
+                                    view.context,
+                                    "Fail", Toast.LENGTH_SHORT
+                                ).show();
                                 it
                             }
                         }
 
-                    }
-                    catch (e:Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     }
 
                 }
 
 
-            }
-            else{
-                Toast.makeText(view.context,
-                    "Please fill in the starred fields",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    view.context,
+                    "Please fill in the starred fields", Toast.LENGTH_SHORT
+                ).show()
 
             }
-
 
 
         }

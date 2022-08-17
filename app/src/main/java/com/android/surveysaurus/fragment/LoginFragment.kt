@@ -18,9 +18,9 @@ import com.android.surveysaurus.singleton.LoginSingleton
 
 
 class LoginFragment : Fragment() {
-    private  var _binding: FragmentLoginBinding?=null
+    private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private  val mainActivity: MainActivity = MainActivity()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,6 +30,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -40,14 +41,16 @@ class LoginFragment : Fragment() {
 
         binding.visiblePassword.setOnTouchListener(OnTouchListener { v, event ->
             when (event.action) {
-                MotionEvent.ACTION_DOWN ->{
+                MotionEvent.ACTION_DOWN -> {
                     binding.editTextTextPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)// PRESSED
                     println("bastım")
-                    return@OnTouchListener true }// if you want to handle the touch event
+                    return@OnTouchListener true
+                }// if you want to handle the touch event
                 MotionEvent.ACTION_UP -> {
                     binding.editTextTextPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)// RELEASED
                     println("bıraktım")
-                    return@OnTouchListener true }// if you want to handle the touch event
+                    return@OnTouchListener true
+                }// if you want to handle the touch event
             }
             false
         })
@@ -59,48 +62,68 @@ class LoginFragment : Fragment() {
         }
 
         binding.forgotPassword.setOnClickListener {
-            val action=LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
+            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
             Navigation.findNavController(it).navigate(action)
 
         }
-        binding.button.setOnClickListener{
-            val email=binding.editTextTextEmailAddress.text
-            val password=binding.editTextTextPassword.text
-            if ( !email.isNullOrEmpty()&&!password.isNullOrEmpty()){
+        binding.button.setOnClickListener {
+            val email = binding.editTextTextEmailAddress.text
+            val password = binding.editTextTextPassword.text
+            if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
 
-                if(!email.endsWith(".com") || !email.contains("@")) {
+                if (!email.endsWith(".com") || !email.contains("@")) {
                     Toast.makeText(
                         view.context,
                         "Please enter a correct email", Toast.LENGTH_SHORT
                     ).show()
-                }
-                else if (password.length<8) {
+                } else if (password.length < 8) {
                     Toast.makeText(
                         view.context,
                         "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
                     ).show()
-                }
-                else {
-                    try{
+                } else {
+                    try {
 
                         val apiService = ApiService()
-                        var loginModel: LoginModel = LoginModel(email.toString()
-                            ,password.toString())
-                        apiService.postLogin(loginModel){
+                        var loginModel: LoginModel = LoginModel(
+                            email.toString(), password.toString()
+                        )
+                        apiService.postLogin(loginModel) {
                             if (it != null) {
-                                Toast.makeText(view.context,
-                                    "Succesfully logined "+it.name ,Toast.LENGTH_SHORT).show();
-                                LoginSingleton.isLogin=true
-                                mainActivity.MenuController()
+                                var text: String = it.string()
+                                var tırnak = '"'
+
+                                LoginSingleton.name = text.substringAfter("name$tırnak")
+                                    .substringBefore(tırnak + "gender").substringAfter(tırnak)
+                                    .substringBefore(tırnak)
+                                LoginSingleton.gender = text.substringAfter("gender$tırnak")
+                                    .substringBefore(tırnak + "email").substringAfter(tırnak)
+                                    .substringBefore(tırnak)
+                                LoginSingleton.country = text.substringAfter("country$tırnak")
+                                    .substringBefore(tırnak + "message").substringAfter(tırnak)
+                                    .substringBefore(tırnak)
+                                LoginSingleton.city = text.substringAfter("city$tırnak")
+                                    .substringBefore(tırnak + "country").substringAfter(tırnak)
+                                    .substringBefore(tırnak)
+                                LoginSingleton.email = text.substringAfter("email$tırnak")
+                                    .substringBefore(tırnak + "city").substringAfter(tırnak)
+                                    .substringBefore(tırnak)
+                                Toast.makeText(
+                                    view.context,
+                                    "Succesfully logined " + LoginSingleton.name, Toast.LENGTH_SHORT
+                                ).show();
+                                LoginSingleton.isLogin = true
+                                (activity as MainActivity?)!!.MenuController()
 
                             } else {
-                                Toast.makeText(view.context,
-                                    "Fail",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(
+                                    view.context,
+                                    "Fail", Toast.LENGTH_SHORT
+                                ).show();
                             }
 
                         }
-                    }
-                    catch(e:Exception){
+                    } catch (e: Exception) {
                         e.printStackTrace()
                     }
 
@@ -108,10 +131,11 @@ class LoginFragment : Fragment() {
                 }
 
 
-            }
-            else{
-                Toast.makeText(view.context,
-                    "Please fill in the starred fields", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    view.context,
+                    "Please fill in the starred fields", Toast.LENGTH_SHORT
+                ).show()
 
             }
 

@@ -33,7 +33,7 @@ private  var _binding: FragmentHomeBinding?=null
         super.onViewCreated(view, savedInstanceState)
 
         binding.createASurvey.setOnClickListener{
-            val action=ViewPagerFragmentDirections.actionViewPagerFragmentToCreateSurveyFragment()
+            val action = ViewPagerFragmentDirections.actionViewPagerFragmentToCreateSurveyFragment()
             Navigation.findNavController(it).navigate(action)
         }
 

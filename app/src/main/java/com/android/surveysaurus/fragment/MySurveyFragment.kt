@@ -15,10 +15,10 @@ import com.android.surveysaurus.model.SurveyModel
 
 
 class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
-    private  var _binding: FragmentMySurveyBinding?=null
+    private var _binding: FragmentMySurveyBinding? = null
     private val binding get() = _binding!!
     private lateinit var surveyAdapter: SurveyAdapter
-    private  var surveyModel: ArrayList<SurveyModel> =ArrayList()
+    private var surveyModel: ArrayList<SurveyModel> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -29,48 +29,51 @@ class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
     ): View? {
         // Inflate the layout for this fragment
 
-        _binding= FragmentMySurveyBinding.inflate(inflater,container,false)
+        _binding = FragmentMySurveyBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        binding.mySurveysRecycler.layoutManager= GridLayoutManager(view.context,2)
-        surveyAdapter= SurveyAdapter(surveyModel,this@MySurveyFragment)
-        binding.mySurveysRecycler.adapter=surveyAdapter
+        binding.mySurveysRecycler.layoutManager = GridLayoutManager(view.context, 2)
+        surveyAdapter = SurveyAdapter(surveyModel, this@MySurveyFragment)
+        binding.mySurveysRecycler.adapter = surveyAdapter
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        var options:ArrayList<String> =ArrayList()
+        var options: ArrayList<String> = ArrayList()
         options.add("Cat")
         options.add("Dog")
         options.add("Golden Fish")
         options.add("Dolphin")
         options.add("Rabbit")
-        var surveyModel1:SurveyModel= SurveyModel("Which animals do you like most?","Yok",
+        var surveyModel1: SurveyModel = SurveyModel(
+            "Which animals do you like most?", "Yok",
             options
         )
 
-        var options2:ArrayList<String> =ArrayList()
+        var options2: ArrayList<String> = ArrayList()
         options2.add("Books and articles")
         options2.add("YouTube tutorial videos")
         options2.add("Online or face to face courses")
         options2.add("Experience with little investment")
-        var surveyModel2:SurveyModel= SurveyModel("What resources have you used or are you using for your training?","Yok",
+        var surveyModel2: SurveyModel = SurveyModel(
+            "What resources have you used or are you using for your training?", "Yok",
             options2
         )
 
-        var options3:ArrayList<String> =ArrayList()
+        var options3: ArrayList<String> = ArrayList()
         options3.add("Stock market")
         options3.add("Foreign exchange")
         options3.add("Commodity")
         options3.add("Bond market")
         options3.add("Cryptocurrency market")
-        var options4:ArrayList<String> =ArrayList()
-        var surveyModel3:SurveyModel= SurveyModel("In which financial markets do you operate?","Yok",
+        var options4: ArrayList<String> = ArrayList()
+        var surveyModel3: SurveyModel = SurveyModel(
+            "In which financial markets do you operate?", "Yok",
             options3
         )
-        var surveyModel4:SurveyModel= SurveyModel("","",options4)
+        var surveyModel4: SurveyModel = SurveyModel("", "", options4)
 
         surveyModel.add(surveyModel1)
         surveyModel.add(surveyModel2)
@@ -85,7 +88,8 @@ class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
     }
 
     override fun onItemClick(surveyModel: SurveyModel) {
-       val action=MySurveyFragmentDirections.actionMySurveyFragmentToFillSurveyFragment(surveyModel)
+        val action =
+            MySurveyFragmentDirections.actionMySurveyFragmentToFillSurveyFragment(surveyModel)
         Navigation.findNavController(binding.root).navigate(action)
     }
 

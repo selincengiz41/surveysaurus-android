@@ -72,7 +72,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_description_layout_fill" />
+        app:layout_constraintTop_toBottomOf="@+id/add_title_layout_fill" />
 
     <TextView
         android:id="@+id/question_fill"
@@ -123,7 +123,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/add_description_layout_fill"
+        android:id="@+id/add_title_layout_fill"
         android:layout_width="293dp"
         android:layout_height="39dp"
         android:layout_alignParentLeft="true"
@@ -137,7 +137,7 @@
         app:layout_constraintTop_toBottomOf="@+id/add_question_layout_fill">
 
         <TextView
-            android:id="@+id/add_description_fill"
+            android:id="@+id/add_title_fill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -147,13 +147,12 @@
             android:fontFamily="@font/days_one"
             android:gravity="center"
 
-            android:hint="Description(Optional)"
+            android:hint="Title"
 
             android:textSize="15sp" />
 
 
     </RelativeLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

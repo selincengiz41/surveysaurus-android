@@ -6,16 +6,18 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.android.surveysaurus.databinding.AddOptionLayBinding
 
-class OptionAdapter():RecyclerView.Adapter<OptionAdapter.OptionHolder>() {
-    private val  optionList : ArrayList<Int> =ArrayList()
-    class OptionHolder(val binding: AddOptionLayBinding) :RecyclerView.ViewHolder(binding.root){
+class OptionAdapter() : RecyclerView.Adapter<OptionAdapter.OptionHolder>() {
+    private val optionList: ArrayList<Int> = ArrayList()
+
+    class OptionHolder(val binding: AddOptionLayBinding) : RecyclerView.ViewHolder(binding.root) {
 
 
-}
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionHolder {
-val binding =AddOptionLayBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-    return OptionHolder(binding)
+        val binding =
+            AddOptionLayBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return OptionHolder(binding)
 
     }
 
@@ -24,11 +26,11 @@ val binding =AddOptionLayBinding.inflate(LayoutInflater.from(parent.context),par
     }
 
     override fun getItemCount(): Int {
-return optionList.size
+        return optionList.size
     }
 
 
-    fun recycleAdd(item :Int){
+    fun recycleAdd(item: Int) {
         optionList.add(item)
     }
 

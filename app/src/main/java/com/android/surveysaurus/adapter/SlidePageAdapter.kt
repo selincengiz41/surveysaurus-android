@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
-class SlidePageAdapter (list: ArrayList<Fragment>,manager: FragmentManager ):FragmentPagerAdapter(manager){
-   private val fragmentList:ArrayList<Fragment> = list
-
+class SlidePageAdapter(list: ArrayList<Fragment>, manager: FragmentManager) :
+    FragmentPagerAdapter(manager) {
+    private val fragmentList: ArrayList<Fragment> = list
 
 
     override fun getCount(): Int {

@@ -9,10 +9,10 @@ data class SurveyModel (
     @SerializedName("question")
     val question :String,
 
-    @SerializedName("description")
-    val description :String,
+    @SerializedName("title")
+    val title :String,
 
-    @SerializedName("options")
-    val options :ArrayList<String>,
+    @SerializedName("choice")
+    val choice :ArrayList<String>,
 
         ):Serializable

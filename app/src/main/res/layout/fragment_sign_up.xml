@@ -48,6 +48,7 @@
         app:layout_constraintHorizontal_bias="0.72"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_city" />
+
     <TextView
         android:id="@+id/textView_yildiz4"
         android:layout_width="wrap_content"
@@ -308,6 +309,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/spinner_country"
         app:layout_constraintEnd_toEndOf="@+id/spinner_country"
         app:layout_constraintTop_toTopOf="@+id/spinner_country" />
+
     <View
         android:id="@+id/spinner_gender_point"
         android:layout_width="12dp"
@@ -388,11 +390,11 @@
         android:background="@drawable/rectangle_6"
         android:elevation="50dp"
         android:fontFamily="@font/laila_medium"
-        android:textSize="25sp"
-        android:textAlignment="center"
         android:outlineSpotShadowColor="@color/black"
         android:text="@string/Sign_up_button"
+        android:textAlignment="center"
         android:textColor="@color/white"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
