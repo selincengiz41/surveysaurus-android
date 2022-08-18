@@ -15,6 +15,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.android.surveysaurus.R
 import com.android.surveysaurus.databinding.FragmentFillSurveyBinding
+import com.android.surveysaurus.model.FillModel
+import com.android.surveysaurus.model.SignUpModel
+import com.android.surveysaurus.service.ApiService
 import com.android.surveysaurus.singleton.LoginSingleton
 import java.time.Duration
 
@@ -104,7 +107,35 @@ class FillSurveyFragment : Fragment() {
         binding.doneButton.setOnClickListener {
             if (index != null) {
                 if (LoginSingleton.isLogin) {
-                    println(optionList.get(index!!).text)
+                    /*
+                    try {
+                        val apiService = ApiService()
+                        var fillModel: FillModel = FillModel(binding.addTitleFill.text.toString()
+                            , index!!
+                        )
+
+                        apiService.postFillSurvey(fillModel) {
+
+                            if (it.toString() != null) {
+                                Toast.makeText(
+                                    view.context,
+                                    "Succesful", Toast.LENGTH_SHORT
+                                ).show();
+                           val action =
+                        FillSurveyFragmentDirections.actionFillSurveyFragmentToViewPagerFragment()
+                    Navigation.findNavController(it).navigate(action)
+                            } else {
+                                Toast.makeText(
+                                    view.context,
+                                    "Fail", Toast.LENGTH_SHORT
+                                ).show();
+
+                            }
+                        }
+
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }*/
                 } else {
                     val action =
                         FillSurveyFragmentDirections.actionFillSurveyFragmentToLoginFragment()

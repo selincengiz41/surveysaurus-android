@@ -89,7 +89,6 @@
         android:id="@+id/editTextTextEmailAddress3"
         android:layout_width="193dp"
         android:layout_height="30dp"
-        android:layout_marginStart="160dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/rounded_text"
@@ -98,8 +97,6 @@
         android:inputType="textEmailAddress"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.971"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_textview3" />
 
     <AutoCompleteTextView
@@ -107,14 +104,11 @@
         android:layout_width="193dp"
         android:layout_height="30dp"
 
-        android:layout_marginStart="160dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/rounded_text"
         android:contentDescription="@string/Login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.971"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_gender3"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -122,7 +116,6 @@
         android:id="@+id/editTextTextPassword7"
         android:layout_width="193dp"
         android:layout_height="30dp"
-        android:layout_marginStart="160dp"
 
         android:layout_marginTop="28dp"
         android:layout_marginEnd="50dp"
@@ -130,8 +123,6 @@
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword6"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -139,7 +130,6 @@
         android:id="@+id/editTextTextPassword6"
         android:layout_width="193dp"
         android:layout_height="30dp"
-        android:layout_marginStart="160dp"
 
         android:layout_marginTop="28dp"
         android:layout_marginEnd="50dp"
@@ -147,8 +137,6 @@
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_city4"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -156,31 +144,25 @@
         android:id="@+id/spinner_city4"
         android:layout_width="193dp"
         android:layout_height="30dp"
-        android:layout_marginStart="160dp"
 
         android:layout_marginTop="28dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/rounded_text"
         android:contentDescription="@string/Login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_country4"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <Spinner
+    <AutoCompleteTextView
         android:id="@+id/spinner_gender3"
         android:layout_width="193dp"
         android:layout_height="30dp"
 
-        android:layout_marginStart="160dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/rounded_text"
         android:contentDescription="@string/Login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.971"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -188,7 +170,6 @@
         android:id="@+id/name_textview3"
         android:layout_width="193dp"
         android:layout_height="30dp"
-        android:layout_marginStart="120dp"
         android:layout_marginTop="33dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/rounded_text"
@@ -197,8 +178,6 @@
         android:inputType="textEmailAddress"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.99"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView

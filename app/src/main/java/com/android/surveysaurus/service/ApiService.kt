@@ -152,4 +152,30 @@ class ApiService {
         )
     }
 
+    fun postFillSurvey(fillModel: FillModel, onResult: (ResponseBody?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.postFillSurvey(fillModel, LoginSingleton.token).enqueue(
+            object : Callback<ResponseBody> {
+                override fun onFailure(
+                    call: Call<ResponseBody>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
+                    var filled = response.body()
+
+                    println(response.message())
+
+                    onResult(filled)
+                }
+            }
+        )
+    }
+
 }
