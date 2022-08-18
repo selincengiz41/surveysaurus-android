@@ -11,12 +11,10 @@
         android:id="@+id/textView_yildiz5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginBottom="5dp"
         android:text="@string/star"
         android:textColor="@android:color/holo_red_dark"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword2"
-
         app:layout_constraintStart_toEndOf="@+id/textView4" />
 
     <EditText
@@ -460,6 +458,7 @@
         android:layout_marginEnd="-150dp"
         android:src="@drawable/casual"
         app:layout_constraintEnd_toStartOf="@+id/country_textview3"
+        app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 

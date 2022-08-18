@@ -1,32 +1,27 @@
 package com.android.surveysaurus.adapter
 
-import android.app.ActionBar
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View.generateViewId
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import androidx.core.view.marginTop
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.android.surveysaurus.R
 
 import com.android.surveysaurus.databinding.SurveyLayoutBinding
 import com.android.surveysaurus.fragment.MySurveyFragmentDirections
+import com.android.surveysaurus.model.ListedSurvey
 
-import com.android.surveysaurus.fragment.ViewPagerFragmentDirections
-import com.android.surveysaurus.model.SurveyModel
-import java.sql.Blob
+import com.android.surveysaurus.model.Survey
 
 class SurveyAdapter(
-    private val surveyList: ArrayList<SurveyModel>,
+    private val surveyList: ArrayList<ListedSurvey>,
     private val listener: Listener
 ) : RecyclerView.Adapter<SurveyAdapter.SurveyHolder>() {
 
     interface Listener {
-        fun onItemClick(surveyModel: SurveyModel)
+        fun onItemClick(mySurveyModel: ListedSurvey)
     }
 
     private val imageList: ArrayList<Int> =
@@ -50,10 +45,10 @@ class SurveyAdapter(
             holder.binding.questionRecycle.text = surveyList.get(position).question
             holder.binding.imageView13.setImageResource(imageList.get(position % 3))
             var optionList: ArrayList<TextView> = ArrayList()
-            for (item in 0 until surveyList.get(position).choice.size) {
+            for (item in 0 until surveyList.get(position).choices.size) {
                 val option1: TextView = TextView(holder.binding.root.context)
                 option1.id = generateViewId()
-                option1.text = surveyList.get(position).choice.get(item)
+                option1.text = surveyList.get(position).choices.get(item)
                 option1.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     R.drawable.elipse26,
                     0,

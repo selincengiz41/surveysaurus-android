@@ -63,7 +63,7 @@
         android:label="FillSurveyFragment" >
         <argument
             android:name="surveyModel"
-            app:argType="com.android.surveysaurus.model.SurveyModel" />
+            app:argType="com.android.surveysaurus.model.ListedSurvey" />
         <action
             android:id="@+id/action_fillSurveyFragment_to_loginFragment"
             app:destination="@id/loginFragment" />

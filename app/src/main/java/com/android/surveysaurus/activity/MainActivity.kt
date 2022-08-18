@@ -1,6 +1,7 @@
 package com.android.surveysaurus.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ActionMenuView
 import androidx.core.view.isVisible
@@ -45,6 +46,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun HomeClicked(view: View){
+        binding.fragmentContainerView.findNavController()
+            .navigate(R.id.viewPagerFragment)
+    }
+
 
     fun MenuController() {
 
@@ -75,7 +81,8 @@ class MainActivity : AppCompatActivity() {
                         LoginSingleton.email = ""
 
                         MenuController()
-
+                        binding.fragmentContainerView.findNavController()
+                            .navigate(R.id.viewPagerFragment)
                         ; true
                     }
 
