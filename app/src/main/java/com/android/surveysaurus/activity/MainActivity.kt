@@ -8,7 +8,9 @@ import androidx.navigation.findNavController
 import com.android.surveysaurus.R
 import com.android.surveysaurus.databinding.ActivityMainBinding
 import com.android.surveysaurus.singleton.LoginSingleton
-import java.lang.reflect.Field
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        AppCenter.start(
+            application, "f81383ab-c4c0-4a23-aac6-8aa9115e5119",
+            Analytics::class.java, Crashes::class.java
+        )
         profileActionMenuView = findViewById(R.id.expanded_profile)
 
         barActionMenuView = findViewById(R.id.expanded_bar)

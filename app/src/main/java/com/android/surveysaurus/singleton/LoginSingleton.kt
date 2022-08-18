@@ -20,6 +20,7 @@ object LoginSingleton {
     var gender: String = ""
     var city: String = ""
     var country: String = ""
+    var token: String = ""
 
 
 }

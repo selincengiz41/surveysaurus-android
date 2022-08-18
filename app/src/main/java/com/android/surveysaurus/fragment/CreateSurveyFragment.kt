@@ -26,8 +26,6 @@ class CreateSurveyFragment : Fragment() {
     private val binding get() = _binding!!
     private var isThereAdditional: Boolean = false
     private var optionList: ArrayList<String> = ArrayList()
-
-    //private  val mainActivity:MainActivity=MainActivity()
     private lateinit var optionAdapter: OptionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,41 +78,49 @@ class CreateSurveyFragment : Fragment() {
                 holder =
                     OptionAdapter.OptionHolder(binding = AddOptionLayBinding.bind(binding.root))
                 for (item in 0 until optionAdapter.itemCount) {
-                    val title = binding.additionalOptions
+                    val addition = binding.additionalOptions
                         .findViewHolderForAdapterPosition(item)
                         ?.itemView
                         ?.findViewById<TextView>(com.android.surveysaurus.R.id.add_optional)
                         ?.text
 
-                    if (!title.toString().isNullOrEmpty())
-                        optionList.add(title.toString())
+                    if (!addition.toString().isNullOrEmpty())
+                        optionList.add(addition.toString())
                 }
             }
             if (!question.isNullOrEmpty() && optionList.size >= 2) {
                 if (LoginSingleton.isLogin) {
 
                     try {
-
-                        val apiService = ApiService()
-                        var surveyModel: SurveyModel = SurveyModel(question, title, optionList)
-                        apiService.postCreateSurvey(surveyModel) {
-                            if (it != null) {
-                                Toast.makeText(
-                                    view.context,
-                                    "Succesful", Toast.LENGTH_SHORT
-                                ).show();
-
-                            } else {
-                                Toast.makeText(
-                                    view.context,
-                                    "Fail", Toast.LENGTH_SHORT
-                                ).show();
-
-                            }
-
+                       /* var optionArray :Array<String> =Array(optionList.size){ i -> "Number of index: $i"  }
+                        for(item in 0..optionList.size){
+                            optionList.get(item)
                         }
+                        for (item in 0..optionArray.size){
+                            println(optionArray[item])
+                        }*/
+                        val apiService = ApiService()
+
+                        var surveyModel: SurveyModel = SurveyModel(question, title,optionList)
+                       apiService.postCreateSurvey(surveyModel){
+
+                           if (it.toString() != null) {
+                               Toast.makeText(
+                                   view.context,
+                                   "Succesful", Toast.LENGTH_SHORT
+                               ).show();
+
+                           } else {
+                               Toast.makeText(
+                                   view.context,
+                                   "Fail", Toast.LENGTH_SHORT
+                               ).show();
+
+                           }
+
+                       }
                     } catch (e: Exception) {
-                        e.printStackTrace()
+                       e.printStackTrace()
                     }
                 } else {
                     val action =

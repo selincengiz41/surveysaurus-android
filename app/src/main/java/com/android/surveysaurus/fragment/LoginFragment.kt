@@ -93,6 +93,10 @@ class LoginFragment : Fragment() {
                                 var text: String = it.string()
                                 var tırnak = '"'
 
+                                LoginSingleton.token= text.substringAfter("accessToken$tırnak")
+                                    .substringBefore(tırnak + "data").substringAfter(tırnak)
+                                    .substringBefore(tırnak)
+                                println(LoginSingleton.token)
                                 LoginSingleton.name = text.substringAfter("name$tırnak")
                                     .substringBefore(tırnak + "gender").substringAfter(tırnak)
                                     .substringBefore(tırnak)
@@ -110,10 +114,12 @@ class LoginFragment : Fragment() {
                                     .substringBefore(tırnak)
                                 Toast.makeText(
                                     view.context,
-                                    "Succesfully logined " + LoginSingleton.name, Toast.LENGTH_SHORT
+                                    "Succesfully logined " + LoginSingleton.name, Toast.LENGTH_LONG
                                 ).show();
                                 LoginSingleton.isLogin = true
                                 (activity as MainActivity?)!!.MenuController()
+                                val action=LoginFragmentDirections.actionLoginFragmentToCreateSurveyFragment()
+                                Navigation.findNavController(view).navigate(action)
 
                             } else {
                                 Toast.makeText(

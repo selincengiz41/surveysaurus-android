@@ -47,7 +47,8 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var options: ArrayList<String> = ArrayList()
+       // var options = arrayOf<String>("Cat", "Dog", "Golden Fish", "Dolphin", "Rabbit")
+        var options=ArrayList<String>()
         options.add("Cat")
         options.add("Dog")
         options.add("Golden Fish")
@@ -58,7 +59,13 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
             options
         )
 
-        var options2: ArrayList<String> = ArrayList()
+        /*var options2 = arrayOf<String>(
+            "Books and articles",
+            "YouTube tutorial videos",
+            "Online or face to face courses",
+            "Experience with little investment"
+        )*/
+        var options2=ArrayList<String>()
         options2.add("Books and articles")
         options2.add("YouTube tutorial videos")
         options2.add("Online or face to face courses")
@@ -68,7 +75,10 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
             options2
         )
 
-        var options3: ArrayList<String> = ArrayList()
+       /* var options3 = arrayOf<String>(
+            "Stock market", "Foreign exchange", "Commodity", "Bond market", "Cryptocurrency market"
+        )*/
+        var options3=ArrayList<String>()
         options3.add("Stock market")
         options3.add("Foreign exchange")
         options3.add("Commodity")

@@ -1,8 +1,10 @@
 package com.android.surveysaurus.service
 
+import com.android.surveysaurus.model.FillModel
 import com.android.surveysaurus.model.LoginModel
 import com.android.surveysaurus.model.SignUpModel
 import com.android.surveysaurus.model.SurveyModel
+import com.android.surveysaurus.singleton.LoginSingleton
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -10,6 +12,7 @@ import retrofit2.Response
 
 class ApiService {
     fun postLogin(loginModel: LoginModel, onResult: (ResponseBody?) -> Unit) {
+
         val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
         retrofit.postLogin(loginModel).enqueue(
             object : Callback<ResponseBody> {
@@ -56,7 +59,7 @@ class ApiService {
 
     fun postCreateSurvey(surveyModel: SurveyModel, onResult: (ResponseBody?) -> Unit) {
         val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
-        retrofit.postCreateSurvey(surveyModel).enqueue(
+        retrofit.postCreateSurvey(surveyModel,LoginSingleton.token).enqueue(
             object : Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     println(t.message)
@@ -68,7 +71,7 @@ class ApiService {
                     response: Response<ResponseBody>
                 ) {
                     val createdSurvey = response.body()
-
+                    println(response.headers().names())
                     println(response.message())
 
                     onResult(createdSurvey)
@@ -76,6 +79,8 @@ class ApiService {
             }
         )
     }
+
+
 
 
 }
