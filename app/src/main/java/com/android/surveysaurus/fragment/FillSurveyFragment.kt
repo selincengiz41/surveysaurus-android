@@ -107,16 +107,16 @@ class FillSurveyFragment : Fragment() {
         binding.doneButton.setOnClickListener {
             if (index != null) {
                 if (LoginSingleton.isLogin) {
-                    /*
+
                     try {
                         val apiService = ApiService()
                         var fillModel: FillModel = FillModel(binding.addTitleFill.text.toString()
                             , index!!
                         )
 
-                        apiService.postFillSurvey(fillModel) {
+                        apiService.postFillSurvey(fillModel) {response->
 
-                            if (it.toString() != null) {
+                            if (response.toString() != null) {
                                 Toast.makeText(
                                     view.context,
                                     "Succesful", Toast.LENGTH_SHORT
@@ -135,7 +135,7 @@ class FillSurveyFragment : Fragment() {
 
                     } catch (e: Exception) {
                         e.printStackTrace()
-                    }*/
+                    }
                 } else {
                     val action =
                         FillSurveyFragmentDirections.actionFillSurveyFragmentToLoginFragment()
