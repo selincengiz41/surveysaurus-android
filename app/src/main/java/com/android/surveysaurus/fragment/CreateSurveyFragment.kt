@@ -1,35 +1,40 @@
 package com.android.surveysaurus.fragment
 
 
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.surveysaurus.activity.MainActivity
-import com.android.surveysaurus.singleton.LoginSingleton
-
+import com.android.surveysaurus.R
 import com.android.surveysaurus.adapter.OptionAdapter
 import com.android.surveysaurus.databinding.AddOptionLayBinding
 import com.android.surveysaurus.databinding.FragmentCreateSurveyBinding
-import com.android.surveysaurus.model.LoginModel
 import com.android.surveysaurus.model.SurveyModel
 import com.android.surveysaurus.service.ApiService
+import com.android.surveysaurus.singleton.LoginSingleton
 
 
-class CreateSurveyFragment : Fragment() {
+class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
     private var _binding: FragmentCreateSurveyBinding? = null
     private val binding get() = _binding!!
     private var isThereAdditional: Boolean = false
     private var optionList: ArrayList<String> = ArrayList()
     private lateinit var optionAdapter: OptionAdapter
+    private val optionSize: ArrayList<Int> = ArrayList()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
     }
 
@@ -42,7 +47,7 @@ class CreateSurveyFragment : Fragment() {
 
         val view = binding.root
         binding.additionalOptions.layoutManager = LinearLayoutManager(view.context)
-        optionAdapter = OptionAdapter()
+        optionAdapter = OptionAdapter(optionSize,this@CreateSurveyFragment)
         binding.additionalOptions.adapter = optionAdapter
 
 
@@ -53,7 +58,7 @@ class CreateSurveyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.addOptionText.setOnClickListener {
-            optionAdapter.recycleAdd(1)
+            optionSize.add(1)
             optionAdapter.notifyDataSetChanged()
             isThereAdditional = true
 
@@ -69,8 +74,9 @@ class CreateSurveyFragment : Fragment() {
             if (!binding.addOption2.text.toString().isNullOrEmpty())
                 optionList.add(binding.addOption2.text.toString())
 
-            if (!binding.addOption3.text.toString().isNullOrEmpty())
-                optionList.add(binding.addOption3.text.toString())
+
+
+
 
 
             if (isThereAdditional) {
@@ -88,39 +94,33 @@ class CreateSurveyFragment : Fragment() {
                         optionList.add(addition.toString())
                 }
             }
-            if (!question.isNullOrEmpty() && optionList.size >= 2) {
+            if (!question.isNullOrEmpty() && optionList.size >= 2 && !title.isNullOrEmpty()) {
                 if (LoginSingleton.isLogin) {
 
                     try {
-                       /* var optionArray :Array<String> =Array(optionList.size){ i -> "Number of index: $i"  }
-                        for(item in 0..optionList.size){
-                            optionList.get(item)
-                        }
-                        for (item in 0..optionArray.size){
-                            println(optionArray[item])
-                        }*/
+
                         val apiService = ApiService()
 
-                        var surveyModel: SurveyModel = SurveyModel(question, title,optionList)
-                       apiService.postCreateSurvey(surveyModel){
+                        var surveyModel: SurveyModel = SurveyModel(question, title, optionList)
+                        apiService.postCreateSurvey(surveyModel) {
 
-                           if (it.toString() != null) {
-                               Toast.makeText(
-                                   view.context,
-                                   "Succesful", Toast.LENGTH_SHORT
-                               ).show();
+                            if (it.toString() != null) {
+                                Toast.makeText(
+                                    view.context,
+                                    "Succesful", Toast.LENGTH_SHORT
+                                ).show();
 
-                           } else {
-                               Toast.makeText(
-                                   view.context,
-                                   "Fail", Toast.LENGTH_SHORT
-                               ).show();
+                            } else {
+                                Toast.makeText(
+                                    view.context,
+                                    "Fail", Toast.LENGTH_SHORT
+                                ).show();
 
-                           }
+                            }
 
-                       }
+                        }
                     } catch (e: Exception) {
-                       e.printStackTrace()
+                        e.printStackTrace()
                     }
                 } else {
                     val action =
@@ -140,5 +140,44 @@ class CreateSurveyFragment : Fragment() {
 
     }
 
+    override fun onItemClick(optionList: ArrayList<Int>) {
+        if (optionList.size==0)
+            isThereAdditional=false
+    }
+/*
+     override fun onPause() {
+        super.onPause()
+
+
+        val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE)
+        val myEdit = sharedPreferences.edit()
+
+
+        myEdit.putString("question",binding.addQuestion.text.toString())
+         myEdit.putString("title",binding.addTitle.text.toString())
+         myEdit.putString("option1",binding.addOption1.text.toString())
+         myEdit.putString("option2",binding.addOption2.text.toString())
+         myEdit.putString("option3",binding.addOption3.text.toString())
+        myEdit.apply()
+    }
+
+     override fun onResume() {
+        super.onResume()
+
+        // Fetching the stored data
+        // from the SharedPreference
+        val sh: SharedPreferences = requireActivity().getSharedPreferences("MySharedPref", MODE_PRIVATE)
+         binding.addQuestion.setText(sh.getString("question", ""))
+         binding.addTitle.setText(sh.getString("title", ""))
+         binding.addOption1.setText(sh.getString("option1", ""))
+         binding.addOption2.setText(sh.getString("option2", ""))
+         binding.addOption3.setText(sh.getString("option3", ""))
+         // Setting the fetched data
+        // in the EditTexts
+
+    }
+
+
+*/
 
 }

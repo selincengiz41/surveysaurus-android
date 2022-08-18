@@ -1,13 +1,16 @@
 package com.android.surveysaurus.activity
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ActionMenuView
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.android.surveysaurus.R
 import com.android.surveysaurus.databinding.ActivityMainBinding
+import com.android.surveysaurus.fragment.CreateSurveyFragment
 import com.android.surveysaurus.singleton.LoginSingleton
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.crashes.Crashes
@@ -17,13 +20,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var barActionMenuView: ActionMenuView
     private lateinit var profileLoginActionMenuView: ActionMenuView
     private lateinit var barLoginActionMenuView: ActionMenuView
-
+    private lateinit var mMyFragment:Fragment
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
         AppCenter.start(
             application, "f81383ab-c4c0-4a23-aac6-8aa9115e5119",
             com.microsoft.appcenter.analytics.Analytics::class.java, Crashes::class.java
@@ -43,6 +47,8 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
 
     fun HomeClicked(view: View){
         binding.fragmentContainerView.findNavController()
