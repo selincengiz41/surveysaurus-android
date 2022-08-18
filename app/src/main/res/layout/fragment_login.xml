@@ -12,6 +12,7 @@
     <!-- Backgroundunu rectangle_6.xml dosyası olarak ayarlayamıyorum. -->
 
     <!-- Email Adress Textview -->
+
     <TextView
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
@@ -24,6 +25,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/don_t_have_" />
+
     <Button
         android:id="@+id/button_google"
         android:layout_width="wrap_content"
@@ -47,21 +49,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp"
 
-        android:elevation="50dp"
+        android:layout_marginTop="127dp"
         android:background="@drawable/rectangle_6"
 
+        android:elevation="50dp"
         android:fontFamily="@font/laila_medium"
-        android:textSize="25sp"
-        android:textAlignment="center"
         android:outlineSpotShadowColor="@color/black"
-
-        android:textColor="@color/white"
         android:text="@string/Login"
+
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
     <TextView
         android:id="@+id/textView_mail"
@@ -140,11 +142,12 @@
     <!-- Don't have an account? Sign up Textview -->
 
     <!--Mail Star Textview -->
+
     <TextView
         android:id="@+id/don_t_have_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:text="@string/d_sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -206,14 +209,16 @@
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_google" />
 
+
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:src="@drawable/assistant"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line2" />
 
@@ -224,9 +229,9 @@
         android:layout_marginStart="150dp"
         android:src="@drawable/casual"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintHorizontal_bias="0.783"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView11" />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
@@ -242,7 +247,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

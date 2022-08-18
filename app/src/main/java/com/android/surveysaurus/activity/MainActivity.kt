@@ -9,10 +9,8 @@ import androidx.navigation.findNavController
 import com.android.surveysaurus.R
 import com.android.surveysaurus.databinding.ActivityMainBinding
 import com.android.surveysaurus.singleton.LoginSingleton
-import com.microsoft.appcenter.AppCenter;
-import com.microsoft.appcenter.analytics.Analytics;
-import com.microsoft.appcenter.crashes.Crashes;
-
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.crashes.Crashes
 
 class MainActivity : AppCompatActivity() {
     private lateinit var profileActionMenuView: ActionMenuView
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         AppCenter.start(
             application, "f81383ab-c4c0-4a23-aac6-8aa9115e5119",
-            Analytics::class.java, Crashes::class.java
+            com.microsoft.appcenter.analytics.Analytics::class.java, Crashes::class.java
         )
         profileActionMenuView = findViewById(R.id.expanded_profile)
 
