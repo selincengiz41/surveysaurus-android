@@ -47,7 +47,8 @@ class UserInfoFragment : Fragment() {
 
         val genderAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
             view.context,
-            android.R.layout.simple_dropdown_item_1line, getResources().getStringArray(R.array.Genders)
+            android.R.layout.simple_dropdown_item_1line,
+            getResources().getStringArray(R.array.Genders)
         )
         binding.spinnerGender3.setAdapter(genderAdapter)
 
@@ -68,12 +69,13 @@ class UserInfoFragment : Fragment() {
             binding.spinnerGender3.showDropDown()
         }
         binding.nameTextview3.setText(LoginSingleton.name, TextView.BufferType.EDITABLE)
-        binding.editTextTextEmailAddress3.setText(LoginSingleton.email, TextView.BufferType.EDITABLE)
+        binding.editTextTextEmailAddress3.setText(
+            LoginSingleton.email,
+            TextView.BufferType.EDITABLE
+        )
         binding.spinnerCity4.setText(LoginSingleton.city)
         binding.spinnerCountry4.setText(LoginSingleton.country)
         binding.spinnerGender3.setText(LoginSingleton.gender)
-
-
 
 
     }

@@ -93,7 +93,7 @@ class LoginFragment : Fragment() {
                                 var text: String = it.string()
                                 var tırnak = '"'
 
-                                LoginSingleton.token= text.substringAfter("accessToken$tırnak")
+                                LoginSingleton.token = text.substringAfter("accessToken$tırnak")
                                     .substringBefore(tırnak + "data").substringAfter(tırnak)
                                     .substringBefore(tırnak)
                                 println(LoginSingleton.token)
@@ -118,7 +118,8 @@ class LoginFragment : Fragment() {
                                 ).show();
                                 LoginSingleton.isLogin = true
                                 (activity as MainActivity?)!!.MenuController()
-                                val action=LoginFragmentDirections.actionLoginFragmentToCreateSurveyFragment()
+                                val action =
+                                    LoginFragmentDirections.actionLoginFragmentToCreateSurveyFragment()
                                 Navigation.findNavController(view).navigate(action)
 
                             } else {

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var barActionMenuView: ActionMenuView
     private lateinit var profileLoginActionMenuView: ActionMenuView
     private lateinit var barLoginActionMenuView: ActionMenuView
-    private lateinit var mMyFragment:Fragment
+    private lateinit var mMyFragment: Fragment
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-    fun HomeClicked(view: View){
+    fun HomeClicked(view: View) {
         binding.fragmentContainerView.findNavController()
             .navigate(R.id.viewPagerFragment)
     }

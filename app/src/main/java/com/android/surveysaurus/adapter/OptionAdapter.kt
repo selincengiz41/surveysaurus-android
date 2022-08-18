@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.surveysaurus.databinding.AddOptionLayBinding
 import com.android.surveysaurus.model.ListedSurvey
 
-class OptionAdapter(private val optionList: ArrayList<Int>, private val listener:Listener) :
+class OptionAdapter(private val optionList: ArrayList<Int>, private val listener: Listener) :
     RecyclerView.Adapter<OptionAdapter.OptionHolder>() {
     interface Listener {
         fun onItemClick(optionList: ArrayList<Int>)

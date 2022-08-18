@@ -47,7 +47,7 @@ class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
 
         val view = binding.root
         binding.additionalOptions.layoutManager = LinearLayoutManager(view.context)
-        optionAdapter = OptionAdapter(optionSize,this@CreateSurveyFragment)
+        optionAdapter = OptionAdapter(optionSize, this@CreateSurveyFragment)
         binding.additionalOptions.adapter = optionAdapter
 
 
@@ -141,8 +141,8 @@ class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
     }
 
     override fun onItemClick(optionList: ArrayList<Int>) {
-        if (optionList.size==0)
-            isThereAdditional=false
+        if (optionList.size == 0)
+            isThereAdditional = false
     }
 /*
      override fun onPause() {

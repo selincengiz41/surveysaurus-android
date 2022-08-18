@@ -52,7 +52,7 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
 
             apiService.getSurveys {
 
-                if (it!= null) {
+                if (it != null) {
                     Toast.makeText(
                         view.context,
                         "Succesful", Toast.LENGTH_SHORT
