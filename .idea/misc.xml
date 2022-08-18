@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Kerem/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_dropdown_item_1line.xml" value="0.1" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/drawable/rounded_text.xml" value="0.192" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/add_option_lay.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_create_survey.xml" value="0.10833333333333334" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_my_survey.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_sign_up.xml" value="0.4" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_user_info.xml" value="0.4" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_view_pager.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/survey_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/drawable-v24/background_color.xml" value="0.1" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/drawable-v24/button.xml" value="0.1" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/drawable-v24/ic_google_logo.xml" value="0.1" />
@@ -22,7 +32,6 @@
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_fill_survey.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_login.xml" value="0.4" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_my_survey.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_sign_up.xml" value="0.4" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_surveys.xml" value="0.264" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_toolbar.xml" value="0.27447916666666666" />

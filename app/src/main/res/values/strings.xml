@@ -19,6 +19,20 @@
     <string name="view_country">Country</string>
     <string name="view_city">City</string>
 
+    <!-- User Info -->
+    <string name="personal_info">Personal Info</string>
+    <string name="view_name_info">Name:</string>
+    <string name="Email_Adress_info">Email Address:</string>
+    <string name="view_gender_info">Gender:</string>
+    <string name="view_country_info">Country:</string>
+    <string name="view_city_info">City:</string>
+    <string name="password_info">Password:</string>
+    <string name="Confirm_Password_info">Confirm Password:</string>
+    <string name="Update_button">Update:</string>
+    <!-- User Info -->
+
+
+
     <string-array name="Genders">
         <item>Erkek</item>
         <item>Kadın</item>
