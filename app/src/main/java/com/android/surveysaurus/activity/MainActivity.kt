@@ -2,7 +2,10 @@ package com.android.surveysaurus.activity
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import androidx.annotation.MenuRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ActionMenuView
 import androidx.core.view.isVisible
@@ -22,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var barLoginActionMenuView: ActionMenuView
     private lateinit var mMyFragment: Fragment
     private lateinit var binding: ActivityMainBinding
+    private lateinit var  menu :MenuItem
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -43,6 +48,12 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.logined_bar_menu, barLoginActionMenuView.menu)
         menuInflater.inflate(R.menu.profile_menu, profileActionMenuView.menu)
         menuInflater.inflate(R.menu.bar_menu, barActionMenuView.menu)
+
+
+
+
+
+
         MenuController()
 
 
@@ -56,9 +67,10 @@ class MainActivity : AppCompatActivity() {
 
 
     fun MenuController() {
-
+        barLoginActionMenuView.menu.findItem(R.id.user_bar).setTitle(LoginSingleton.name)
 
         if (LoginSingleton.isLogin) {
+
             profileLoginActionMenuView.isVisible = true
             barLoginActionMenuView.isVisible = true
             profileActionMenuView.isVisible = false
@@ -96,7 +108,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            barLoginActionMenuView.setOnMenuItemClickListener {
+           /* barLoginActionMenuView.setOnMenuItemClickListener {
 
                 val item = it.itemId
                 when (item) {
@@ -109,8 +121,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-
-            }
+            }*/
         } else {
             profileLoginActionMenuView.isVisible = false
             barLoginActionMenuView.isVisible = false

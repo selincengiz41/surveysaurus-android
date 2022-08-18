@@ -10,6 +10,7 @@
         android:title="SelinCengiz"
         app:showAsAction="ifRoom">
         <menu>
+
             <item
                 android:id="@+id/user_bar"
                 android:title="@string/user_name"></item>
