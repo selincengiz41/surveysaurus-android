@@ -4,12 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Kerem/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_dropdown_item_1line.xml" value="0.1" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/drawable-v24/rectangle_6.xml" value="0.255" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/drawable/create_button.xml" value="0.255" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/drawable/done_button_edge.xml" value="0.255" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/drawable/question.xml" value="0.255" />
         <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/drawable/rounded_text.xml" value="0.192" />
         <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/add_option_lay.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_create_survey.xml" value="0.10833333333333334" />
-        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_login.xml" value="0.3125" />
-        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_my_survey.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_create_survey.xml" value="0.264" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_fill_survey.xml" value="0.44660194174757284" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_home.xml" value="0.22781065088757396" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_login.xml" value="0.3055555555555556" />
+        <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_my_survey.xml" value="0.264" />
         <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_sign_up.xml" value="0.4" />
         <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_user_info.xml" value="0.4" />
         <entry key="..\:/Users/Kerem/Desktop/Projects/surveysaurus-android/app/src/main/res/layout/fragment_view_pager.xml" value="0.25416666666666665" />
@@ -28,7 +34,7 @@
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/drawable/vector5.xml" value="0.1835" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/add_option.xml" value="0.2734375" />
-        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/add_option_lay.xml" value="0.536" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/add_option_lay.xml" value="0.2734375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/custom_toolbar.xml" value="0.2734375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_add_option.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/SurveySaurus/surveysaurus-android/app/src/main/res/layout/fragment_create_survey.xml" value="0.264" />

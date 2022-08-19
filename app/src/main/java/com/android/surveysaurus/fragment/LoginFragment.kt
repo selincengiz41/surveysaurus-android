@@ -61,11 +61,7 @@ class LoginFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
-        binding.forgotPassword.setOnClickListener {
-            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
-            Navigation.findNavController(it).navigate(action)
 
-        }
         binding.button.setOnClickListener {
             val email = binding.editTextTextEmailAddress.text
             val password = binding.editTextTextPassword.text
@@ -138,7 +134,21 @@ class LoginFragment : Fragment() {
                 }
 
 
-            } else {
+            }
+            else if(email.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please fill the E-Mail field", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(password.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please fill your password to continue", Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            else {
                 Toast.makeText(
                     view.context,
                     "Please fill in the starred fields", Toast.LENGTH_SHORT

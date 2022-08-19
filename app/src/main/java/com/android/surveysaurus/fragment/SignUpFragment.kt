@@ -149,17 +149,19 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                         view.context,
                         "Please enter a correct email", Toast.LENGTH_SHORT
                     ).show()
-                } else if (!password.equals(confirmPassword)) {
+                } else if (password != confirmPassword) {
                     Toast.makeText(
                         view.context,
                         "Your passwords needs to match", Toast.LENGTH_SHORT
                     ).show()
-                } else if (password.length < 8) {
+                }
+                else if (password.length < 8) {
                     Toast.makeText(
                         view.context,
                         "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
                     ).show()
-                } else {
+                }
+                else {
                     try {
                         val apiService = ApiService()
                         var signUpModel: SignUpModel = SignUpModel(
@@ -197,12 +199,54 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                 }
 
 
-            } else {
+            }
+            else if(name.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please enter your name", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(email.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please enter your email", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(gender.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please choose your gender", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(country.isNullOrEmpty()) {
+            Toast.makeText(
+                view.context,
+                "Please enter your country", Toast.LENGTH_SHORT
+            ).show()
+        }
+            else if(city.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please enter your city", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(password.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please enter your password", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(confirmPassword.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please confirm your password", Toast.LENGTH_SHORT
+                ).show()
+            }
+                else {
                 Toast.makeText(
                     view.context,
                     "Please fill in the starred fields", Toast.LENGTH_SHORT
                 ).show()
-
             }
 
 

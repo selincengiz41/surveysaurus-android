@@ -11,9 +11,12 @@
 
     <RelativeLayout
         android:id="@+id/done_layout"
-        android:layout_width="87dp"
-        android:layout_height="59dp"
+        android:layout_width="110dp"
+        android:layout_height="28dp"
 
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="242dp"
         android:background="@drawable/create_button"
         android:elevation="24dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,19 +25,14 @@
 
         <TextView
             android:id="@+id/done_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
+            android:layout_width="110dp"
 
-
-            android:fontFamily="@font/days_one"
+            android:layout_height="28dp"
+            android:fontFamily="@font/inter_bold"
             android:gravity="center"
             android:text="Done"
+            android:textColor="@color/black"
             android:textSize="15sp" />
-
     </RelativeLayout>
 
     <ImageView
@@ -57,7 +55,6 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 
-
     <TextView
         android:id="@+id/options_fill"
         android:layout_width="75dp"
@@ -66,9 +63,11 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="250dp"
-        android:fontFamily="@font/days_one"
+        android:fontFamily="@font/inter_bold"
         android:gravity="top"
         android:text="Options"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,9 +81,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="250dp"
-        android:fontFamily="@font/days_one"
+        android:fontFamily="@font/inter_bold"
         android:gravity="top"
         android:text="Question"
+        android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,31 +93,33 @@
     <RelativeLayout
         android:id="@+id/add_question_layout_fill"
         android:layout_width="293dp"
-        android:layout_height="39dp"
+        android:layout_height="38dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-
         android:layout_marginTop="20dp"
         android:background="@drawable/question"
         android:elevation="24dp"
+        android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/question_fill">
 
         <TextView
             android:id="@+id/add_question_fill"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-
-
-            android:fontFamily="@font/days_one"
-            android:gravity="center"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="7dp"
+            android:fontFamily="@font/inter_regular"
             android:hint="Add Your Question"
-
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="15sp" />
     </RelativeLayout>
 
@@ -125,30 +127,34 @@
     <RelativeLayout
         android:id="@+id/add_title_layout_fill"
         android:layout_width="293dp"
-        android:layout_height="39dp"
+        android:layout_height="38dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-
         android:layout_marginTop="20dp"
         android:background="@drawable/question"
         android:elevation="24dp"
+        android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_question_layout_fill">
 
         <TextView
+
             android:id="@+id/add_title_fill"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="292dp"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:fontFamily="@font/days_one"
-            android:gravity="center"
-
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="7dp"
+            android:fontFamily="@font/inter_regular"
             android:hint="Title"
-
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             android:textSize="15sp" />
 
 

@@ -18,7 +18,11 @@
     <string name="view_gender">Gender</string>
     <string name="view_country">Country</string>
     <string name="view_city">City</string>
+    <!-- Home Page -->
+    <string name="survey_saurus">Surveysaurus</string>
 
+
+    <!-- Home Page -->
     <!-- User Info -->
     <string name="personal_info">Personal Info</string>
     <string name="view_name_info">Name:</string>
@@ -31,26 +35,33 @@
     <string name="Update_button">Update</string>
     <!-- User Info -->
 
+    <!-- Create Survey  -->
+    <string name="survey_name_hint">Survey Name</string>
+    <string name="add_option_hint">Add Your Option</string>
+    <string name="add_option_button">+ Add Option</string>
+    <!-- Create Survey -->
 
-
+    <!-- Login  -->
+    <string name="continue_with_button">Continue with Google</string>
+    <!-- Login  -->
     <string-array name="Genders">
-        <item>Erkek</item>
-        <item>Kadın</item>
-        <item>Belirtmek istemiyorum</item>
+        <item>Man</item>
+        <item>Woman</item>
+        <item>Decline to Answer</item>
     </string-array>
 
     <string-array name="Country">
-        <item>Türkiye</item>
-        <item>Amerika</item>
-        <item>İngiltere</item>
+        <item>Turkey</item>
+        <item>USA</item>
+        <item>England</item>
     </string-array>
 
     <string-array name="City">
-        <item>İstanbul</item>
+        <item>Istanbul</item>
         <item>Ankara</item>
         <item>New York</item>
         <item>Washington</item>
-        <item>Londra</item>
+        <item>London</item>
     </string-array>
 
     <string name="Password">Password</string>
@@ -59,5 +70,5 @@
     <string name="d_sign_up">Don’t have an account? Sign up</string>
     <string name="Sign_in">Already have an account? Sign in</string>
     <string name="forgot_password">Forgot your password?</string>
-    <string name="user_name"></string>
+    <string name="user_name">find me at strings.xml</string>
 </resources>

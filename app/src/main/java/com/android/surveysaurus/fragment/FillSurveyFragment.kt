@@ -1,7 +1,10 @@
 package com.android.surveysaurus.fragment
 
+import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.graphics.fonts.FontFamily
+import android.graphics.fonts.FontStyle
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -55,10 +58,12 @@ class FillSurveyFragment : Fragment() {
                 println("Control")
                 val option1: TextView = TextView(view.context)
                 option1.id = View.generateViewId()
-                option1.text = survey.choices.get(item)
+                option1.textAlignment=View.TEXT_ALIGNMENT_VIEW_START
+                option1.text = survey.choices[item]
                 option1.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.vector3, 0, 0, 0)
                 option1.setPaddingRelative(20, 0, 0, 0)
                 option1.setBackgroundResource(R.drawable.question)
+                option1.setTextColor(Color.parseColor("#000000"))
                 option1.gravity = Gravity.CENTER
                 option1.textSize = 15f
                 binding.root.addView(option1)
