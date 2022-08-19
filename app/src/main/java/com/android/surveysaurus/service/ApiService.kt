@@ -222,9 +222,12 @@ class ApiService {
                     response: Response<ResponseCountry>
                 ) {
                     var filled = response.body()?.data?.surveys
-                    for (item in 0 until filled!!.size) {
+                    println(response.isSuccessful)
+
+                    println(response.message())
+                    /*for (item in 0 until filled!!.size) {
                         println(filled.get(item))
-                    }
+                    }*/
 
 
                     onResult(filled)

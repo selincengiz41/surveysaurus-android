@@ -88,7 +88,7 @@
         android:layout_marginStart="190dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/rounded_text"
-
+        android:completionThreshold="1"
         android:contentDescription="@string/Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +101,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="190dp"
         android:layout_marginTop="5dp"
-
+        android:completionThreshold="1"
         android:background="@drawable/rounded_text"
         android:contentDescription="@string/Login"
         app:layout_constraintEnd_toEndOf="parent"

@@ -37,6 +37,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         val view = binding.root
 
+
         try {
             val apiService = ApiService()
 
@@ -49,6 +50,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                         it!!
                     )
                     binding.spinnerCountry.setAdapter(countryAdapter)
+
 
                 } else {
 
@@ -209,29 +211,27 @@ class SignUpFragment : Fragment(), OnItemClickListener {
 
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
         try {
             val apiService = ApiService()
 
-            apiService.getCity(p0!!.getItemAtPosition(p2).toString()) {
-
-                if (it.toString() != null) {
-                    /*  val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
-                          p1!!.context,
-                          android.R.layout.simple_dropdown_item_1line, it!!
-                      )
-                      binding.spinnerCity.setAdapter(cityAdapter)*/
-                    println("success")
-
-                } else {
-                    println("fail")
-
+            apiService.getCity(binding.spinnerCountry.text.toString()){
+                if (it.toString()!=null) {
+                    val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
+                        p1!!.context,
+                        android.R.layout.simple_dropdown_item_1line,
+                        it!!
+                    )
+                    binding.spinnerCity.setAdapter(cityAdapter)
+                    println("succes")
                 }
-            }
+                else{
+                    println("fail")
+                }
 
-        } catch (e: Exception) {
+            }} catch (e: Exception) {
             e.printStackTrace()
         }
+
     }
 
 

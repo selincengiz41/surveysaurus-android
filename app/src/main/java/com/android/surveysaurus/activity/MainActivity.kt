@@ -108,38 +108,12 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-           /* barLoginActionMenuView.setOnMenuItemClickListener {
 
-                val item = it.itemId
-                when (item) {
-
-                    R.id.user_bar -> {;true
-                    }
-
-                    else -> {
-                        println("nothin "); true
-                    }
-                }
-
-            }*/
         } else {
             profileLoginActionMenuView.isVisible = false
             barLoginActionMenuView.isVisible = false
             profileActionMenuView.isVisible = true
             barActionMenuView.isVisible = true
-            profileActionMenuView.setOnMenuItemClickListener {
-                val item = it.itemId
-                when (item) {
-                    R.id.dropdown_menu -> {
-                        binding.fragmentContainerView.findNavController()
-                            .navigate(R.id.loginFragment);true
-                    }
-                    else -> {
-                        println("nothin");true
-                    }
-                }
-
-            }
 
             barActionMenuView.setOnMenuItemClickListener {
                 val id = it.itemId

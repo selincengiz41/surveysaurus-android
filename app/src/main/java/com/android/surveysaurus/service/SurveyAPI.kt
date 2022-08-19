@@ -34,6 +34,6 @@ interface SurveyAPI {
     fun getCountries(): Call<ResponseCountry>
 
     @GET("api/user/cities")
-    fun getCity(country:String): Call<ResponseCountry>
+    fun getCity(@Body country: String): Call<ResponseCountry>
 
 }

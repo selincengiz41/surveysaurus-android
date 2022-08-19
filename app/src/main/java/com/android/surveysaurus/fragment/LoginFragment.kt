@@ -74,7 +74,7 @@ class LoginFragment : Fragment() {
                 if (!email.endsWith(".com") || !email.contains("@")) {
                     Toast.makeText(
                         view.context,
-                        "Please enter a correct email", Toast.LENGTH_SHORT
+                        "Incorrect email or password", Toast.LENGTH_SHORT
                     ).show()
                 } else if (password.length < 8) {
                     Toast.makeText(
@@ -125,7 +125,7 @@ class LoginFragment : Fragment() {
                             } else {
                                 Toast.makeText(
                                     view.context,
-                                    "Fail", Toast.LENGTH_SHORT
+                                    "Incorrect email or password", Toast.LENGTH_SHORT
                                 ).show();
                             }
 

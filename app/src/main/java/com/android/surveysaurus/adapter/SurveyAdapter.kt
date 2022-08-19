@@ -78,7 +78,7 @@ class SurveyAdapter(
 
 
 
-        holder.binding.questionRecycle.setOnClickListener {
+        holder.itemView.setOnClickListener {
 
             listener.onItemClick(surveyList.get(position))
         }
