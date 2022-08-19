@@ -267,8 +267,8 @@
 
     <View
         android:id="@+id/visible_password"
-        android:layout_width="11dp"
-        android:layout_height="9dp"
+        android:layout_width="18dp"
+        android:layout_height="15dp"
         android:layout_marginEnd="5dp"
 
         android:background="@drawable/eye"
@@ -278,8 +278,8 @@
 
     <View
         android:id="@+id/visible_password2"
-        android:layout_width="11dp"
-        android:layout_height="9dp"
+        android:layout_width="18dp"
+        android:layout_height="15dp"
         android:layout_marginEnd="5dp"
         android:background="@drawable/eye"
         app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword2"
@@ -413,7 +413,9 @@
         android:layout_width="23dp"
         android:layout_height="25dp"
         android:layout_marginTop="5dp"
+        android:fontFamily="@font/inter_medium"
         android:text="Or"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -424,9 +426,9 @@
         android:id="@+id/line2"
         android:layout_width="300dp"
         android:layout_height="1dp"
-        android:layout_marginStart="-150dp"
+        android:layout_marginStart="-140dp"
         android:layout_marginTop="15dp"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_google" />
 
@@ -435,8 +437,8 @@
         android:layout_width="300dp"
         android:layout_height="1dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="-150dp"
-        android:background="@android:color/darker_gray"
+        android:layout_marginEnd="-140dp"
+        android:background="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_google" />
 
