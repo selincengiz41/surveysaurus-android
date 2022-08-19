@@ -178,4 +178,58 @@ class ApiService {
         )
     }
 
+
+    fun getCountries(onResult: (ArrayList<String>?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.getCountries().enqueue(
+            object : Callback<ResponseCountry> {
+                override fun onFailure(
+                    call: Call<ResponseCountry>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseCountry>,
+                    response: Response<ResponseCountry>
+                ) {
+                    var filled = response.body()?.data?.surveys
+
+
+
+                    onResult(filled)
+                }
+            }
+        )
+    }
+
+    fun getCity(country: String, onResult: (ArrayList<String>?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.getCity(country).enqueue(
+            object : Callback<ResponseCountry> {
+                override fun onFailure(
+                    call: Call<ResponseCountry>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseCountry>,
+                    response: Response<ResponseCountry>
+                ) {
+                    var filled = response.body()?.data?.surveys
+                    for (item in 0 until filled!!.size) {
+                        println(filled.get(item))
+                    }
+
+
+                    onResult(filled)
+                }
+            }
+        )
+    }
 }

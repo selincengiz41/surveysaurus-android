@@ -29,4 +29,11 @@ interface SurveyAPI {
 
     @GET("api/survey/sample")
     fun getSurveys(@Header("authorization") token: String): Call<Response>
+
+    @GET("api/user/countries")
+    fun getCountries(): Call<ResponseCountry>
+
+    @GET("api/user/cities")
+    fun getCity(country:String): Call<ResponseCountry>
+
 }

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -18,7 +20,7 @@ import com.android.surveysaurus.model.SignUpModel
 import com.android.surveysaurus.service.ApiService
 
 
-class SignUpFragment : Fragment() {
+class SignUpFragment : Fragment(), OnItemClickListener {
 
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
@@ -35,18 +37,28 @@ class SignUpFragment : Fragment() {
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val countryAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
-            view.context,
-            android.R.layout.simple_dropdown_item_1line,
-            getResources().getStringArray(R.array.Country)
-        )
-        binding.spinnerCountry.setAdapter(countryAdapter)
+        try {
+            val apiService = ApiService()
 
-        val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
-            view.context,
-            android.R.layout.simple_dropdown_item_1line, getResources().getStringArray(R.array.City)
-        )
-        binding.spinnerCity.setAdapter(cityAdapter)
+            apiService.getCountries {
+
+                if (it.toString() != null) {
+                    val countryAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
+                        view.context,
+                        android.R.layout.simple_dropdown_item_1line,
+                        it!!
+                    )
+                    binding.spinnerCountry.setAdapter(countryAdapter)
+
+                } else {
+
+
+                }
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
 
         val spinnerGender: Spinner = view.findViewById(R.id.spinner_gender)
@@ -69,12 +81,16 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.spinnerCity.setOnClickListener {
             binding.spinnerCity.showDropDown()
         }
         binding.spinnerCountry.setOnClickListener {
             binding.spinnerCountry.showDropDown()
         }
+
+        binding.spinnerCountry.setOnItemClickListener(this)
+
         binding.visiblePassword.setOnTouchListener(View.OnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -188,6 +204,33 @@ class SignUpFragment : Fragment() {
             }
 
 
+        }
+    }
+
+
+    override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+
+        try {
+            val apiService = ApiService()
+
+            apiService.getCity(p0!!.getItemAtPosition(p2).toString()) {
+
+                if (it.toString() != null) {
+                    /*  val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
+                          p1!!.context,
+                          android.R.layout.simple_dropdown_item_1line, it!!
+                      )
+                      binding.spinnerCity.setAdapter(cityAdapter)*/
+                    println("success")
+
+                } else {
+                    println("fail")
+
+                }
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
