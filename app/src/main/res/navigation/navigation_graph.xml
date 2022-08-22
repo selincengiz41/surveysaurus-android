@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_loginFragment_to_createSurveyFragment"
             app:destination="@id/createSurveyFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_surveysFragment"
+            app:destination="@id/surveysFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -70,6 +73,9 @@
         <action
             android:id="@+id/action_fillSurveyFragment_to_viewPagerFragment"
             app:destination="@id/viewPagerFragment" />
+        <action
+            android:id="@+id/action_fillSurveyFragment_to_surveysFragment"
+            app:destination="@id/surveysFragment" />
     </fragment>
     <fragment
         android:id="@+id/mySurveyFragment"

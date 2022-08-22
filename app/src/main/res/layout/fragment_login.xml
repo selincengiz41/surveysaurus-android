@@ -37,15 +37,12 @@
         android:layout_width="201dp"
         android:layout_height="33dp"
         android:layout_alignParentStart="true"
-
         android:layout_marginTop="127dp"
         android:background="@drawable/rectangle_6"
-
         android:elevation="50dp"
         android:fontFamily="@font/laila_medium"
         android:outlineSpotShadowColor="@color/black"
         android:text="@string/Login"
-
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="25sp"
@@ -60,7 +57,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/inter_medium"
-        android:text="@string/Email_Adress"
+        android:text="@string/Email_Address"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

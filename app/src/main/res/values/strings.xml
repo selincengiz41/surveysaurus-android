@@ -1,28 +1,15 @@
 <resources>
-
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="app_name">SurveySaurus</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="Enter_your_mail_adress">Enter your e-mail adress</string>
-    <string name="Enter_name">Enter your name*</string>
-    <string name="password_hint">password</string>
     <string name="your_surveys">Your Surveys</string>
 
-    <string name="Login">Login</string>
-    <string name="Sign_up_button">Sign up</string>
-    <string name="Email_Adress">Email Adress</string>
-    <string name="view_name">Name</string>
-    <string name="view_gender">Gender</string>
-    <string name="view_country">Country</string>
-    <string name="view_city">City</string>
     <!-- Home Page -->
     <string name="survey_saurus">Surveysaurus</string>
-
-
     <!-- Home Page -->
+
     <!-- User Info -->
     <string name="personal_info">Personal Info</string>
     <string name="view_name_info">Name:</string>
@@ -41,9 +28,29 @@
     <string name="add_option_button">+ Add Option</string>
     <!-- Create Survey -->
 
+    <!-- Fill Survey -->
+    <string name="see_world">See what the world said</string>
+    <string name="swipe_for_comments">Swipe to see comments</string>
+    <!-- Fill Survey -->
+
+
     <!-- Login  -->
     <string name="continue_with_button">Continue with Google</string>
+    <string name="Login">Login</string>
+    <string name="Sign_up_button">Sign up</string>
+    <string name="Email_Address">Email Address</string>
+    <string name="view_name">Name</string>
+    <string name="view_gender">Gender</string>
+    <string name="view_country">Country</string>
+    <string name="view_city">City</string>
+    <string name="d_sign_up">Don’t have an account? Sign up</string>
     <!-- Login  -->
+
+    <!-- Sign Up  -->
+    <string name="Enter_your_mail_adress">Enter your e-mail address</string>
+    <string name="Enter_name">Enter your name*</string>
+    <string name="password_hint">password</string>
+
     <string-array name="Genders">
         <item>Man</item>
         <item>Woman</item>
@@ -64,11 +71,11 @@
         <item>London</item>
     </string-array>
 
+    <string name="Sign_in">Already have an account? Sign in</string>
     <string name="Password">Password</string>
     <string name="confirm_Password">Confirm your password</string>
     <string name="star">*</string>
-    <string name="d_sign_up">Don’t have an account? Sign up</string>
-    <string name="Sign_in">Already have an account? Sign in</string>
-    <string name="forgot_password">Forgot your password?</string>
+    <!-- Sign Up  -->
+
     <string name="user_name">find me at strings.xml</string>
 </resources>

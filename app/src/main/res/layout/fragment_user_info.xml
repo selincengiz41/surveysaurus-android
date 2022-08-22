@@ -10,7 +10,6 @@
         android:id="@+id/spinner_country_point2"
         android:layout_width="12dp"
         android:layout_height="5dp"
-
         android:layout_marginStart="12dp"
         android:layout_marginTop="52dp"
         android:background="@drawable/ok"
@@ -21,7 +20,6 @@
         android:id="@+id/spinner_city_point2"
         android:layout_width="12dp"
         android:layout_height="5dp"
-
         android:layout_marginStart="14dp"
         android:layout_marginTop="53dp"
         android:background="@drawable/ok"
@@ -32,7 +30,6 @@
         android:id="@+id/spinner_gender_point2"
         android:layout_width="12dp"
         android:layout_height="5dp"
-
         android:layout_marginStart="15dp"
         android:layout_marginTop="188dp"
         android:background="@drawable/ok"
@@ -41,8 +38,8 @@
 
     <TextView
         android:id="@+id/button2"
-        android:layout_width="201dp"
-        android:layout_height="48dp"
+        android:layout_width="202dp"
+        android:layout_height="47dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="195dp"
         android:layout_marginEnd="195dp"
@@ -75,7 +72,6 @@
         android:id="@+id/visible_password7"
         android:layout_width="11dp"
         android:layout_height="9dp"
-
         android:layout_marginStart="14dp"
         android:layout_marginTop="55dp"
         android:layout_marginEnd="16dp"
