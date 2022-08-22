@@ -16,6 +16,7 @@ import androidx.navigation.Navigation
 import com.android.surveysaurus.R
 import com.android.surveysaurus.activity.MainActivity
 import com.android.surveysaurus.databinding.FragmentSignUpBinding
+import com.android.surveysaurus.model.CountryModel
 import com.android.surveysaurus.model.SignUpModel
 import com.android.surveysaurus.service.ApiService
 
@@ -257,10 +258,12 @@ class SignUpFragment : Fragment(), OnItemClickListener {
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         try {
             val apiService = ApiService()
+            var country:CountryModel= CountryModel(binding.spinnerCountry.text.toString())
 
-            apiService.getCity(binding.spinnerCountry.text.toString()){
+
+            apiService.getCity(country){
                 if (it.toString()!=null) {
-                    val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
+                  val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
                         p1!!.context,
                         android.R.layout.simple_dropdown_item_1line,
                         it!!

@@ -16,6 +16,7 @@ import com.android.surveysaurus.databinding.ActivityMainBinding
 import com.android.surveysaurus.fragment.CreateSurveyFragment
 import com.android.surveysaurus.singleton.LoginSingleton
 import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 
 class MainActivity : AppCompatActivity() {
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             application, "f81383ab-c4c0-4a23-aac6-8aa9115e5119",
             com.microsoft.appcenter.analytics.Analytics::class.java, Crashes::class.java
         )
+        Analytics.trackEvent("My custom event");
         profileActionMenuView = findViewById(R.id.expanded_profile)
 
         barActionMenuView = findViewById(R.id.expanded_bar)

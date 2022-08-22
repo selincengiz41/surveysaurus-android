@@ -205,7 +205,7 @@ class ApiService {
         )
     }
 
-    fun getCity(country: String, onResult: (ArrayList<String>?) -> Unit) {
+    fun getCity(country: CountryModel, onResult: (ArrayList<String>?) -> Unit) {
         val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
         retrofit.getCity(country).enqueue(
             object : Callback<ResponseCountry> {
@@ -222,12 +222,9 @@ class ApiService {
                     response: Response<ResponseCountry>
                 ) {
                     var filled = response.body()?.data?.surveys
-                    println(response.isSuccessful)
+
 
                     println(response.message())
-                    /*for (item in 0 until filled!!.size) {
-                        println(filled.get(item))
-                    }*/
 
 
                     onResult(filled)

@@ -33,7 +33,7 @@ interface SurveyAPI {
     @GET("api/user/countries")
     fun getCountries(): Call<ResponseCountry>
 
-    @GET("api/user/cities")
-    fun getCity(@Body country: String): Call<ResponseCountry>
+    @POST("api/user/cities")
+    fun getCity(@Body country: CountryModel): Call<ResponseCountry>
 
 }
