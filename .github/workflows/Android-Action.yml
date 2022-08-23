@@ -5,6 +5,9 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+    paths:
+    - '**'
+    - '.github/workflows/Android-Action.yml'
   workflow_dispatch:
     inputs:
       logLevel:
