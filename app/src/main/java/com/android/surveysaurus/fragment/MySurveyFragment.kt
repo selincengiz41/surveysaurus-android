@@ -1,15 +1,19 @@
 package com.android.surveysaurus.fragment
 
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.surveysaurus.adapter.SurveyAdapter
 import com.android.surveysaurus.databinding.FragmentMySurveyBinding
+import com.android.surveysaurus.model.CountryModel
+import com.android.surveysaurus.model.IsFilledModel
 import com.android.surveysaurus.model.ListedSurvey
 import com.android.surveysaurus.model.Survey
 import com.android.surveysaurus.service.ApiService
@@ -88,9 +92,31 @@ class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
     }
 
     override fun onItemClick(mySurveyModel: ListedSurvey) {
-        val action =
-            MySurveyFragmentDirections.actionMySurveyFragmentToFillSurveyFragment(mySurveyModel)
-        Navigation.findNavController(binding.root).navigate(action)
+
+        try {
+            val apiService = ApiService()
+            val isfilled: IsFilledModel =IsFilledModel(mySurveyModel.title)
+
+
+            apiService.isFilled(isfilled){
+                if (it.toString()!=null) {
+                    val action =
+                        MySurveyFragmentDirections.actionMySurveyFragmentToFillSurveyFragment(mySurveyModel,it)
+                    Navigation.findNavController(binding.root).navigate(action)
+                    println("succes")
+                }
+                else{
+                    val action =
+                        MySurveyFragmentDirections.actionMySurveyFragmentToFillSurveyFragment(mySurveyModel)
+                    Navigation.findNavController(binding.root).navigate(action)
+                    println("fail")
+                }
+
+            }} catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+
     }
 
 

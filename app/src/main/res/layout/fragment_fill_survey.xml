@@ -11,9 +11,9 @@
 
     <RelativeLayout
         android:id="@+id/done_layout"
-        android:layout_width="110dp"
+        android:layout_width="0px"
         android:layout_height="28dp"
-
+        android:layout_weight="0.5"
         android:layout_marginStart="150dp"
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="180dp"
@@ -117,7 +117,7 @@
             android:layout_marginTop="7dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="7dp"
-            android:fontFamily="@font/inter_regular"
+            android:fontFamily="@font/roboto"
             android:hint="Add Your Question"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
@@ -162,21 +162,6 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/see_what_the_world_Said"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="176dp"
-        android:fontFamily="@font/laila_medium"
-        android:text="@string/see_world"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/done_layout" />
-
-    <TextView
         android:id="@+id/swipe_for_comments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -190,6 +175,53 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/world_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toTopOf="@+id/swipe_for_comments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginEnd="-25dp"
+            android:src="@drawable/world"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/see_what_the_world_Said"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/see_what_the_world_Said"
+            android:layout_width="183dp"
+            android:layout_height="19dp"
+            android:fontFamily="@font/laila_medium"
+            android:gravity="center"
+            android:text="@string/see_world"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/add_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="180dp"
+        android:src="@drawable/add_comment"
+        app:layout_constraintBottom_toTopOf="@+id/swipe_for_comments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

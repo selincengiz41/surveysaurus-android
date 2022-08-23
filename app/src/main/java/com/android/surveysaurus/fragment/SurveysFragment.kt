@@ -10,10 +10,12 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.android.surveysaurus.adapter.SurveyAdapter
 import com.android.surveysaurus.databinding.FragmentSurveysBinding
+import com.android.surveysaurus.model.IsFilledModel
 import com.android.surveysaurus.model.ListedSurvey
 import com.android.surveysaurus.model.Survey
 import com.android.surveysaurus.model.SurveyModel
 import com.android.surveysaurus.service.ApiService
+import com.android.surveysaurus.singleton.LoginSingleton
 
 //
 class SurveysFragment : Fragment(), SurveyAdapter.Listener {
@@ -80,9 +82,36 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
     }
 
     override fun onItemClick(mySurveyModel: ListedSurvey) {
-        val action =
-            ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(mySurveyModel)
-        Navigation.findNavController(binding.root).navigate(action)
+        if(LoginSingleton.isLogin){
+        try {
+            val apiService = ApiService()
+            val isfilled: IsFilledModel = IsFilledModel(mySurveyModel.title)
+
+
+            apiService.isFilled(isfilled){
+                if (it.toString()!=null) {
+                    val action =
+                        ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(mySurveyModel,it)
+                    Navigation.findNavController(binding.root).navigate(action)
+                    println("succes")
+                }
+                else{
+                    val action =
+                        ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(mySurveyModel)
+                    Navigation.findNavController(binding.root).navigate(action)
+
+                }
+
+            }} catch (e: Exception) {
+            e.printStackTrace()
+        }}
+        else{
+            val action =
+                ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(mySurveyModel)
+            Navigation.findNavController(binding.root).navigate(action)
+
+        }
+
     }
 
 

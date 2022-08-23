@@ -232,4 +232,33 @@ class ApiService {
             }
         )
     }
+
+    fun isFilled(title: IsFilledModel, onResult: (ResponseIsFilled?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.isFilled(title,LoginSingleton.token).enqueue(
+            object : Callback<ResponseIsFilled> {
+                override fun onFailure(
+                    call: Call<ResponseIsFilled>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseIsFilled>,
+                    response: Response<ResponseIsFilled>
+                ) {
+                    var filled = response.body()
+
+
+                    println(response.message())
+                    println(filled?.data?.choice)
+
+
+                    onResult(filled)
+                }
+            }
+        )
+    }
 }

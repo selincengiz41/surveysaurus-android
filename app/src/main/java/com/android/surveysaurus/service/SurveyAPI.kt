@@ -36,4 +36,8 @@ interface SurveyAPI {
     @POST("api/user/cities")
     fun getCity(@Body country: CountryModel): Call<ResponseCountry>
 
+    @POST("api/survey/isfilled")
+    fun isFilled(@Body title: IsFilledModel, @Header("authorization") token: String): Call<ResponseIsFilled>
+
+
 }

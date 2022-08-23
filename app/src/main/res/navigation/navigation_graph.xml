@@ -76,6 +76,11 @@
         <action
             android:id="@+id/action_fillSurveyFragment_to_surveysFragment"
             app:destination="@id/surveysFragment" />
+        <argument
+            android:name="isFilled"
+            app:argType="com.android.surveysaurus.model.ResponseIsFilled"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/mySurveyFragment"
