@@ -6,11 +6,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.annotation.MenuRes
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ActionMenuView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.webkit.WebViewAssetLoader
 import com.android.surveysaurus.R
 import com.android.surveysaurus.databinding.ActivityMainBinding
 import com.android.surveysaurus.fragment.CreateSurveyFragment

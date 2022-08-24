@@ -322,7 +322,11 @@ class FillSurveyFragment : Fragment() {
 
 
         }
-
+binding.worldLayout.setOnClickListener {
+    val action =
+        FillSurveyFragmentDirections.actionFillSurveyFragmentToMapFragment()
+    Navigation.findNavController(it).navigate(action)
+}
 
     }
 
