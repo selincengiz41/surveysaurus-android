@@ -6,36 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragment.UserInfoFragment">
 
-    <View
-        android:id="@+id/spinner_country_point2"
-        android:layout_width="12dp"
-        android:layout_height="5dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/ok"
-        app:layout_constraintStart_toEndOf="@+id/spinner_country4"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_gender_point2" />
-
-    <View
-        android:id="@+id/spinner_city_point2"
-        android:layout_width="12dp"
-        android:layout_height="5dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="53dp"
-        android:background="@drawable/ok"
-        app:layout_constraintStart_toEndOf="@+id/spinner_city4"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_country_point2" />
-
-    <View
-        android:id="@+id/spinner_gender_point2"
-        android:layout_width="12dp"
-        android:layout_height="5dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="188dp"
-        android:background="@drawable/ok"
-        app:layout_constraintStart_toEndOf="@+id/spinner_gender3"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/button2"
         android:layout_width="202dp"
@@ -43,7 +13,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="195dp"
         android:layout_marginEnd="195dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/rectangle_6"
         android:elevation="50dp"
         android:fontFamily="@font/laila_medium"
@@ -55,31 +25,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-        android:id="@+id/visible_password8"
-        android:layout_width="11dp"
-        android:layout_height="9dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="354dp"
-        android:layout_marginEnd="25dp"
-        android:background="@drawable/eye"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPassword6"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/visible_password7"
-        android:layout_width="11dp"
-        android:layout_height="9dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/eye"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPassword7"
-        app:layout_constraintTop_toBottomOf="@+id/visible_password8" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress3"
@@ -192,6 +137,61 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <View
+        android:id="@+id/spinner_gender_point2"
+        android:layout_width="12dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="160dp"
+        android:background="@drawable/ok"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_gender3"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_gender3"
+        app:layout_constraintStart_toStartOf="@+id/spinner_gender3"
+        app:layout_constraintTop_toTopOf="@+id/spinner_gender3" />
+
+    <View
+        android:id="@+id/spinner_country_point2"
+        android:layout_width="12dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="160dp"
+        android:background="@drawable/ok"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_country4"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_country4"
+        app:layout_constraintStart_toStartOf="@+id/spinner_country4"
+        app:layout_constraintTop_toTopOf="@+id/spinner_country4" />
+
+    <View
+        android:id="@+id/visible_password7"
+        android:layout_width="18dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="160dp"
+        android:background="@drawable/eye"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword7"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword7"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword7"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword7" />
+
+    <View
+        android:id="@+id/spinner_city_point2"
+        android:layout_width="12dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="160dp"
+        android:background="@drawable/ok"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_city4"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_city4"
+        app:layout_constraintStart_toStartOf="@+id/spinner_city4"
+        app:layout_constraintTop_toTopOf="@+id/spinner_city4" />
+
+    <View
+        android:id="@+id/visible_password8"
+        android:layout_width="18dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="160dp"
+        android:background="@drawable/eye"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword6"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword6"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword6"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword6" />
+
     <TextView
         android:id="@+id/gender_textview3"
         android:layout_width="wrap_content"
@@ -212,7 +212,7 @@
         android:layout_marginStart="82dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/password_info"
+        android:text="Old Password:"
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword6"
         app:layout_constraintHorizontal_bias="0.968"
@@ -252,7 +252,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="42dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/Confirm_Password_info"
+        android:text="New Password:"
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword7"
         app:layout_constraintHorizontal_bias="1.0"

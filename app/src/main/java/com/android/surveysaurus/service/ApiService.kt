@@ -261,4 +261,91 @@ class ApiService {
             }
         )
     }
+
+
+    fun getSurvey(title: IsFilledModel, onResult: (ResponsePercent?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.getSurvey(title).enqueue(
+            object : Callback<ResponsePercent> {
+                override fun onFailure(
+                    call: Call<ResponsePercent>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponsePercent>,
+                    response: Response<ResponsePercent>
+                ) {
+                    var filled = response.body()
+
+
+                    println(filled?.data?.question)
+
+
+
+                    onResult(filled)
+                }
+            }
+        )
+    }
+
+
+
+    fun updateUser(update: UpdateModel) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.updateUser(update,LoginSingleton.token).enqueue(
+            object : Callback<ResponseUpdate> {
+                override fun onFailure(
+                    call: Call<ResponseUpdate>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseUpdate>,
+                    response: Response<ResponseUpdate>
+                ) {
+                    LoginSingleton.token= response.body()!!.accessToken
+
+                    println(response.message())
+
+
+
+
+                }
+            }
+        )
+    }
+
+    fun updatePassword(passwordModel: PasswordModel) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.updatePassword(passwordModel,LoginSingleton.token).enqueue(
+            object : Callback<ResponseBody> {
+                override fun onFailure(
+                    call: Call<ResponseBody>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
+
+
+                    println(response.message())
+
+
+
+                }
+            }
+        )
+    }
 }
