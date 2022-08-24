@@ -41,5 +41,19 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:src="@drawable/vector3" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+
+           android:layout_marginEnd="10dp"
+            app:srcCompat="@drawable/delete" />
+
+
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

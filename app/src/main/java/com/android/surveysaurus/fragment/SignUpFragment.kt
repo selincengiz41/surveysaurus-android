@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -14,11 +16,12 @@ import androidx.navigation.Navigation
 import com.android.surveysaurus.R
 import com.android.surveysaurus.activity.MainActivity
 import com.android.surveysaurus.databinding.FragmentSignUpBinding
+import com.android.surveysaurus.model.CountryModel
 import com.android.surveysaurus.model.SignUpModel
 import com.android.surveysaurus.service.ApiService
 
 
-class SignUpFragment : Fragment() {
+class SignUpFragment : Fragment(), OnItemClickListener {
 
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
@@ -35,18 +38,30 @@ class SignUpFragment : Fragment() {
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val countryAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
-            view.context,
-            android.R.layout.simple_dropdown_item_1line,
-            getResources().getStringArray(R.array.Country)
-        )
-        binding.spinnerCountry.setAdapter(countryAdapter)
 
-        val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
-            view.context,
-            android.R.layout.simple_dropdown_item_1line, getResources().getStringArray(R.array.City)
-        )
-        binding.spinnerCity.setAdapter(cityAdapter)
+        try {
+            val apiService = ApiService()
+
+            apiService.getCountries {
+
+                if (it.toString() != null) {
+                    val countryAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
+                        view.context,
+                        android.R.layout.simple_dropdown_item_1line,
+                        it!!
+                    )
+                    binding.spinnerCountry.setAdapter(countryAdapter)
+
+
+                } else {
+
+
+                }
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
 
         val spinnerGender: Spinner = view.findViewById(R.id.spinner_gender)
@@ -69,12 +84,16 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.spinnerCity.setOnClickListener {
             binding.spinnerCity.showDropDown()
         }
         binding.spinnerCountry.setOnClickListener {
             binding.spinnerCountry.showDropDown()
         }
+
+        binding.spinnerCountry.setOnItemClickListener(this)
+
         binding.visiblePassword.setOnTouchListener(View.OnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -131,17 +150,19 @@ class SignUpFragment : Fragment() {
                         view.context,
                         "Please enter a correct email", Toast.LENGTH_SHORT
                     ).show()
-                } else if (!password.equals(confirmPassword)) {
+                } else if (password != confirmPassword) {
                     Toast.makeText(
                         view.context,
                         "Your passwords needs to match", Toast.LENGTH_SHORT
                     ).show()
-                } else if (password.length < 8) {
+                }
+                else if (password.length < 8) {
                     Toast.makeText(
                         view.context,
                         "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
                     ).show()
-                } else {
+                }
+                else {
                     try {
                         val apiService = ApiService()
                         var signUpModel: SignUpModel = SignUpModel(
@@ -179,16 +200,85 @@ class SignUpFragment : Fragment() {
                 }
 
 
-            } else {
+            }
+            else if(name.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please enter your name", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(email.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please enter your email", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(gender.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please choose your gender", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(country.isNullOrEmpty()) {
+            Toast.makeText(
+                view.context,
+                "Please enter your country", Toast.LENGTH_SHORT
+            ).show()
+        }
+            else if(city.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please enter your city", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(password.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please enter your password", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(confirmPassword.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please confirm your password", Toast.LENGTH_SHORT
+                ).show()
+            }
+                else {
                 Toast.makeText(
                     view.context,
                     "Please fill in the starred fields", Toast.LENGTH_SHORT
                 ).show()
-
             }
 
 
         }
+    }
+
+
+    override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        try {
+            val apiService = ApiService()
+            var country:CountryModel= CountryModel(binding.spinnerCountry.text.toString())
+
+
+            apiService.getCity(country){
+                if (it.toString()!=null) {
+                  val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
+                        p1!!.context,
+                        android.R.layout.simple_dropdown_item_1line,
+                        it!!
+                    )
+                    binding.spinnerCity.setAdapter(cityAdapter)
+                    println("succes")
+                }
+                else{
+                    println("fail")
+                }
+
+            }} catch (e: Exception) {
+            e.printStackTrace()
+        }
+
     }
 
 

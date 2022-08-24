@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/added_layout"
@@ -11,288 +10,244 @@
     tools:context=".fragment.CreateSurveyFragment">
 
 
+    <RelativeLayout
+        android:id="@+id/create_layout"
+        android:layout_width="87dp"
+        android:layout_height="59dp"
 
+        android:layout_marginTop="55dp"
+        android:background="@drawable/create_button"
+        android:elevation="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_option_text">
 
-        <RelativeLayout
-            android:id="@+id/create_layout"
-            android:layout_width="87dp"
-            android:layout_height="59dp"
+        <TextView
+            android:id="@+id/create_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:text="Create"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
-            android:layout_marginTop="20dp"
-            android:background="@drawable/create_button"
-            android:elevation="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_option_text">
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/create_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/man2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-                android:fontFamily="@font/days_one"
-                android:gravity="center"
-                android:text="Create"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/man1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-                android:textSize="15sp" />
+    <TextView
+        android:id="@+id/add_option_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/add_option_button"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/additional_options" />
 
-        </RelativeLayout>
+    <TextView
+        android:id="@+id/options"
+        android:layout_width="75dp"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="top"
+        android:text="Options"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_title_layout" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="87dp"
+        android:layout_height="19dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="top"
+        android:text="Question"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/option2"
+        android:layout_width="293dp"
+        android:layout_height="39dp"
+
+        android:layout_marginTop="20dp"
+        android:background="@drawable/question"
+        android:elevation="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/option1">
+
+        <EditText
+            android:id="@+id/add_option2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/inter_regular"
+            android:gravity="center"
+            android:hint="@string/add_option_hint"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/vector2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/vector3"
+            app:layout_constraintVertical_bias="0.0" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/option1"
+        android:layout_width="293dp"
+        android:layout_height="39dp"
+
+        android:layout_marginTop="20dp"
+        android:background="@drawable/question"
+        android:elevation="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/options">
+
+        <EditText
+            android:id="@+id/add_option1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginBottom="40dp"
-            android:src="@drawable/man2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/inter_regular"
+            android:gravity="center"
+            android:hint="@string/add_option_hint"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/vector1"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/vector3"
+
+            app:layout_constraintVertical_bias="0.0" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/add_question_layout"
+        android:layout_width="293dp"
+        android:layout_height="39dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="20dp"
+        android:background="@drawable/question"
+        android:elevation="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question">
+
+        <EditText
+            android:id="@+id/add_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            android:src="@drawable/man1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/inter_regular"
+            android:gravity="center"
+            android:hint="Add Your Question"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </RelativeLayout>
 
-        <TextView
-            android:id="@+id/add_option_text"
+
+    <RelativeLayout
+        android:id="@+id/add_title_layout"
+        android:layout_width="293dp"
+        android:layout_height="39dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/question"
+        android:elevation="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_question_layout">
+
+        <EditText
+            android:id="@+id/add_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="250dp"
-            android:fontFamily="@font/days_one"
-            android:text="+ Add Option"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/additional_options" />
-
-        <TextView
-            android:id="@+id/options"
-            android:layout_width="75dp"
-            android:layout_height="22dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="250dp"
-            android:fontFamily="@font/days_one"
-            android:gravity="top"
-            android:text="Options"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_title_layout" />
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/inter_regular"
+            android:gravity="center"
 
-        <TextView
-            android:id="@+id/question"
-            android:layout_width="87dp"
-            android:layout_height="19dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="250dp"
-            android:fontFamily="@font/days_one"
-            android:gravity="top"
-            android:text="Question"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:hint="@string/survey_name_hint"
 
-        <RelativeLayout
-            android:id="@+id/option2"
-            android:layout_width="293dp"
-            android:layout_height="39dp"
-
-            android:layout_marginTop="20dp"
-            android:background="@drawable/question"
-            android:elevation="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option1">
-
-            <EditText
-                android:id="@+id/add_option2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-
-                android:fontFamily="@font/days_one"
-                android:gravity="center"
-                android:hint="Add Your Option"
-
-                android:textSize="15sp" />
-
-            <ImageView
-                android:id="@+id/vector2"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/vector3"
-                app:layout_constraintVertical_bias="0.0" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/option3"
-            android:layout_width="293dp"
-            android:layout_height="39dp"
-
-            android:layout_marginTop="20dp"
-            android:background="@drawable/question"
-            android:elevation="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option2">
-
-            <EditText
-                android:id="@+id/add_option3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
 
-                android:fontFamily="@font/days_one"
-                android:gravity="center"
-                android:hint="Add Your Option"
+    </RelativeLayout>
 
-                android:textSize="15sp" />
-
-            <ImageView
-                android:id="@+id/vector3"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-
-                android:src="@drawable/vector3"
-
-                app:layout_constraintVertical_bias="0.0" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/option1"
-            android:layout_width="293dp"
-            android:layout_height="39dp"
-
-            android:layout_marginTop="20dp"
-            android:background="@drawable/question"
-            android:elevation="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/options">
-
-            <EditText
-                android:id="@+id/add_option1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:fontFamily="@font/days_one"
-                android:gravity="center"
-
-                android:hint="Add Your Option"
-
-                android:textSize="15sp" />
-
-            <ImageView
-                android:id="@+id/vector1"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/vector3"
-
-                app:layout_constraintVertical_bias="0.0" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/add_question_layout"
-            android:layout_width="293dp"
-            android:layout_height="39dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-
-            android:layout_marginTop="20dp"
-            android:background="@drawable/question"
-            android:elevation="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question">
-
-            <EditText
-                android:id="@+id/add_question"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-
-
-                android:fontFamily="@font/days_one"
-                android:gravity="center"
-                android:hint="Add Your Question"
-
-                android:textSize="15sp" />
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/add_title_layout"
-            android:layout_width="293dp"
-            android:layout_height="39dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-
-            android:layout_marginTop="20dp"
-            android:background="@drawable/question"
-            android:elevation="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_question_layout">
-
-            <EditText
-                android:id="@+id/add_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:fontFamily="@font/days_one"
-                android:gravity="center"
-
-                android:hint="Title"
-
-                android:textSize="15sp" />
-
-
-        </RelativeLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/additional_options"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/option3" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/additional_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/option2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

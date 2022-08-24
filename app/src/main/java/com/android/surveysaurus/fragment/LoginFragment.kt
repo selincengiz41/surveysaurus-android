@@ -61,11 +61,7 @@ class LoginFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
-        binding.forgotPassword.setOnClickListener {
-            val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
-            Navigation.findNavController(it).navigate(action)
 
-        }
         binding.button.setOnClickListener {
             val email = binding.editTextTextEmailAddress.text
             val password = binding.editTextTextPassword.text
@@ -74,7 +70,7 @@ class LoginFragment : Fragment() {
                 if (!email.endsWith(".com") || !email.contains("@")) {
                     Toast.makeText(
                         view.context,
-                        "Please enter a correct email", Toast.LENGTH_SHORT
+                        "Incorrect email or password", Toast.LENGTH_SHORT
                     ).show()
                 } else if (password.length < 8) {
                     Toast.makeText(
@@ -93,7 +89,7 @@ class LoginFragment : Fragment() {
                                 var text: String = it.string()
                                 var tırnak = '"'
 
-                                LoginSingleton.token= text.substringAfter("accessToken$tırnak")
+                                LoginSingleton.token = text.substringAfter("accessToken$tırnak")
                                     .substringBefore(tırnak + "data").substringAfter(tırnak)
                                     .substringBefore(tırnak)
                                 println(LoginSingleton.token)
@@ -118,13 +114,14 @@ class LoginFragment : Fragment() {
                                 ).show();
                                 LoginSingleton.isLogin = true
                                 (activity as MainActivity?)!!.MenuController()
-                                val action=LoginFragmentDirections.actionLoginFragmentToCreateSurveyFragment()
+                                val action =
+                                    LoginFragmentDirections.actionLoginFragmentToCreateSurveyFragment()
                                 Navigation.findNavController(view).navigate(action)
 
                             } else {
                                 Toast.makeText(
                                     view.context,
-                                    "Fail", Toast.LENGTH_SHORT
+                                    "Incorrect email or password", Toast.LENGTH_SHORT
                                 ).show();
                             }
 
@@ -137,7 +134,21 @@ class LoginFragment : Fragment() {
                 }
 
 
-            } else {
+            }
+            else if(email.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please fill the E-Mail field", Toast.LENGTH_SHORT
+                ).show()
+            }
+            else if(password.isNullOrEmpty()) {
+                Toast.makeText(
+                    view.context,
+                    "Please fill your password to continue", Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            else {
                 Toast.makeText(
                     view.context,
                     "Please fill in the starred fields", Toast.LENGTH_SHORT

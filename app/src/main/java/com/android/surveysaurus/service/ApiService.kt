@@ -152,4 +152,200 @@ class ApiService {
         )
     }
 
+    fun postFillSurvey(fillModel: FillModel, onResult: (ResponseBody?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.postFillSurvey(fillModel, LoginSingleton.token).enqueue(
+            object : Callback<ResponseBody> {
+                override fun onFailure(
+                    call: Call<ResponseBody>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
+                    var filled = response.body()
+
+                    println(response.message())
+
+                    onResult(filled)
+                }
+            }
+        )
+    }
+
+
+    fun getCountries(onResult: (ArrayList<String>?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.getCountries().enqueue(
+            object : Callback<ResponseCountry> {
+                override fun onFailure(
+                    call: Call<ResponseCountry>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseCountry>,
+                    response: Response<ResponseCountry>
+                ) {
+                    var filled = response.body()?.data?.surveys
+
+
+
+                    onResult(filled)
+                }
+            }
+        )
+    }
+
+    fun getCity(country: CountryModel, onResult: (ArrayList<String>?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.getCity(country).enqueue(
+            object : Callback<ResponseCountry> {
+                override fun onFailure(
+                    call: Call<ResponseCountry>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseCountry>,
+                    response: Response<ResponseCountry>
+                ) {
+                    var filled = response.body()?.data?.surveys
+
+
+                    println(response.message())
+
+
+                    onResult(filled)
+                }
+            }
+        )
+    }
+
+    fun isFilled(title: IsFilledModel, onResult: (ResponseIsFilled?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.isFilled(title,LoginSingleton.token).enqueue(
+            object : Callback<ResponseIsFilled> {
+                override fun onFailure(
+                    call: Call<ResponseIsFilled>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseIsFilled>,
+                    response: Response<ResponseIsFilled>
+                ) {
+                    var filled = response.body()
+
+
+                    println(response.message())
+                    println(filled?.data?.choice)
+
+
+                    onResult(filled)
+                }
+            }
+        )
+    }
+
+
+    fun getSurvey(title: IsFilledModel, onResult: (ResponsePercent?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.getSurvey(title).enqueue(
+            object : Callback<ResponsePercent> {
+                override fun onFailure(
+                    call: Call<ResponsePercent>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponsePercent>,
+                    response: Response<ResponsePercent>
+                ) {
+                    var filled = response.body()
+
+
+                    println(filled?.data?.question)
+
+
+
+                    onResult(filled)
+                }
+            }
+        )
+    }
+
+
+
+    fun updateUser(update: UpdateModel) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.updateUser(update,LoginSingleton.token).enqueue(
+            object : Callback<ResponseUpdate> {
+                override fun onFailure(
+                    call: Call<ResponseUpdate>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseUpdate>,
+                    response: Response<ResponseUpdate>
+                ) {
+                    LoginSingleton.token= response.body()!!.accessToken
+
+                    println(response.message())
+
+
+
+
+                }
+            }
+        )
+    }
+
+    fun updatePassword(passwordModel: PasswordModel) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.updatePassword(passwordModel,LoginSingleton.token).enqueue(
+            object : Callback<ResponseBody> {
+                override fun onFailure(
+                    call: Call<ResponseBody>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
+
+
+                    println(response.message())
+
+
+
+                }
+            }
+        )
+    }
 }
