@@ -62,8 +62,6 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
         }
 
 
-
-
         val genderAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
             view.context,
             android.R.layout.simple_dropdown_item_1line,
@@ -132,31 +130,35 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
             try {
 
                 val apiService = ApiService()
-val updateModel:UpdateModel= UpdateModel(binding.nameTextview3.text.toString()
-    ,binding.editTextTextEmailAddress3.text.toString()
-,binding.spinnerCountry4.text.toString()
-,binding.spinnerCity4.text.toString()
-)
+                val updateModel: UpdateModel = UpdateModel(
+                    binding.nameTextview3.text.toString(),
+                    binding.editTextTextEmailAddress3.text.toString(),
+                    binding.spinnerCountry4.text.toString(),
+                    binding.spinnerCity4.text.toString()
+                )
 
                 apiService.updateUser(updateModel)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-if(!binding.editTextTextPassword6.text.toString().isNullOrEmpty() &&!binding.editTextTextPassword7.text.toString().isNullOrEmpty()){
-    try {
+            if (!binding.editTextTextPassword6.text.toString()
+                    .isNullOrEmpty() && !binding.editTextTextPassword7.text.toString()
+                    .isNullOrEmpty()
+            ) {
+                try {
 
-        val apiService = ApiService()
-        val passwordModel: PasswordModel = PasswordModel(
-            binding.editTextTextPassword6.text.toString()
-            ,binding.editTextTextPassword7.text.toString()
+                    val apiService = ApiService()
+                    val passwordModel: PasswordModel = PasswordModel(
+                        binding.editTextTextPassword6.text.toString(),
+                        binding.editTextTextPassword7.text.toString()
 
-        )
+                    )
 
-        apiService.updatePassword(passwordModel)
-    } catch (e: Exception) {
-        e.printStackTrace()
-    }
-}
+                    apiService.updatePassword(passwordModel)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
 
 
         }
@@ -170,8 +172,8 @@ if(!binding.editTextTextPassword6.text.toString().isNullOrEmpty() &&!binding.edi
             var country: CountryModel = CountryModel(binding.spinnerCountry4.text.toString())
 
 
-            apiService.getCity(country){
-                if (it.toString()!=null) {
+            apiService.getCity(country) {
+                if (it.toString() != null) {
                     val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
                         p1!!.context,
                         android.R.layout.simple_dropdown_item_1line,
@@ -179,12 +181,12 @@ if(!binding.editTextTextPassword6.text.toString().isNullOrEmpty() &&!binding.edi
                     )
                     binding.spinnerCity4.setAdapter(cityAdapter)
                     println("succes")
-                }
-                else{
+                } else {
                     println("fail")
                 }
 
-            }} catch (e: Exception) {
+            }
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }

@@ -95,7 +95,7 @@ class FillSurveyFragment : Fragment() {
 
 
             for (item in 0 until optionList.size) {
-                if(item== isFilled?.data?.choice){
+                if (item == isFilled?.data?.choice) {
                     optionList.get(item).setCompoundDrawablesRelativeWithIntrinsicBounds(
                         R.drawable.selected_option,
                         0,
@@ -164,7 +164,7 @@ class FillSurveyFragment : Fragment() {
 
 
                                                 for (item in 0 until survey.choices.size) {
-                                                    if (item ==it?.data?.percent?.indexOf(it.data.percent.max())) {
+                                                    if (item == it?.data?.percent?.indexOf(it.data.percent.max())) {
                                                         val option1: TextView =
                                                             TextView(view.context)
                                                         option1.id = View.generateViewId()
@@ -173,7 +173,10 @@ class FillSurveyFragment : Fragment() {
 
 
                                                         option1.gravity = Gravity.CENTER
-                                                        option1.text = survey.choices[item]+it.data.percent.get(item)
+                                                        option1.text =
+                                                            survey.choices[item] + it.data.percent.get(
+                                                                item
+                                                            )
                                                         val typeface: Typeface? =
                                                             ResourcesCompat.getFont(
                                                                 view.context!!,
@@ -198,14 +201,11 @@ class FillSurveyFragment : Fragment() {
                                                         params.endToEnd = binding.fillLayout.id
                                                         //params.marginStart = dpToPx(40, view.context)
                                                         params.topMargin = dpToPx(20, view.context)
-                                                        params.marginEnd=dpToPx(250, view.context)
+                                                        params.marginEnd = dpToPx(250, view.context)
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
                                                         params.matchConstraintPercentWidth = 0.6f
                                                         option1.requestLayout()
-
-
-
 
 
                                                     } else {
@@ -215,7 +215,10 @@ class FillSurveyFragment : Fragment() {
                                                         option1.id = View.generateViewId()
                                                         option1.textAlignment =
                                                             View.TEXT_ALIGNMENT_VIEW_START
-                                                        option1.text = survey.choices[item]+it?.data?.percent?.get(item)
+                                                        option1.text =
+                                                            survey.choices[item] + it?.data?.percent?.get(
+                                                                item
+                                                            )
                                                         option1.gravity = Gravity.CENTER
                                                         option1.setBackgroundResource(R.drawable.unselected)
                                                         option1.setTextColor(Color.parseColor("#000000"))
@@ -240,42 +243,42 @@ class FillSurveyFragment : Fragment() {
                                                         params.startToStart = binding.fillLayout.id
                                                         params.endToEnd = binding.fillLayout.id
                                                         params.topMargin = dpToPx(20, view.context)
-                                                       // params.marginStart = dpToPx(40, view.context)
-                                                        params.marginEnd=dpToPx(250, view.context)
+                                                        // params.marginStart = dpToPx(40, view.context)
+                                                        params.marginEnd = dpToPx(250, view.context)
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
                                                         params.matchConstraintPercentWidth = 0.3f
                                                         option1.requestLayout()
 
 
-
-
                                                     }
                                                 }
 
-                                                val params = binding.addComment.layoutParams as ConstraintLayout.LayoutParams
-                                                params.topToBottom = optionRateList.get(optionRateList.lastIndex).id
+                                                val params =
+                                                    binding.addComment.layoutParams as ConstraintLayout.LayoutParams
+                                                params.topToBottom =
+                                                    optionRateList.get(optionRateList.lastIndex).id
                                                 params.topMargin = 40
-                                                binding.addComment.visibility=View.VISIBLE
+                                                binding.addComment.visibility = View.VISIBLE
 
                                                 binding.addComment.requestLayout()
-                                              /*  for(item in 0 until optionRateList.size){
-                                                    val yuzde:TextView= TextView(view.context)
-                                                    yuzde.id= View.generateViewId()
-                                                    yuzde.text="%0.3"
-                                                    yuzde.setTextColor(Color.parseColor("#000000"))
-                                                    yuzde.textSize = 15f
-                                                    val paramsYuzde =
-                                                        yuzde.layoutParams as ConstraintLayout.LayoutParams
-                                                    paramsYuzde.startToEnd=optionRateList.get(item).id
-                                                    paramsYuzde.topToTop=optionRateList.get(item).id
-                                                    paramsYuzde.bottomToBottom=optionRateList.get(item).id
-                                                    paramsYuzde.width=dpToPx(20, view.context)
-                                                    paramsYuzde.height=dpToPx(20, view.context)
-                                                    yuzde.requestLayout()
-                                                    binding.root.addView(yuzde)
+                                                /*  for(item in 0 until optionRateList.size){
+                                                      val yuzde:TextView= TextView(view.context)
+                                                      yuzde.id= View.generateViewId()
+                                                      yuzde.text="%0.3"
+                                                      yuzde.setTextColor(Color.parseColor("#000000"))
+                                                      yuzde.textSize = 15f
+                                                      val paramsYuzde =
+                                                          yuzde.layoutParams as ConstraintLayout.LayoutParams
+                                                      paramsYuzde.startToEnd=optionRateList.get(item).id
+                                                      paramsYuzde.topToTop=optionRateList.get(item).id
+                                                      paramsYuzde.bottomToBottom=optionRateList.get(item).id
+                                                      paramsYuzde.width=dpToPx(20, view.context)
+                                                      paramsYuzde.height=dpToPx(20, view.context)
+                                                      yuzde.requestLayout()
+                                                      binding.root.addView(yuzde)
 
-                                                }*/
+                                                  }*/
 
 
 
