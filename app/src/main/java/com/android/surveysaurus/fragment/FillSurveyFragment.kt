@@ -204,7 +204,7 @@ class FillSurveyFragment : Fragment() {
                                                         params.marginEnd = dpToPx(250, view.context)
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
-                                                        if(it?.data?.percent?.get(item).){
+                                                        if(it?.data?.percent?.get(item)==0||it?.data?.percent?.get(item)==null){
                                                             params.matchConstraintPercentWidth = 0.3f
                                                         }
                                                         else{
