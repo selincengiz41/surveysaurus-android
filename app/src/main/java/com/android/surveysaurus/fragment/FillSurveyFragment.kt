@@ -174,7 +174,7 @@ class FillSurveyFragment : Fragment() {
 
                                                         option1.gravity = Gravity.CENTER
                                                         option1.text =
-                                                            survey.choices[item] + it.data.percent.get(
+                                                            survey.choices[item]+"     %" + it.data.percent.get(
                                                                 item
                                                             )
                                                         val typeface: Typeface? =
@@ -204,7 +204,12 @@ class FillSurveyFragment : Fragment() {
                                                         params.marginEnd = dpToPx(250, view.context)
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
-                                                        params.matchConstraintPercentWidth = 0.6f
+                                                        if(it?.data?.percent?.get(item).){
+                                                            params.matchConstraintPercentWidth = 0.3f
+                                                        }
+                                                        else{
+                                                            params.matchConstraintPercentWidth =1f
+                                                        }
                                                         option1.requestLayout()
 
 
@@ -216,7 +221,7 @@ class FillSurveyFragment : Fragment() {
                                                         option1.textAlignment =
                                                             View.TEXT_ALIGNMENT_VIEW_START
                                                         option1.text =
-                                                            survey.choices[item] + it?.data?.percent?.get(
+                                                            survey.choices[item] +"     %"+ it?.data?.percent?.get(
                                                                 item
                                                             )
                                                         option1.gravity = Gravity.CENTER
@@ -247,7 +252,13 @@ class FillSurveyFragment : Fragment() {
                                                         params.marginEnd = dpToPx(250, view.context)
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
-                                                        params.matchConstraintPercentWidth = 0.3f
+                                                        if(it?.data?.percent?.get(item)==0||it?.data?.percent?.get(item)==null){
+                                                            params.matchConstraintPercentWidth = 0.3f
+                                                        }
+                                                        else{
+                                                            params.matchConstraintPercentWidth = (it!!.data!!.percent!!.get(item).div(100f))
+                                                        }
+
                                                         option1.requestLayout()
 
 

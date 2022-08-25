@@ -294,7 +294,7 @@ class ApiService {
 
 
 
-    fun updateUser(update: UpdateModel) {
+    fun updateUser(update: UpdateModel,onResult: (String?) -> Unit) {
         val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
         retrofit.updateUser(update,LoginSingleton.token).enqueue(
             object : Callback<ResponseUpdate> {
@@ -303,7 +303,7 @@ class ApiService {
                     t: Throwable
                 ) {
                     println(t.message)
-
+              onResult(null)
                 }
 
                 override fun onResponse(
@@ -314,7 +314,7 @@ class ApiService {
 
                     println(response.message())
 
-
+                    onResult("Succes")
 
 
                 }
@@ -322,7 +322,7 @@ class ApiService {
         )
     }
 
-    fun updatePassword(passwordModel: PasswordModel) {
+    fun updatePassword(passwordModel: PasswordModel,onResult: (String?) -> Unit) {
         val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
         retrofit.updatePassword(passwordModel,LoginSingleton.token).enqueue(
             object : Callback<ResponseBody> {
@@ -331,7 +331,7 @@ class ApiService {
                     t: Throwable
                 ) {
                     println(t.message)
-
+                  onResult(null)
                 }
 
                 override fun onResponse(
@@ -342,6 +342,39 @@ class ApiService {
 
                     println(response.message())
 
+                  onResult("Succes")
+
+                }
+            }
+        )
+    }
+
+    fun getUserInfo(onResult: (UserModel?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.getUserInfo(LoginSingleton.token).enqueue(
+            object : Callback<ResponseUser> {
+                override fun onFailure(
+                    call: Call<ResponseUser>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseUser>,
+                    response: Response<ResponseUser>
+                ) {
+
+                    val user=response.body()
+                   LoginSingleton.name =user!!.data!!.name
+                           LoginSingleton.city =user!!.data!!.city
+                           LoginSingleton.country =user!!.data!!.country
+                           LoginSingleton.gender =user!!.data!!.gender
+                           LoginSingleton.email =user!!.data!!.email
+
+                    println(response.message())
+                    onResult(user.data)
 
 
                 }
