@@ -2,6 +2,7 @@ package com.android.surveysaurus.fragment
 
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
@@ -21,6 +22,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.android.surveysaurus.R
+import com.android.surveysaurus.activity.MapActivity
 import com.android.surveysaurus.databinding.FragmentFillSurveyBinding
 import com.android.surveysaurus.model.FillModel
 import com.android.surveysaurus.model.IsFilledModel
@@ -337,9 +339,11 @@ class FillSurveyFragment : Fragment() {
 
         }
 binding.worldLayout.setOnClickListener {
-    val action =
+    val intent = Intent(it.context, MapActivity::class.java)
+    startActivity(intent)
+   /* val action =
         FillSurveyFragmentDirections.actionFillSurveyFragmentToMapFragment()
-    Navigation.findNavController(it).navigate(action)
+    Navigation.findNavController(it).navigate(action)*/
 }
 
     }
