@@ -45,4 +45,7 @@ interface SurveyAPI {
     @PUT("api/profile/updatepassword")
     fun updatePassword(@Body updatePasswordModel: PasswordModel,@Header("authorization") token: String): Call<ResponseBody>
 
+
+    @GET("api/profile/getinfo")
+    fun getUserInfo(@Header("authorization") token: String): Call<ResponseUser>
 }

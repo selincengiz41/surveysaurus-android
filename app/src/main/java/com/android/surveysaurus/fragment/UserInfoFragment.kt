@@ -26,6 +26,29 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        try {
+            val apiService = ApiService()
+            apiService.getUserInfo(){
+                if(it.toString()!=null){
+                    binding.nameTextview3.setText(it?.name, TextView.BufferType.EDITABLE)
+                    binding.editTextTextEmailAddress3.setText(
+                        it?.email,
+                        TextView.BufferType.EDITABLE
+                    )
+                    binding.spinnerCity4.setText(it?.city)
+                    binding.spinnerCountry4.setText(it?.country)
+                    binding.spinnerGender3.setText(it?.gender)
+                }
+                else{
+
+                }
+
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
 
     }
 
@@ -117,14 +140,8 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
             binding.spinnerGender3.showDropDown()
         }
 
-        binding.nameTextview3.setText(LoginSingleton.name, TextView.BufferType.EDITABLE)
-        binding.editTextTextEmailAddress3.setText(
-            LoginSingleton.email,
-            TextView.BufferType.EDITABLE
-        )
-        binding.spinnerCity4.setText(LoginSingleton.city)
-        binding.spinnerCountry4.setText(LoginSingleton.country)
-        binding.spinnerGender3.setText(LoginSingleton.gender)
+
+
 
         binding.button2.setOnClickListener {
             try {
@@ -137,7 +154,22 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
                     binding.spinnerCity4.text.toString()
                 )
 
-                apiService.updateUser(updateModel)
+                apiService.updateUser(updateModel){
+                    if (it.toString() != null) {
+                        Toast.makeText(
+                            view.context,
+                            "Succesful", Toast.LENGTH_SHORT
+                        ).show();
+
+                    } else {
+                        Toast.makeText(
+                            view.context,
+                            "Fail", Toast.LENGTH_SHORT
+                        ).show();
+
+                    }
+
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -145,19 +177,42 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
                     .isNullOrEmpty() && !binding.editTextTextPassword7.text.toString()
                     .isNullOrEmpty()
             ) {
-                try {
+                if(binding.editTextTextPassword7.text.toString().length < 8) {
+                        Toast.makeText(
+                            view.context,
+                            "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                else{
+                    try {
 
-                    val apiService = ApiService()
-                    val passwordModel: PasswordModel = PasswordModel(
-                        binding.editTextTextPassword6.text.toString(),
-                        binding.editTextTextPassword7.text.toString()
+                        val apiService = ApiService()
+                        val passwordModel: PasswordModel = PasswordModel(
+                            binding.editTextTextPassword6.text.toString(),
+                            binding.editTextTextPassword7.text.toString()
 
-                    )
+                        )
 
-                    apiService.updatePassword(passwordModel)
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                        apiService.updatePassword(passwordModel){
+                            if (it.toString() != null) {
+                                Toast.makeText(
+                                    view.context,
+                                    "Succesful", Toast.LENGTH_SHORT
+                                ).show();
+
+                            } else {
+                                Toast.makeText(
+                                    view.context,
+                                    "Fail", Toast.LENGTH_SHORT
+                                ).show();
+
+                            }
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
+
             }
 
 

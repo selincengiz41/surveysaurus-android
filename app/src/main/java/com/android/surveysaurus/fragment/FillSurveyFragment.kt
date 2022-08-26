@@ -2,6 +2,7 @@ package com.android.surveysaurus.fragment
 
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
@@ -21,6 +22,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.android.surveysaurus.R
+import com.android.surveysaurus.activity.MapActivity
 import com.android.surveysaurus.databinding.FragmentFillSurveyBinding
 import com.android.surveysaurus.model.FillModel
 import com.android.surveysaurus.model.IsFilledModel
@@ -164,6 +166,7 @@ class FillSurveyFragment : Fragment() {
 
 
                                                 for (item in 0 until survey.choices.size) {
+
                                                     if (item == it?.data?.percent?.indexOf(it.data.percent.max())) {
                                                         val option1: TextView =
                                                             TextView(view.context)
@@ -171,10 +174,9 @@ class FillSurveyFragment : Fragment() {
                                                         option1.textAlignment =
                                                             View.TEXT_ALIGNMENT_TEXT_START
 
-
                                                         option1.gravity = Gravity.CENTER
                                                         option1.text =
-                                                            survey.choices[item] + it.data.percent.get(
+                                                            survey.choices[item]+"  %" + it.data.percent.get(
                                                                 item
                                                             )
                                                         val typeface: Typeface? =
@@ -199,12 +201,18 @@ class FillSurveyFragment : Fragment() {
                                                                 optionRateList.get(item - 1).id
                                                         params.startToStart = binding.fillLayout.id
                                                         params.endToEnd = binding.fillLayout.id
-                                                        //params.marginStart = dpToPx(40, view.context)
+                                                        params.marginStart = dpToPx(20, view.context)
+                                                        params.marginEnd = dpToPx(20, view.context)
                                                         params.topMargin = dpToPx(20, view.context)
-                                                        params.marginEnd = dpToPx(250, view.context)
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
-                                                        params.matchConstraintPercentWidth = 0.6f
+                                                        if(it?.data?.percent?.get(item)==0||it?.data?.percent?.get(item)==null){
+                                                           params.width=ConstraintLayout.LayoutParams.WRAP_CONTENT
+                                                        }
+                                                        else{
+                                                            println( (it!!.data!!.percent!!.get(item).div(100f)))
+                                                            params.matchConstraintPercentWidth = (it!!.data!!.percent!!.get(item).div(100f))-0.000001f
+                                                        }
                                                         option1.requestLayout()
 
 
@@ -216,7 +224,7 @@ class FillSurveyFragment : Fragment() {
                                                         option1.textAlignment =
                                                             View.TEXT_ALIGNMENT_VIEW_START
                                                         option1.text =
-                                                            survey.choices[item] + it?.data?.percent?.get(
+                                                            survey.choices[item] +"  %"+ it?.data?.percent?.get(
                                                                 item
                                                             )
                                                         option1.gravity = Gravity.CENTER
@@ -243,25 +251,33 @@ class FillSurveyFragment : Fragment() {
                                                         params.startToStart = binding.fillLayout.id
                                                         params.endToEnd = binding.fillLayout.id
                                                         params.topMargin = dpToPx(20, view.context)
-                                                        // params.marginStart = dpToPx(40, view.context)
-                                                        params.marginEnd = dpToPx(250, view.context)
+                                                         params.marginStart = dpToPx(20, view.context)
+                                                       params.marginEnd = dpToPx(20, view.context)
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
-                                                        params.matchConstraintPercentWidth = 0.3f
+                                                        if(it?.data?.percent?.get(item)==0||it?.data?.percent?.get(item)==null){
+                                                            params.width=ConstraintLayout.LayoutParams.WRAP_CONTENT
+                                                        }
+                                                        else{
+                                                            params.matchConstraintPercentWidth = (it!!.data!!.percent!!.get(item).div(100f))
+                                                        }
+
                                                         option1.requestLayout()
 
 
                                                     }
                                                 }
 
+                                                binding.addComment.visibility = View.VISIBLE
                                                 val params =
                                                     binding.addComment.layoutParams as ConstraintLayout.LayoutParams
                                                 params.topToBottom =
                                                     optionRateList.get(optionRateList.lastIndex).id
                                                 params.topMargin = 40
-                                                binding.addComment.visibility = View.VISIBLE
+
 
                                                 binding.addComment.requestLayout()
+
                                                 /*  for(item in 0 until optionRateList.size){
                                                       val yuzde:TextView= TextView(view.context)
                                                       yuzde.id= View.generateViewId()
@@ -322,7 +338,13 @@ class FillSurveyFragment : Fragment() {
 
 
         }
-
+binding.worldLayout.setOnClickListener {
+    val intent = Intent(it.context, MapActivity::class.java)
+    startActivity(intent)
+   /* val action =
+        FillSurveyFragmentDirections.actionFillSurveyFragmentToMapFragment()
+    Navigation.findNavController(it).navigate(action)*/
+}
 
     }
 
