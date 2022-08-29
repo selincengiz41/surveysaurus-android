@@ -123,8 +123,9 @@ class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
                         e.printStackTrace()
                     }
                 } else {
+                    var surveyModel: SurveyModel = SurveyModel(question, title, optionList)
                     val action =
-                        CreateSurveyFragmentDirections.actionCreateSurveyFragmentToLoginFragment()
+                        CreateSurveyFragmentDirections.actionCreateSurveyFragmentToLoginFragment(surveyModel)
                     Navigation.findNavController(it).navigate(action)
                 }
             } else {

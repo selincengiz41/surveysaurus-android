@@ -144,76 +144,97 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
 
 
         binding.button2.setOnClickListener {
-            try {
+             if( binding.nameTextview3.text.toString().isNullOrEmpty()
+                 ||binding.editTextTextEmailAddress3.text.toString().isNullOrEmpty()
+                 ||binding.spinnerCountry4.text.toString().isNullOrEmpty()
+                 ||binding.spinnerCity4.text.toString().isNullOrEmpty()
+                 ||binding.spinnerGender3.text.toString().isNullOrEmpty()){
 
-                val apiService = ApiService()
-                val updateModel: UpdateModel = UpdateModel(
-                    binding.nameTextview3.text.toString(),
-                    binding.editTextTextEmailAddress3.text.toString(),
-                    binding.spinnerCountry4.text.toString(),
-                    binding.spinnerCity4.text.toString()
-                )
+                 Toast.makeText(
+                     view.context,
+                     "Please do not left blank space", Toast.LENGTH_SHORT
+                 ).show();
 
-                apiService.updateUser(updateModel){
-                    if (it.toString() != null) {
-                        Toast.makeText(
-                            view.context,
-                            "Succesful", Toast.LENGTH_SHORT
-                        ).show();
+             }
+            else{
+                 try {
 
-                    } else {
-                        Toast.makeText(
-                            view.context,
-                            "Fail", Toast.LENGTH_SHORT
-                        ).show();
+                     val apiService = ApiService()
+                     val updateModel: UpdateModel = UpdateModel(
+                         binding.nameTextview3.text.toString(),
+                         binding.editTextTextEmailAddress3.text.toString(),
+                         binding.spinnerCountry4.text.toString(),
+                         binding.spinnerCity4.text.toString()
+                     )
 
-                    }
+                     apiService.updateUser(updateModel){
+                         if (it.toString() != null) {
+                             Toast.makeText(
+                                 view.context,
+                                 "Succesfully updated user information", Toast.LENGTH_SHORT
+                             ).show();
+                             if (!binding.editTextTextPassword6.text.toString()
+                                     .isNullOrEmpty() && !binding.editTextTextPassword7.text.toString()
+                                     .isNullOrEmpty()
+                             ) {
+                                 if(binding.editTextTextPassword7.text.toString().length < 8) {
+                                     Toast.makeText(
+                                         view.context,
+                                         "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
+                                     ).show()
+                                 }
+                                 else{
+                                     try {
 
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-            if (!binding.editTextTextPassword6.text.toString()
-                    .isNullOrEmpty() && !binding.editTextTextPassword7.text.toString()
-                    .isNullOrEmpty()
-            ) {
-                if(binding.editTextTextPassword7.text.toString().length < 8) {
-                        Toast.makeText(
-                            view.context,
-                            "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                else{
-                    try {
+                                         val apiService = ApiService()
+                                         val passwordModel: PasswordModel = PasswordModel(
+                                             binding.editTextTextPassword6.text.toString(),
+                                             binding.editTextTextPassword7.text.toString()
 
-                        val apiService = ApiService()
-                        val passwordModel: PasswordModel = PasswordModel(
-                            binding.editTextTextPassword6.text.toString(),
-                            binding.editTextTextPassword7.text.toString()
+                                         )
 
-                        )
+                                         apiService.updatePassword(passwordModel){
+                                             if (it.equals("Success")) {
+                                                 Toast.makeText(
+                                                     view.context,
+                                                     "Succesfully updated your password.", Toast.LENGTH_SHORT
+                                                 ).show();
 
-                        apiService.updatePassword(passwordModel){
-                            if (it.toString() != null) {
-                                Toast.makeText(
-                                    view.context,
-                                    "Succesful", Toast.LENGTH_SHORT
-                                ).show();
+                                             } else {
+                                                 Toast.makeText(
+                                                     view.context,
+                                                     "Failed to update password", Toast.LENGTH_SHORT
+                                                 ).show();
 
-                            } else {
-                                Toast.makeText(
-                                    view.context,
-                                    "Fail", Toast.LENGTH_SHORT
-                                ).show();
+                                             }
+                                         }
+                                     } catch (e: Exception) {
+                                         e.printStackTrace()
+                                     }
+                                 }
 
-                            }
-                        }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
+                             }else{
+                                 Toast.makeText(
+                                     view.context,
+                                     "To change password you need to fill old password and new password correctly.", Toast.LENGTH_LONG
+                                 ).show();
+                             }
+                         } else {
+                             Toast.makeText(
+                                 view.context,
+                                 "Failed to update user information", Toast.LENGTH_SHORT
+                             ).show();
 
-            }
+                         }
+
+                     }
+                 } catch (e: Exception) {
+                     e.printStackTrace()
+                 }
+             }
+
+
+
 
 
         }
