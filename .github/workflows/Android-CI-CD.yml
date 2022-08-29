@@ -18,7 +18,8 @@ on:
         description: 'Test scenario tags' 
 
 jobs:
- build:
+ 
+  build:
 
     runs-on: ubuntu-latest
 
