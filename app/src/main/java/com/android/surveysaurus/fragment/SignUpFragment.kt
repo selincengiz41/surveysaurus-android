@@ -25,7 +25,10 @@ class SignUpFragment : Fragment(), OnItemClickListener {
 
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
+    private var isVisible: Boolean? =false
+    private var isVisible2: Boolean? =false
     private val mainActivity: MainActivity = MainActivity()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -93,39 +96,32 @@ class SignUpFragment : Fragment(), OnItemClickListener {
         }
 
         binding.spinnerCountry.setOnItemClickListener(this)
+        binding.visiblePassword.setOnClickListener {
 
-        binding.visiblePassword.setOnTouchListener(View.OnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    binding.editTextTextPassword.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
-                MotionEvent.ACTION_UP -> {
-                    binding.editTextTextPassword.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
+            if(isVisible==false){
+                binding.editTextTextPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
+           isVisible=true
             }
-            false
-        })
-
-        binding.visiblePassword2.setOnTouchListener(View.OnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    binding.editTextTextPassword2.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
-                MotionEvent.ACTION_UP -> {
-                    binding.editTextTextPassword2.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
+           else{
+                binding.editTextTextPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
+                isVisible=false
             }
-            false
-        })
+        }
+        binding.visiblePassword2.setOnClickListener {
 
+            if(isVisible2==false){
+                binding.editTextTextPassword2.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
+                isVisible2=true
+            }
+            else{
+                binding.editTextTextPassword2.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
+                isVisible2=false
+            }
+        }
 
 
 
@@ -174,9 +170,9 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                             city
                         )
 
-                        apiService.postSignUp(signUpModel) {
+                        apiService.postSignUp(signUpModel) { it,str ->
 
-                            if (it.toString() != null) {
+                            if (it != null) {
                                 Toast.makeText(
                                     view.context,
                                     "Succesful", Toast.LENGTH_SHORT
@@ -187,7 +183,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                             } else {
                                 Toast.makeText(
                                     view.context,
-                                    "Fail", Toast.LENGTH_SHORT
+                                    str, Toast.LENGTH_SHORT
                                 ).show();
 
                             }

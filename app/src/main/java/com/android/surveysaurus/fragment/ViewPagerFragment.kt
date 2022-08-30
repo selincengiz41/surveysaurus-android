@@ -33,6 +33,11 @@ class ViewPagerFragment : Fragment() {
         val adapter = SlidePageAdapter(fragmentList, requireActivity().supportFragmentManager)
         val viewPager = binding.viewPager
         viewPager.adapter = adapter
+        arguments?.let {
+            val index=ViewPagerFragmentArgs.fromBundle(it).index
+            viewPager.setCurrentItem(index)
+        }
+
 
 
         return view
@@ -48,6 +53,10 @@ class ViewPagerFragment : Fragment() {
         val adapter = SlidePageAdapter(fragmentList, requireActivity().supportFragmentManager)
         val viewPager = binding.viewPager
         viewPager.adapter = adapter
+        arguments?.let {
+            val index=ViewPagerFragmentArgs.fromBundle(it).index
+            viewPager.setCurrentItem(index)
+        }
 
     }
 
@@ -60,6 +69,10 @@ class ViewPagerFragment : Fragment() {
         )
         val adapter = SlidePageAdapter(fragmentList, requireActivity().supportFragmentManager)
         binding.viewPager.adapter = adapter
+        arguments?.let {
+            val index=ViewPagerFragmentArgs.fromBundle(it).index
+            binding.viewPager.setCurrentItem(index)
+        }
 
     }
 

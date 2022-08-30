@@ -109,7 +109,9 @@ class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
                                     view.context,
                                     "Succesful", Toast.LENGTH_SHORT
                                 ).show();
-
+                                val action =
+                                    CreateSurveyFragmentDirections.actionCreateSurveyFragmentToMySurveyFragment()
+                                Navigation.findNavController(view).navigate(action)
                             } else {
                                 Toast.makeText(
                                     view.context,
@@ -123,8 +125,9 @@ class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
                         e.printStackTrace()
                     }
                 } else {
+                    var surveyModel: SurveyModel = SurveyModel(question, title, optionList)
                     val action =
-                        CreateSurveyFragmentDirections.actionCreateSurveyFragmentToLoginFragment()
+                        CreateSurveyFragmentDirections.actionCreateSurveyFragmentToLoginFragment(surveyModel)
                     Navigation.findNavController(it).navigate(action)
                 }
             } else {

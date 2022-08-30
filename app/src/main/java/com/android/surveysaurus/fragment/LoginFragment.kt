@@ -114,9 +114,46 @@ class LoginFragment : Fragment() {
                                 ).show();
                                 LoginSingleton.isLogin = true
                                 (activity as MainActivity?)!!.MenuController()
-                                val action =
-                                    LoginFragmentDirections.actionLoginFragmentToCreateSurveyFragment()
-                                Navigation.findNavController(view).navigate(action)
+                                arguments?.let {
+                                    val survey = LoginFragmentArgs.fromBundle(it).survey
+                                    val filled = LoginFragmentArgs.fromBundle(it).filled
+                                    if(survey!=null){
+                                        apiService.postCreateSurvey(survey){
+                                            if (it.toString()!=null){
+                                                Toast.makeText(
+                                                    view.context,
+                                                    "Succesfully created survey " , Toast.LENGTH_LONG
+                                                ).show();
+                                                val action =
+                                                    LoginFragmentDirections.actionLoginFragmentToCreateSurveyFragment()
+                                                Navigation.findNavController(view).navigate(action)
+                                            }
+
+                                        }
+                                    }
+                                    if(filled!=null){
+                                        apiService.postFillSurvey(filled) {
+                                            if (it.toString()!=null){
+                                                Toast.makeText(
+                                                    view.context,
+                                                    "Succesfully filled survey " , Toast.LENGTH_LONG
+                                                ).show();
+                                                val action =
+                                                    LoginFragmentDirections.actionLoginFragmentToViewPagerFragment(1)
+                                                Navigation.findNavController(view).navigate(action)
+                                            }
+                                        }
+                                    }
+                                    if(survey==null&&filled==null){
+                                        val action =
+                                            LoginFragmentDirections.actionLoginFragmentToViewPagerFragment()
+                                        Navigation.findNavController(view).navigate(action)
+                                    }
+
+                                }
+
+
+
 
                             } else {
                                 Toast.makeText(

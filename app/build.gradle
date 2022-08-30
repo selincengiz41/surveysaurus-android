@@ -68,6 +68,7 @@ dependencies {
 
         implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
         implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
-
+    implementation("com.opencsv:opencsv:3.7")
+    implementation 'org.apache.commons:commons-lang3:3.6'
 
 }

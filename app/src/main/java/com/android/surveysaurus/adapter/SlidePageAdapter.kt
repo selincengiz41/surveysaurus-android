@@ -17,4 +17,5 @@ class SlidePageAdapter(list: ArrayList<Fragment>, manager: FragmentManager) :
         return fragmentList[position]
     }
 
+
 }

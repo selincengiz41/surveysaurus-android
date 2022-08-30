@@ -33,21 +33,29 @@ class ApiService {
         )
     }
 
-    fun postSignUp(signUpModel: SignUpModel, onResult: (SignUpModel?) -> Unit) {
+    fun postSignUp(signUpModel: SignUpModel, onResult: (SignUpModel?,String?) -> Unit) {
         val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
         retrofit.postSignUp(signUpModel).enqueue(
             object : Callback<SignUpModel> {
                 override fun onFailure(call: Call<SignUpModel>, t: Throwable) {
                     println(t.message)
-                    onResult(null)
+                    onResult(null,null)
                 }
 
                 override fun onResponse(call: Call<SignUpModel>, response: Response<SignUpModel>) {
                     val signUpedUser = response.body()
 
-                    println(response.message())
 
-                    onResult(signUpedUser)
+                    if(response.message().equals("OK"))
+                    {println("ok control")
+                        onResult(signUpedUser,null)
+                    }
+                    else{
+                        println("null  control")
+                        onResult(null,response.errorBody()?.string()?.substringAfter("Error:")?.dropLast(2))
+                    }
+
+
                 }
             }
         )
@@ -310,11 +318,21 @@ class ApiService {
                     call: Call<ResponseUpdate>,
                     response: Response<ResponseUpdate>
                 ) {
-                    LoginSingleton.token= response.body()!!.accessToken
-
                     println(response.message())
+                    if(response.message().toString().equals("OK"))
+                    {
+                        LoginSingleton.token= response.body()!!.accessToken
+                        onResult("Succes")
+                    }
+                    else{
 
-                    onResult("Succes")
+                        onResult(null)
+                    }
+
+
+
+
+
 
 
                 }
@@ -338,11 +356,18 @@ class ApiService {
                     call: Call<ResponseBody>,
                     response: Response<ResponseBody>
                 ) {
-
+                  if(response.message().toString().equals("OK"))
+                  {println("ok control")
+                      onResult("Success")
+                  }
+                    else{
+                      println("null  control")
+                        onResult(null)
+                  }
 
                     println(response.message())
 
-                  onResult("Succes")
+
 
                 }
             }
@@ -377,6 +402,35 @@ onResult(null)
                     onResult(user.data)
 
 
+                }
+            }
+        )
+    }
+
+    fun getMap(title: IsFilledModel, onResult: (DataMap?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.getMap(title).enqueue(
+            object : Callback<ResponseMap> {
+                override fun onFailure(
+                    call: Call<ResponseMap>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseMap>,
+                    response: Response<ResponseMap>
+                ) {
+                    var filled = response.body()?.data
+
+
+                    println(response.body()?.message)
+
+                    println(filled?.csv)
+
+                    onResult(filled)
                 }
             }
         )
