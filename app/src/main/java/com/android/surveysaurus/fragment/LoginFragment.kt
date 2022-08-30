@@ -20,7 +20,7 @@ import com.android.surveysaurus.singleton.LoginSingleton
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-
+    private var isVisible: Boolean? =false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -39,21 +39,19 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.visiblePassword.setOnTouchListener(OnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    binding.editTextTextPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)// PRESSED
-                    println("bastım")
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
-                MotionEvent.ACTION_UP -> {
-                    binding.editTextTextPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)// RELEASED
-                    println("bıraktım")
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
+        binding.visiblePassword.setOnClickListener {
+
+            if(isVisible==false){
+                binding.editTextTextPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
+                isVisible=true
             }
-            false
-        })
+            else{
+                binding.editTextTextPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
+                isVisible=false
+            }
+        }
 
 
         binding.donTHave.setOnClickListener {
