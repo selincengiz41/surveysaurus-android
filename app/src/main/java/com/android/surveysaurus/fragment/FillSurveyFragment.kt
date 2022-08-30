@@ -77,7 +77,7 @@ class FillSurveyFragment : Fragment() {
                 option1.setTextColor(Color.parseColor("#000000"))
                 option1.gravity = Gravity.CENTER
                 option1.textSize = 15f
-                binding.root.addView(option1)
+                binding.fillLayout.addView(option1)
                 optionList.add(option1)
                 val params = option1.layoutParams as ConstraintLayout.LayoutParams
                 if (item == 0)
@@ -160,13 +160,13 @@ class FillSurveyFragment : Fragment() {
                                             if (it.toString() != null) {
 
                                                 for (item in 0 until optionList.size) {
-                                                    binding.root.removeView(
+                                                    binding.fillLayout.removeView(
                                                         view.findViewById<View>(
                                                             optionList.get(item).id
                                                         )
                                                     )
 
-                                                    binding.root.removeView(binding.doneLayout)
+                                                    binding.fillLayout.removeView(binding.doneLayout)
 
                                                 }
 
@@ -180,7 +180,7 @@ class FillSurveyFragment : Fragment() {
                                                         option1.textAlignment =
                                                             View.TEXT_ALIGNMENT_TEXT_START
 
-                                                        option1.gravity = Gravity.CENTER
+                                                        option1.gravity = Gravity.START
                                                         option1.text =
                                                             survey.choices[item]+"  %" + it.data.percent.get(
                                                                 item
@@ -206,9 +206,9 @@ class FillSurveyFragment : Fragment() {
                                                             params.topToBottom =
                                                                 optionRateList.get(item - 1).id
                                                         params.startToStart = binding.rateLayout.id
-                                                        params.endToEnd = binding.rateLayout.id
-                                                        params.marginStart = dpToPx(20, view.context)
-                                                        params.marginEnd = dpToPx(20, view.context)
+
+                                                        params.marginStart = dpToPx(0, view.context)
+
                                                         params.topMargin = dpToPx(20, view.context)
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
@@ -233,7 +233,7 @@ class FillSurveyFragment : Fragment() {
                                                             survey.choices[item] +"  %"+ it?.data?.percent?.get(
                                                                 item
                                                             )
-                                                        option1.gravity = Gravity.CENTER
+                                                        option1.gravity = Gravity.START
                                                         option1.setBackgroundResource(R.drawable.unselected)
                                                         option1.setTextColor(Color.parseColor("#000000"))
                                                         option1.textSize = 15f
@@ -255,10 +255,10 @@ class FillSurveyFragment : Fragment() {
                                                             params.topToBottom =
                                                                 optionRateList.get(item - 1).id
                                                         params.startToStart = binding.rateLayout.id
-                                                        params.endToEnd = binding.rateLayout.id
+
                                                         params.topMargin = dpToPx(20, view.context)
-                                                         params.marginStart = dpToPx(20, view.context)
-                                                       params.marginEnd = dpToPx(20, view.context)
+                                                         params.marginStart = dpToPx(0, view.context)
+
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
                                                         if(it?.data?.percent?.get(item)==0||it?.data?.percent?.get(item)==null){
