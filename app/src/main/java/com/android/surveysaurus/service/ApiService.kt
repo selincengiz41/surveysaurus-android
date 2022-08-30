@@ -33,21 +33,29 @@ class ApiService {
         )
     }
 
-    fun postSignUp(signUpModel: SignUpModel, onResult: (SignUpModel?) -> Unit) {
+    fun postSignUp(signUpModel: SignUpModel, onResult: (SignUpModel?,String?) -> Unit) {
         val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
         retrofit.postSignUp(signUpModel).enqueue(
             object : Callback<SignUpModel> {
                 override fun onFailure(call: Call<SignUpModel>, t: Throwable) {
                     println(t.message)
-                    onResult(null)
+                    onResult(null,null)
                 }
 
                 override fun onResponse(call: Call<SignUpModel>, response: Response<SignUpModel>) {
                     val signUpedUser = response.body()
 
-                    println(response.message())
 
-                    onResult(signUpedUser)
+                    if(response.message().equals("OK"))
+                    {println("ok control")
+                        onResult(signUpedUser,null)
+                    }
+                    else{
+                        println("null  control")
+                        onResult(null,response.errorBody()?.string()?.substringAfter("Error:")?.dropLast(2))
+                    }
+
+
                 }
             }
         )
