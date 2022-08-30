@@ -1,13 +1,9 @@
-name: Android-CI-CD
+name: Android-CD
 
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-    paths:
-    - '**'
-    - '.github/workflows/Android-CI-CD.yml'
+  
   workflow_dispatch:
     inputs:
       logLevel:
