@@ -82,7 +82,7 @@ class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
             if (isThereAdditional) {
                 val holder: OptionAdapter.OptionHolder
                 holder =
-                    OptionAdapter.OptionHolder(binding = AddOptionLayBinding.bind(binding.root))
+                    OptionAdapter.OptionHolder(binding = AddOptionLayBinding.bind(binding.addedLayout))
                 for (item in 0 until optionAdapter.itemCount) {
                     val addition = binding.additionalOptions
                         .findViewHolderForAdapterPosition(item)
