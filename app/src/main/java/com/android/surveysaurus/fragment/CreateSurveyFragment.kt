@@ -30,6 +30,7 @@ class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
     private var optionList: ArrayList<String> = ArrayList()
     private lateinit var optionAdapter: OptionAdapter
     private val optionSize: ArrayList<Int> = ArrayList()
+    private var isNullOption=false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,7 +83,7 @@ class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
             if (isThereAdditional) {
                 val holder: OptionAdapter.OptionHolder
                 holder =
-                    OptionAdapter.OptionHolder(binding = AddOptionLayBinding.bind(binding.root))
+                    OptionAdapter.OptionHolder(binding = AddOptionLayBinding.bind(binding.addedLayout))
                 for (item in 0 until optionAdapter.itemCount) {
                     val addition = binding.additionalOptions
                         .findViewHolderForAdapterPosition(item)
@@ -90,46 +91,59 @@ class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
                         ?.findViewById<TextView>(com.android.surveysaurus.R.id.add_optional)
                         ?.text
 
-                    if (!addition.toString().isNullOrEmpty())
+                  if (!addition.toString().isNullOrEmpty())
                         optionList.add(addition.toString())
+                    else
+                        isNullOption=true
+
                 }
             }
+
             if (!question.isNullOrEmpty() && optionList.size >= 2 && !title.isNullOrEmpty()) {
-                if (LoginSingleton.isLogin) {
+                if(!isNullOption){
+                    if (LoginSingleton.isLogin) {
 
-                    try {
+                        try {
 
-                        val apiService = ApiService()
+                            val apiService = ApiService()
 
-                        var surveyModel: SurveyModel = SurveyModel(question, title, optionList)
-                        apiService.postCreateSurvey(surveyModel) {
+                            var surveyModel: SurveyModel = SurveyModel(question, title, optionList)
+                            apiService.postCreateSurvey(surveyModel) {
 
-                            if (it.toString() != null) {
-                                Toast.makeText(
-                                    view.context,
-                                    "Succesful", Toast.LENGTH_SHORT
-                                ).show();
-                                val action =
-                                    CreateSurveyFragmentDirections.actionCreateSurveyFragmentToMySurveyFragment()
-                                Navigation.findNavController(view).navigate(action)
-                            } else {
-                                Toast.makeText(
-                                    view.context,
-                                    "Fail", Toast.LENGTH_SHORT
-                                ).show();
+                                if (it.toString() != null) {
+                                    Toast.makeText(
+                                        view.context,
+                                        "Succesful", Toast.LENGTH_SHORT
+                                    ).show();
+                                    val action =
+                                        CreateSurveyFragmentDirections.actionCreateSurveyFragmentToMySurveyFragment()
+                                    Navigation.findNavController(view).navigate(action)
+                                } else {
+                                    Toast.makeText(
+                                        view.context,
+                                        "Fail", Toast.LENGTH_SHORT
+                                    ).show();
+
+                                }
 
                             }
-
+                        } catch (e: Exception) {
+                            e.printStackTrace()
                         }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
+                    } else {
+                        var surveyModel: SurveyModel = SurveyModel(question, title, optionList)
+                        val action =
+                            CreateSurveyFragmentDirections.actionCreateSurveyFragmentToLoginFragment(surveyModel)
+                        Navigation.findNavController(it).navigate(action)
                     }
-                } else {
-                    var surveyModel: SurveyModel = SurveyModel(question, title, optionList)
-                    val action =
-                        CreateSurveyFragmentDirections.actionCreateSurveyFragmentToLoginFragment(surveyModel)
-                    Navigation.findNavController(it).navigate(action)
                 }
+                else{
+                    Toast.makeText(
+                        view.context,
+                        "Do not left blank option", Toast.LENGTH_SHORT
+                    ).show();
+                }
+
             } else {
                 Toast.makeText(
                     view.context,
@@ -144,8 +158,10 @@ class CreateSurveyFragment : Fragment(), OptionAdapter.Listener {
     }
 
     override fun onItemClick(optionList: ArrayList<Int>) {
+
         if (optionList.size == 0)
             isThereAdditional = false
+        isNullOption=false
     }
 /*
      override fun onPause() {

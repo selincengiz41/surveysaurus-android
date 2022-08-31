@@ -1,10 +1,13 @@
 package com.android.surveysaurus.adapter
 
+import android.graphics.Color
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View.generateViewId
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.android.surveysaurus.R
@@ -49,6 +52,15 @@ class SurveyAdapter(
                 val option1: TextView = TextView(holder.binding.root.context)
                 option1.id = generateViewId()
                 option1.text = surveyList.get(position).choices.get(item)
+                option1.setTextColor(Color.parseColor("#000000"))
+                option1.textSize=10f
+                val typeface: Typeface? =
+                    ResourcesCompat.getFont(
+                        holder.binding.root.context!!,
+                        com.android.surveysaurus.R.font.laila_medium
+                    )
+                option1.setTypeface(typeface)
+                option1.compoundDrawablePadding=20
                 option1.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     R.drawable.elipse26,
                     0,
@@ -64,7 +76,7 @@ class SurveyAdapter(
                     params.topToBottom = optionList.get(item - 1).id
                 params.startToStart = holder.binding.surveyLayout.id
                 params.marginStart = 30
-                params.topMargin = 5
+                params.topMargin = 20
                 option1.requestLayout()
             }
         } else {

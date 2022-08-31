@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
     paths:
     - '**'
-    - '.github/workflows/Android-Action.yml'
+    - '.github/workflows/Android-CI.yml'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -34,4 +34,5 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+      
    

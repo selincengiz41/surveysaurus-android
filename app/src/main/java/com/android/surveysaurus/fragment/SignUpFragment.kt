@@ -19,6 +19,7 @@ import com.android.surveysaurus.databinding.FragmentSignUpBinding
 import com.android.surveysaurus.model.CountryModel
 import com.android.surveysaurus.model.SignUpModel
 import com.android.surveysaurus.service.ApiService
+import java.util.regex.Pattern
 
 
 class SignUpFragment : Fragment(), OnItemClickListener {
@@ -67,18 +68,13 @@ class SignUpFragment : Fragment(), OnItemClickListener {
         }
 
 
-        val spinnerGender: Spinner = view.findViewById(R.id.spinner_gender)
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
+
+        val genderAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
             view.context,
-            R.array.Genders,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinnerGender.adapter = adapter
-        }
+            android.R.layout.simple_dropdown_item_1line,
+            getResources().getStringArray(R.array.Genders)
+        )
+        binding.spinnerGender.setAdapter(genderAdapter)
 
 
         return view
@@ -86,7 +82,9 @@ class SignUpFragment : Fragment(), OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.spinnerGender.setOnClickListener {
+            binding.spinnerGender.showDropDown()
+        }
 
         binding.spinnerCity.setOnClickListener {
             binding.spinnerCity.showDropDown()
@@ -135,7 +133,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
             val email = binding.editTextTextEmailAddress.text
             val password = binding.editTextTextPassword.text.toString()
             val confirmPassword = binding.editTextTextPassword2.text.toString()
-            val gender = binding.spinnerGender.selectedItem.toString()
+            val gender = binding.spinnerGender.text.toString()
             val country = binding.spinnerCountry.text.toString()
             val city = binding.spinnerCity.text.toString()
             if (!name.isNullOrEmpty() && !email.isNullOrEmpty() && !password.isNullOrEmpty() && !gender.isNullOrEmpty() &&
@@ -158,6 +156,19 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                         "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
                     ).show()
                 }
+                else if(password.contains(" ")){
+                    Toast.makeText(
+                        view.context,
+                        "Do not left spaces in your password", Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else if(!isValidPasswordFormat(password)){
+                    Toast.makeText(
+                        view.context,
+                        "Enter your password in accordance with the password format ", Toast.LENGTH_SHORT
+                    ).show()
+                }
+
                 else {
                     try {
                         val apiService = ApiService()
@@ -183,7 +194,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                             } else {
                                 Toast.makeText(
                                     view.context,
-                                    str, Toast.LENGTH_SHORT
+                                    str, Toast.LENGTH_LONG
                                 ).show();
 
                             }
@@ -276,6 +287,17 @@ class SignUpFragment : Fragment(), OnItemClickListener {
         }
 
     }
-
+    fun isValidPasswordFormat(password: String): Boolean {
+        val passwordREGEX = Pattern.compile("^" +
+                "(?=.*[0-9])" +         //at least 1 digit
+                "(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                "(?=.*[@#$%^&+=])" +
+                //no white spaces
+                ".{8,}" +
+                "$");
+        return passwordREGEX.matcher(password).matches()
+    }
 
 }

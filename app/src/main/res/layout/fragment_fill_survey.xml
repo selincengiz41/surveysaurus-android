@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragment.FillSurveyFragment"
+
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:id="@+id/fill_layout"
-    tools:context=".fragment.FillSurveyFragment">
+    >
 
     <!--
       <ImageView
@@ -37,15 +43,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="250dp"
         android:fontFamily="@font/inter_bold"
         android:gravity="top"
         android:text="Options"
         android:textColor="@color/black"
         android:textColorHighlight="@color/black"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/question_fill"
         app:layout_constraintTop_toBottomOf="@+id/add_title_layout_fill" />
 
     <TextView
@@ -55,14 +59,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="250dp"
         android:fontFamily="@font/inter_bold"
         android:gravity="top"
         android:text="Question"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/add_question_layout_fill"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
@@ -174,9 +176,9 @@
         android:id="@+id/rate_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/options_fill">
@@ -195,3 +197,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

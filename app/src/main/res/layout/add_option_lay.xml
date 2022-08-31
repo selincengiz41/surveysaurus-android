@@ -27,7 +27,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-
+            android:background="@null"
             android:fontFamily="@font/inter_regular"
             android:gravity="center"
             android:hint="Add Your Option"
