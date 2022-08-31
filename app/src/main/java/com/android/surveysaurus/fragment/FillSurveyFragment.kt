@@ -72,11 +72,12 @@ class FillSurveyFragment : Fragment() {
                 option1.text = survey.choices[item]
                 option1.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.vector3, 0, 0, 0)
                 option1.setPaddingRelative(20, 0, 0, 0)
+                option1.compoundDrawablePadding=20
                 option1.setBackgroundResource(R.drawable.question)
                 option1.setTextColor(Color.parseColor("#000000"))
                 option1.gravity = Gravity.CENTER
                 option1.textSize = 15f
-                binding.root.addView(option1)
+                binding.fillLayout.addView(option1)
                 optionList.add(option1)
                 val params = option1.layoutParams as ConstraintLayout.LayoutParams
                 if (item == 0)
@@ -93,6 +94,11 @@ class FillSurveyFragment : Fragment() {
             params.topToBottom = optionList.get(optionList.lastIndex).id
             params.topMargin = 40
             binding.doneLayout.requestLayout()
+
+            val paramsWorld = binding.worldLayout.layoutParams as ConstraintLayout.LayoutParams
+            paramsWorld.topToBottom = optionList.get(optionList.lastIndex).id
+            paramsWorld.topMargin = 80
+            binding.worldLayout.requestLayout()
 
 
 
@@ -128,7 +134,7 @@ class FillSurveyFragment : Fragment() {
                 }
             }
 
-            binding.doneButton.setOnClickListener {
+            binding.doneLayout.setOnClickListener {
                 if (index != null) {
                     if (LoginSingleton.isLogin) {
 
@@ -154,13 +160,13 @@ class FillSurveyFragment : Fragment() {
                                             if (it.toString() != null) {
 
                                                 for (item in 0 until optionList.size) {
-                                                    binding.root.removeView(
+                                                    binding.fillLayout.removeView(
                                                         view.findViewById<View>(
                                                             optionList.get(item).id
                                                         )
                                                     )
 
-                                                    binding.root.removeView(binding.doneLayout)
+                                                    binding.fillLayout.removeView(binding.doneLayout)
 
                                                 }
 
@@ -174,7 +180,7 @@ class FillSurveyFragment : Fragment() {
                                                         option1.textAlignment =
                                                             View.TEXT_ALIGNMENT_TEXT_START
 
-                                                        option1.gravity = Gravity.CENTER
+                                                        option1.gravity = Gravity.START
                                                         option1.text =
                                                             survey.choices[item]+"  %" + it.data.percent.get(
                                                                 item
@@ -189,7 +195,7 @@ class FillSurveyFragment : Fragment() {
                                                         option1.setBackgroundResource(R.drawable.selected)
                                                         option1.setTextColor(Color.parseColor("#000000"))
                                                         option1.textSize = 15f
-                                                        binding.root.addView(option1)
+                                                        binding.rateLayout.addView(option1)
                                                         optionRateList.add(option1)
                                                         val params =
                                                             option1.layoutParams as ConstraintLayout.LayoutParams
@@ -199,10 +205,10 @@ class FillSurveyFragment : Fragment() {
                                                         else
                                                             params.topToBottom =
                                                                 optionRateList.get(item - 1).id
-                                                        params.startToStart = binding.fillLayout.id
-                                                        params.endToEnd = binding.fillLayout.id
-                                                        params.marginStart = dpToPx(20, view.context)
-                                                        params.marginEnd = dpToPx(20, view.context)
+                                                        params.startToStart = binding.rateLayout.id
+
+                                                        params.marginStart = dpToPx(0, view.context)
+
                                                         params.topMargin = dpToPx(20, view.context)
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
@@ -227,7 +233,7 @@ class FillSurveyFragment : Fragment() {
                                                             survey.choices[item] +"  %"+ it?.data?.percent?.get(
                                                                 item
                                                             )
-                                                        option1.gravity = Gravity.CENTER
+                                                        option1.gravity = Gravity.START
                                                         option1.setBackgroundResource(R.drawable.unselected)
                                                         option1.setTextColor(Color.parseColor("#000000"))
                                                         option1.textSize = 15f
@@ -238,7 +244,7 @@ class FillSurveyFragment : Fragment() {
                                                             )
                                                         option1.setTypeface(typeface)
                                                         option1.setPadding(20, 0, 0, 0)
-                                                        binding.root.addView(option1)
+                                                        binding.rateLayout.addView(option1)
                                                         optionRateList.add(option1)
                                                         val params =
                                                             option1.layoutParams as ConstraintLayout.LayoutParams
@@ -248,11 +254,11 @@ class FillSurveyFragment : Fragment() {
                                                         else
                                                             params.topToBottom =
                                                                 optionRateList.get(item - 1).id
-                                                        params.startToStart = binding.fillLayout.id
-                                                        params.endToEnd = binding.fillLayout.id
+                                                        params.startToStart = binding.rateLayout.id
+
                                                         params.topMargin = dpToPx(20, view.context)
-                                                         params.marginStart = dpToPx(20, view.context)
-                                                       params.marginEnd = dpToPx(20, view.context)
+                                                         params.marginStart = dpToPx(0, view.context)
+
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
                                                         if(it?.data?.percent?.get(item)==0||it?.data?.percent?.get(item)==null){
@@ -268,15 +274,11 @@ class FillSurveyFragment : Fragment() {
                                                     }
                                                 }
 
-                                                binding.addComment.visibility = View.VISIBLE
-                                                val params =
-                                                    binding.addComment.layoutParams as ConstraintLayout.LayoutParams
-                                                params.topToBottom =
-                                                    optionRateList.get(optionRateList.lastIndex).id
-                                                params.topMargin = 40
-
-
-                                                binding.addComment.requestLayout()
+                                               binding.optionsFill.text="Rates"
+                                                val paramsWorld = binding.worldLayout.layoutParams as ConstraintLayout.LayoutParams
+                                                paramsWorld.topToBottom = optionList.get(optionRateList.lastIndex).id
+                                                paramsWorld.topMargin = 40
+                                                binding.worldLayout.requestLayout()
 
                                                 /*  for(item in 0 until optionRateList.size){
                                                       val yuzde:TextView= TextView(view.context)
@@ -323,8 +325,11 @@ class FillSurveyFragment : Fragment() {
                             e.printStackTrace()
                         }
                     } else {
+                        var fillModel: FillModel = FillModel(
+                            binding.addTitleFill.text.toString(), index!!
+                        )
                         val action =
-                            FillSurveyFragmentDirections.actionFillSurveyFragmentToLoginFragment()
+                            FillSurveyFragmentDirections.actionFillSurveyFragmentToLoginFragment(null,fillModel)
                         Navigation.findNavController(it).navigate(action)
                     }
 
@@ -336,15 +341,14 @@ class FillSurveyFragment : Fragment() {
 
             }
 
+            binding.worldLayout.setOnClickListener {
+                val intent = Intent(it.context, MapActivity::class.java)
+                intent.putExtra("title",survey.title)
+                startActivity(intent)
 
+            }
         }
-binding.worldLayout.setOnClickListener {
-    val intent = Intent(it.context, MapActivity::class.java)
-    startActivity(intent)
-   /* val action =
-        FillSurveyFragmentDirections.actionFillSurveyFragmentToMapFragment()
-    Navigation.findNavController(it).navigate(action)*/
-}
+
 
     }
 

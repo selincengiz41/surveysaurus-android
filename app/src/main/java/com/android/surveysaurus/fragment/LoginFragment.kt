@@ -20,7 +20,7 @@ import com.android.surveysaurus.singleton.LoginSingleton
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-
+    private var isVisible: Boolean? =false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -39,21 +39,19 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.visiblePassword.setOnTouchListener(OnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    binding.editTextTextPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD)// PRESSED
-                    println("bastım")
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
-                MotionEvent.ACTION_UP -> {
-                    binding.editTextTextPassword.setInputType(InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)// RELEASED
-                    println("bıraktım")
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
+        binding.visiblePassword.setOnClickListener {
+
+            if(isVisible==false){
+                binding.editTextTextPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
+                isVisible=true
             }
-            false
-        })
+            else{
+                binding.editTextTextPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
+                isVisible=false
+            }
+        }
 
 
         binding.donTHave.setOnClickListener {
@@ -114,9 +112,46 @@ class LoginFragment : Fragment() {
                                 ).show();
                                 LoginSingleton.isLogin = true
                                 (activity as MainActivity?)!!.MenuController()
-                                val action =
-                                    LoginFragmentDirections.actionLoginFragmentToCreateSurveyFragment()
-                                Navigation.findNavController(view).navigate(action)
+                                arguments?.let {
+                                    val survey = LoginFragmentArgs.fromBundle(it).survey
+                                    val filled = LoginFragmentArgs.fromBundle(it).filled
+                                    if(survey!=null){
+                                        apiService.postCreateSurvey(survey){
+                                            if (it.toString()!=null){
+                                                Toast.makeText(
+                                                    view.context,
+                                                    "Succesfully created survey " , Toast.LENGTH_LONG
+                                                ).show();
+                                                val action =
+                                                    LoginFragmentDirections.actionLoginFragmentToCreateSurveyFragment()
+                                                Navigation.findNavController(view).navigate(action)
+                                            }
+
+                                        }
+                                    }
+                                    if(filled!=null){
+                                        apiService.postFillSurvey(filled) {
+                                            if (it.toString()!=null){
+                                                Toast.makeText(
+                                                    view.context,
+                                                    "Succesfully filled survey " , Toast.LENGTH_LONG
+                                                ).show();
+                                                val action =
+                                                    LoginFragmentDirections.actionLoginFragmentToViewPagerFragment(1)
+                                                Navigation.findNavController(view).navigate(action)
+                                            }
+                                        }
+                                    }
+                                    if(survey==null&&filled==null){
+                                        val action =
+                                            LoginFragmentDirections.actionLoginFragmentToViewPagerFragment()
+                                        Navigation.findNavController(view).navigate(action)
+                                    }
+
+                                }
+
+
+
 
                             } else {
                                 Toast.makeText(

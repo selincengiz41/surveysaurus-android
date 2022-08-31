@@ -19,13 +19,17 @@ import com.android.surveysaurus.databinding.FragmentSignUpBinding
 import com.android.surveysaurus.model.CountryModel
 import com.android.surveysaurus.model.SignUpModel
 import com.android.surveysaurus.service.ApiService
+import java.util.regex.Pattern
 
 
 class SignUpFragment : Fragment(), OnItemClickListener {
 
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
+    private var isVisible: Boolean? =false
+    private var isVisible2: Boolean? =false
     private val mainActivity: MainActivity = MainActivity()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -64,18 +68,13 @@ class SignUpFragment : Fragment(), OnItemClickListener {
         }
 
 
-        val spinnerGender: Spinner = view.findViewById(R.id.spinner_gender)
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
+
+        val genderAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
             view.context,
-            R.array.Genders,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinnerGender.adapter = adapter
-        }
+            android.R.layout.simple_dropdown_item_1line,
+            getResources().getStringArray(R.array.Genders)
+        )
+        binding.spinnerGender.setAdapter(genderAdapter)
 
 
         return view
@@ -83,7 +82,9 @@ class SignUpFragment : Fragment(), OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.spinnerGender.setOnClickListener {
+            binding.spinnerGender.showDropDown()
+        }
 
         binding.spinnerCity.setOnClickListener {
             binding.spinnerCity.showDropDown()
@@ -93,39 +94,32 @@ class SignUpFragment : Fragment(), OnItemClickListener {
         }
 
         binding.spinnerCountry.setOnItemClickListener(this)
+        binding.visiblePassword.setOnClickListener {
 
-        binding.visiblePassword.setOnTouchListener(View.OnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    binding.editTextTextPassword.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
-                MotionEvent.ACTION_UP -> {
-                    binding.editTextTextPassword.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
+            if(isVisible==false){
+                binding.editTextTextPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
+           isVisible=true
             }
-            false
-        })
-
-        binding.visiblePassword2.setOnTouchListener(View.OnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    binding.editTextTextPassword2.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
-                MotionEvent.ACTION_UP -> {
-                    binding.editTextTextPassword2.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
+           else{
+                binding.editTextTextPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
+                isVisible=false
             }
-            false
-        })
+        }
+        binding.visiblePassword2.setOnClickListener {
 
+            if(isVisible2==false){
+                binding.editTextTextPassword2.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
+                isVisible2=true
+            }
+            else{
+                binding.editTextTextPassword2.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
+                isVisible2=false
+            }
+        }
 
 
 
@@ -139,7 +133,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
             val email = binding.editTextTextEmailAddress.text
             val password = binding.editTextTextPassword.text.toString()
             val confirmPassword = binding.editTextTextPassword2.text.toString()
-            val gender = binding.spinnerGender.selectedItem.toString()
+            val gender = binding.spinnerGender.text.toString()
             val country = binding.spinnerCountry.text.toString()
             val city = binding.spinnerCity.text.toString()
             if (!name.isNullOrEmpty() && !email.isNullOrEmpty() && !password.isNullOrEmpty() && !gender.isNullOrEmpty() &&
@@ -162,6 +156,19 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                         "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
                     ).show()
                 }
+                else if(password.contains(" ")){
+                    Toast.makeText(
+                        view.context,
+                        "Do not left spaces in your password", Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else if(!isValidPasswordFormat(password)){
+                    Toast.makeText(
+                        view.context,
+                        "Enter your password in accordance with the password format ", Toast.LENGTH_SHORT
+                    ).show()
+                }
+
                 else {
                     try {
                         val apiService = ApiService()
@@ -174,9 +181,9 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                             city
                         )
 
-                        apiService.postSignUp(signUpModel) {
+                        apiService.postSignUp(signUpModel) { it,str ->
 
-                            if (it.toString() != null) {
+                            if (it != null) {
                                 Toast.makeText(
                                     view.context,
                                     "Succesful", Toast.LENGTH_SHORT
@@ -187,7 +194,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                             } else {
                                 Toast.makeText(
                                     view.context,
-                                    "Fail", Toast.LENGTH_SHORT
+                                    str, Toast.LENGTH_LONG
                                 ).show();
 
                             }
@@ -280,6 +287,17 @@ class SignUpFragment : Fragment(), OnItemClickListener {
         }
 
     }
-
+    fun isValidPasswordFormat(password: String): Boolean {
+        val passwordREGEX = Pattern.compile("^" +
+                "(?=.*[0-9])" +         //at least 1 digit
+                "(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                "(?=.*[@#$%^&+=])" +
+                //no white spaces
+                ".{8,}" +
+                "$");
+        return passwordREGEX.matcher(password).matches()
+    }
 
 }

@@ -11,4 +11,4 @@ data class FillModel
     @SerializedName("answer")
     val answer :Number,
 
-    )
+    ):Serializable

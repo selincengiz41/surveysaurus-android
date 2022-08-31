@@ -1,40 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragment.FillSurveyFragment"
+
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:id="@+id/fill_layout"
-    tools:context=".fragment.FillSurveyFragment">
+    >
 
-    <RelativeLayout
-        android:id="@+id/done_layout"
-        android:layout_width="0px"
-        android:layout_height="28dp"
-        android:layout_weight="0.5"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="180dp"
-        android:background="@drawable/create_button"
-        android:elevation="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/swipe_for_comments"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/done_button"
-            android:layout_width="match_parent"
-
-            android:layout_height="match_parent"
-            android:fontFamily="@font/inter_bold"
-            android:gravity="center"
-            android:text="Done"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
-    </RelativeLayout>
     <!--
       <ImageView
 
@@ -63,15 +43,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="250dp"
         android:fontFamily="@font/inter_bold"
         android:gravity="top"
         android:text="Options"
         android:textColor="@color/black"
         android:textColorHighlight="@color/black"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/question_fill"
         app:layout_constraintTop_toBottomOf="@+id/add_title_layout_fill" />
 
     <TextView
@@ -81,14 +59,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="250dp"
         android:fontFamily="@font/inter_bold"
         android:gravity="top"
         android:text="Question"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/add_question_layout_fill"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
@@ -161,27 +137,11 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/swipe_for_comments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginEnd="105dp"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="@font/laila_medium"
-        android:text="@string/swipe_for_comments"
-        android:textColor="#E49192"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/world_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        app:layout_constraintBottom_toTopOf="@+id/swipe_for_comments"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -212,16 +172,29 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rate_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/options_fill">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageView
-        android:id="@+id/add_comment"
+        android:id="@+id/done_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
-        android:src="@drawable/add_comment"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/swipe_for_comments"
+        android:layout_marginBottom="-20dp"
+        android:src="@drawable/done_button"
+        app:layout_constraintBottom_toTopOf="@+id/world_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

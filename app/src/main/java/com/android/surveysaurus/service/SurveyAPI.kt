@@ -48,4 +48,8 @@ interface SurveyAPI {
 
     @GET("api/profile/getinfo")
     fun getUserInfo(@Header("authorization") token: String): Call<ResponseUser>
+
+    @POST("api/map/getmap")
+    fun getMap(@Body title: IsFilledModel): Call<ResponseMap>
+
 }

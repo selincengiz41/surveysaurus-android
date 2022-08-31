@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.android.surveysaurus.databinding.AddOptionLayBinding
 import com.android.surveysaurus.model.ListedSurvey
+import okhttp3.internal.notifyAll
 
 class OptionAdapter(private val optionList: ArrayList<Int>, private val listener: Listener) :
     RecyclerView.Adapter<OptionAdapter.OptionHolder>() {
@@ -30,7 +31,9 @@ class OptionAdapter(private val optionList: ArrayList<Int>, private val listener
             optionList.removeAt(position)
 
             notifyItemRemoved(position)
-            notifyItemRangeChanged(position, optionList.size)
+
+          notifyItemRangeChanged(position, optionList.size)
+            notifyDataSetChanged()
             listener.onItemClick(optionList)
 
         }

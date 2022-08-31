@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_createSurveyFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_createSurveyFragment_to_mySurveyFragment"
+            app:destination="@id/mySurveyFragment" />
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -25,6 +28,10 @@
         <action
             android:id="@+id/action_viewPagerFragment_to_fillSurveyFragment"
             app:destination="@id/fillSurveyFragment" />
+        <argument
+            android:name="index"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -40,6 +47,19 @@
         <action
             android:id="@+id/action_loginFragment_to_surveysFragment"
             app:destination="@id/surveysFragment" />
+        <argument
+            android:name="survey"
+            app:argType="com.android.surveysaurus.model.SurveyModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="filled"
+            app:argType="com.android.surveysaurus.model.FillModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_loginFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
