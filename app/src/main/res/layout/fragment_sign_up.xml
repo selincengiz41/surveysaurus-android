@@ -34,7 +34,8 @@
         android:ems="10"
         android:fontFamily="@font/inter_medium"
         android:inputType="textPassword"
-        android:textSize="10dp"
+        android:paddingStart="5dp"
+        android:textSize="12dp"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:ignore="TouchTargetSizeCheck" />
@@ -98,7 +99,8 @@
         android:completionThreshold="1"
         android:contentDescription="@string/Login"
         android:fontFamily="@font/inter_medium"
-        android:textSize="10dp"
+        android:paddingStart="5dp"
+        android:textSize="12dp"
         app:layout_constraintStart_toStartOf="@+id/city_textview2"
         app:layout_constraintTop_toBottomOf="@+id/city_textview2"
         tools:ignore="TouchTargetSizeCheck" />
@@ -113,7 +115,8 @@
         android:completionThreshold="1"
         android:contentDescription="@string/Login"
         android:fontFamily="@font/inter_medium"
-        android:textSize="10dp"
+        android:paddingStart="5dp"
+        android:textSize="12dp"
         app:layout_constraintStart_toStartOf="@+id/country_textview3"
         app:layout_constraintTop_toBottomOf="@+id/country_textview3"
         tools:ignore="TouchTargetSizeCheck" />
@@ -140,7 +143,8 @@
         android:background="@drawable/rounded_text"
         android:contentDescription="@string/Login"
         android:fontFamily="@font/inter_medium"
-        android:textSize="10dp"
+        android:paddingStart="5dp"
+        android:textSize="12dp"
         app:layout_constraintStart_toStartOf="@+id/gender_textview"
         app:layout_constraintTop_toBottomOf="@+id/gender_textview"
         tools:ignore="TouchTargetSizeCheck" />
@@ -168,7 +172,7 @@
         android:hint="@string/Enter_your_mail_adress"
         android:inputType="textEmailAddress"
         android:paddingStart="5dp"
-        android:textSize="10dp"
+        android:textSize="12dp"
         app:layout_constraintStart_toStartOf="@+id/mail_textview"
         app:layout_constraintTop_toBottomOf="@+id/mail_textview" />
 
@@ -200,7 +204,7 @@
         android:hint="@string/Enter_name"
         android:inputType="textEmailAddress"
         android:paddingStart="5dp"
-        android:textSize="10dp"
+        android:textSize="12dp"
         app:layout_constraintStart_toStartOf="@+id/textView_mail"
         app:layout_constraintTop_toBottomOf="@+id/textView_mail" />
 
@@ -265,7 +269,8 @@
         android:ems="10"
         android:fontFamily="@font/inter_medium"
         android:inputType="textPassword"
-        android:textSize="10dp"
+        android:paddingStart="5dp"
+        android:textSize="12dp"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="TouchTargetSizeCheck" />
