@@ -19,6 +19,7 @@ import com.android.surveysaurus.databinding.FragmentSignUpBinding
 import com.android.surveysaurus.model.CountryModel
 import com.android.surveysaurus.model.SignUpModel
 import com.android.surveysaurus.service.ApiService
+import java.util.regex.Pattern
 
 
 class SignUpFragment : Fragment(), OnItemClickListener {
@@ -158,6 +159,19 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                         "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
                     ).show()
                 }
+                else if(password.contains(" ")){
+                    Toast.makeText(
+                        view.context,
+                        "Do not left spaces in your password", Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else if(!isValidPasswordFormat(password)){
+                    Toast.makeText(
+                        view.context,
+                        "Enter your password in accordance with the password format ", Toast.LENGTH_SHORT
+                    ).show()
+                }
+
                 else {
                     try {
                         val apiService = ApiService()
@@ -183,7 +197,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                             } else {
                                 Toast.makeText(
                                     view.context,
-                                    str, Toast.LENGTH_SHORT
+                                    str, Toast.LENGTH_LONG
                                 ).show();
 
                             }
@@ -276,6 +290,17 @@ class SignUpFragment : Fragment(), OnItemClickListener {
         }
 
     }
-
+    fun isValidPasswordFormat(password: String): Boolean {
+        val passwordREGEX = Pattern.compile("^" +
+                "(?=.*[0-9])" +         //at least 1 digit
+                "(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                "(?=.*[@#$%^&+=])" +
+                //no white spaces
+                ".{8,}" +
+                "$");
+        return passwordREGEX.matcher(password).matches()
+    }
 
 }

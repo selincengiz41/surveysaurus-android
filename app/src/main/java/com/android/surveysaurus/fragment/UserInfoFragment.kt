@@ -19,11 +19,14 @@ import com.android.surveysaurus.model.PasswordModel
 import com.android.surveysaurus.model.UpdateModel
 import com.android.surveysaurus.service.ApiService
 import com.android.surveysaurus.singleton.LoginSingleton
+import java.util.regex.Pattern
 
 
 class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
     private var _binding: FragmentUserInfoBinding? = null
     private val binding get() = _binding!!
+    private var isVisible: Boolean? =false
+    private var isVisible2: Boolean? =false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         try {
@@ -99,36 +102,33 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.visiblePassword8.setOnTouchListener(View.OnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    binding.editTextTextPassword6.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
-                MotionEvent.ACTION_UP -> {
-                    binding.editTextTextPassword6.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
+        binding.visiblePassword8.setOnClickListener {
+
+            if(isVisible==false){
+                binding.editTextTextPassword6.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
+                isVisible=true
             }
-            false
-        })
-        binding.visiblePassword7.setOnTouchListener(View.OnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    binding.editTextTextPassword7.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
-                MotionEvent.ACTION_UP -> {
-                    binding.editTextTextPassword7.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
-                    return@OnTouchListener true
-                }// if you want to handle the touch event
+            else{
+                binding.editTextTextPassword6.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
+                isVisible=false
             }
-            false
-        })
+        }
+        binding.visiblePassword7.setOnClickListener {
+
+            if(isVisible2==false){
+                binding.editTextTextPassword7.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD// PRESSED
+                isVisible2=true
+            }
+            else{
+                binding.editTextTextPassword7.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD// RELEASED
+                isVisible2=false
+            }
+        }
+
         binding.spinnerCountry4.setOnItemClickListener(this)
         binding.spinnerCity4.setOnClickListener {
             binding.spinnerCity4.showDropDown()
@@ -181,6 +181,18 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
                                      Toast.makeText(
                                          view.context,
                                          "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
+                                     ).show()
+                                 }
+                                 else if(binding.editTextTextPassword7.text.toString().contains(" ")){
+                                     Toast.makeText(
+                                         view.context,
+                                         "Do not left spaces in your password", Toast.LENGTH_SHORT
+                                     ).show()
+                                 }
+                                 else if(!isValidPasswordFormat(binding.editTextTextPassword7.text.toString())){
+                                     Toast.makeText(
+                                         view.context,
+                                         "Enter your password in accordance with the password format ", Toast.LENGTH_SHORT
                                      ).show()
                                  }
                                  else{
@@ -266,6 +278,17 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
             e.printStackTrace()
         }
     }
-
+    fun isValidPasswordFormat(password: String): Boolean {
+        val passwordREGEX = Pattern.compile("^" +
+                "(?=.*[0-9])" +         //at least 1 digit
+                "(?=.*[a-z])" +         //at least 1 lower case letter
+                "(?=.*[A-Z])" +         //at least 1 upper case letter
+                "(?=.*[a-zA-Z])" +      //any letter
+                "(?=.*[@#$%^&+=])" +
+                //no white spaces
+                ".{8,}" +
+                "$");
+        return passwordREGEX.matcher(password).matches()
+    }
 
 }
