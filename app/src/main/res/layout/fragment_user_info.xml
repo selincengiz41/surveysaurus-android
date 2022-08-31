@@ -8,20 +8,19 @@
 
     <TextView
         android:id="@+id/button2"
-        android:layout_width="202dp"
-        android:layout_height="47dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="195dp"
-        android:layout_marginTop="-90dp"
-        android:layout_marginEnd="195dp"
-        android:background="@drawable/rectangle_6"
+        android:layout_marginTop="-130dp"
+        android:background="@drawable/update"
         android:elevation="50dp"
-        android:fontFamily="@font/laila_medium"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
         android:outlineSpotShadowColor="@color/black"
         android:text="@string/Update_button"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView15" />
@@ -34,9 +33,11 @@
         android:layout_marginEnd="70dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
+        android:fontFamily="@font/inter_regular"
         android:hint="@string/Enter_your_mail_adress"
         android:inputType="textEmailAddress"
-        android:textSize="15dp"
+        android:textSize="10dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_textview3" />
 
@@ -49,6 +50,9 @@
         android:layout_marginEnd="70dp"
         android:background="@drawable/rounded_text"
         android:contentDescription="@string/Login"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="10dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_gender3"
         tools:ignore="TouchTargetSizeCheck" />
@@ -62,7 +66,10 @@
         android:layout_marginEnd="70dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
+        android:fontFamily="@font/inter_regular"
         android:inputType="textPassword"
+        android:textSize="10dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword6"
         tools:ignore="TouchTargetSizeCheck" />
@@ -76,7 +83,9 @@
         android:layout_marginEnd="70dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
+        android:fontFamily="@font/inter_regular"
         android:inputType="textPassword"
+        android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_city4"
         tools:ignore="TouchTargetSizeCheck" />
@@ -90,6 +99,9 @@
         android:layout_marginEnd="70dp"
         android:background="@drawable/rounded_text"
         android:contentDescription="@string/Login"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="10dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_country4"
         tools:ignore="TouchTargetSizeCheck" />
@@ -103,6 +115,9 @@
         android:layout_marginEnd="70dp"
         android:background="@drawable/rounded_text"
         android:contentDescription="@string/Login"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="10dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3"
         tools:ignore="TouchTargetSizeCheck" />
@@ -115,9 +130,11 @@
         android:layout_marginEnd="70dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
+        android:fontFamily="@font/inter_regular"
         android:hint="@string/Enter_name"
         android:inputType="textEmailAddress"
-        android:textSize="15dp"
+        android:textSize="10dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -159,8 +176,8 @@
 
     <View
         android:id="@+id/visible_password7"
-        android:layout_width="18dp"
-        android:layout_height="15dp"
+        android:layout_width="11dp"
+        android:layout_height="10dp"
         android:layout_marginStart="160dp"
         android:background="@drawable/eye"
         app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword7"
@@ -181,8 +198,8 @@
 
     <View
         android:id="@+id/visible_password8"
-        android:layout_width="18dp"
-        android:layout_height="15dp"
+        android:layout_width="11dp"
+        android:layout_height="10dp"
         android:layout_marginStart="160dp"
         android:background="@drawable/eye"
         app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword6"
@@ -281,7 +298,8 @@
         android:fontFamily="@font/laila_medium"
         android:text="@string/personal_info"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -294,4 +312,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editTextTextPassword7" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/bottom_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/logo"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

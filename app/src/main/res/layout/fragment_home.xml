@@ -52,13 +52,13 @@
 
     <RelativeLayout
         android:id="@+id/button_layout"
-        android:layout_width="240dp"
-        android:layout_height="33dp"
+        android:layout_width="287dp"
+        android:layout_height="81dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
 
         android:layout_marginTop="30dp"
-        android:background="@drawable/button"
+        android:background="@drawable/create_a_survey"
         android:elevation="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,12 +72,13 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/laila_medium"
             android:gravity="center_horizontal|top"
             android:text="Create A Survey"
             android:textColor="#93ABE2"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 
@@ -94,11 +95,11 @@
 
         android:textColor="#93ABE2"
         android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_layout"
 
-        />
+        app:layout_constraintTop_toBottomOf="@+id/button_layout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"

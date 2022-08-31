@@ -43,7 +43,7 @@
                 android:gravity="center"
                 android:text="Create"
                 android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:textSize="18dp" />
 
         </RelativeLayout>
 
@@ -87,14 +87,12 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="250dp"
             android:fontFamily="@font/inter_bold"
             android:gravity="top"
             android:text="Options"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/option1"
             app:layout_constraintTop_toBottomOf="@+id/add_title_layout" />
 
         <TextView
@@ -104,14 +102,12 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="250dp"
             android:fontFamily="@font/inter_bold"
             android:gravity="top"
             android:text="Question"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/add_question_layout"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
@@ -135,6 +131,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:fontFamily="@font/inter_regular"
+                android:background="@null"
                 android:gravity="center"
                 android:hint="@string/add_option_hint"
                 android:textColor="@color/black"
@@ -171,6 +168,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:fontFamily="@font/inter_regular"
+                android:background="@null"
                 android:gravity="center"
                 android:hint="@string/add_option_hint"
                 android:textColor="@color/black"
@@ -209,6 +207,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
+                android:background="@null"
                 android:fontFamily="@font/inter_regular"
                 android:gravity="center"
                 android:hint="Add Your Question"
@@ -240,7 +239,7 @@
                 android:layout_alignParentBottom="true"
                 android:fontFamily="@font/inter_regular"
                 android:gravity="center"
-
+                android:background="@null"
                 android:hint="@string/survey_name_hint"
 
                 android:textColor="@color/black"

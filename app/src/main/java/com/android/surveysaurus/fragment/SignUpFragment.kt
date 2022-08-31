@@ -68,18 +68,13 @@ class SignUpFragment : Fragment(), OnItemClickListener {
         }
 
 
-        val spinnerGender: Spinner = view.findViewById(R.id.spinner_gender)
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
+
+        val genderAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
             view.context,
-            R.array.Genders,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinnerGender.adapter = adapter
-        }
+            android.R.layout.simple_dropdown_item_1line,
+            getResources().getStringArray(R.array.Genders)
+        )
+        binding.spinnerGender.setAdapter(genderAdapter)
 
 
         return view
@@ -87,7 +82,9 @@ class SignUpFragment : Fragment(), OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.spinnerGender.setOnClickListener {
+            binding.spinnerGender.showDropDown()
+        }
 
         binding.spinnerCity.setOnClickListener {
             binding.spinnerCity.showDropDown()
@@ -136,7 +133,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
             val email = binding.editTextTextEmailAddress.text
             val password = binding.editTextTextPassword.text.toString()
             val confirmPassword = binding.editTextTextPassword2.text.toString()
-            val gender = binding.spinnerGender.selectedItem.toString()
+            val gender = binding.spinnerGender.text.toString()
             val country = binding.spinnerCountry.text.toString()
             val city = binding.spinnerCity.text.toString()
             if (!name.isNullOrEmpty() && !email.isNullOrEmpty() && !password.isNullOrEmpty() && !gender.isNullOrEmpty() &&
