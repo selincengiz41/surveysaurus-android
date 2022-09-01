@@ -29,10 +29,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
-    - name: Run a Python script
-      env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: python .test/AndroidLoginBasarili.py
       
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
