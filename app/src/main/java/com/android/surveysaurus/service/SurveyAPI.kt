@@ -53,6 +53,6 @@ interface SurveyAPI {
     fun getMap(@Body title: IsFilledModel): Call<ResponseMap>
 
     @GET("api/survey/allsurveys")
-    fun getAllSurveys(@Body queue: Int,@Header("authorization") token: String): Call<Response>
+    fun getAllSurveys(@Query("queue") queue: Int): Call<Response>
 
 }

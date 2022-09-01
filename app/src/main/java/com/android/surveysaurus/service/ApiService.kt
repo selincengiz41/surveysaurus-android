@@ -168,7 +168,7 @@ class ApiService {
 
     fun getAllSurveys(onResult: (ArrayList<ListedSurvey>?) -> Unit) {
         val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
-        retrofit.getAllSurveys(2,LoginSingleton.token).enqueue(
+        retrofit.getAllSurveys(0).enqueue(
             object : Callback<com.android.surveysaurus.model.Response> {
                 override fun onFailure(
                     call: Call<com.android.surveysaurus.model.Response>,
@@ -195,7 +195,7 @@ class ApiService {
                         listedSurveys.add(listedSurvey)
                     }
 
-                    println(response.message())
+                    println(response.message().toString())
 
                     onResult(listedSurveys)
                 }
