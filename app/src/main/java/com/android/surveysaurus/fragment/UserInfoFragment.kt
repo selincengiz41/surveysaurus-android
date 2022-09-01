@@ -27,6 +27,9 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
     private val binding get() = _binding!!
     private var isVisible: Boolean? =false
     private var isVisible2: Boolean? =false
+    private var controlCity:ArrayList<String> = ArrayList()
+    private var controlCountry :ArrayList<String> = ArrayList()
+    private var controlGender : ArrayList<String> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         try {
@@ -41,6 +44,29 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
                     binding.spinnerCity4.setText(it?.city)
                     binding.spinnerCountry4.setText(it?.country)
                     binding.spinnerGender3.setText(it?.gender)
+                    try {
+                        val apiService = ApiService()
+                        var country: CountryModel = CountryModel(it!!.country)
+
+
+                        apiService.getCity(country) {
+                            if (it.toString() != null) {
+                                val cityAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
+                                    requireView().context,
+                                    android.R.layout.simple_dropdown_item_1line,
+                                    it!!
+                                )
+                                binding.spinnerCity4.setAdapter(cityAdapter)
+                                controlCity.addAll(it)
+                                println("succes")
+                            } else {
+                                println("fail")
+                            }
+
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
                 else{
 
@@ -75,8 +101,7 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
                         it!!
                     )
                     binding.spinnerCountry4.setAdapter(countryAdapter)
-
-
+                    controlCountry.addAll(it)
                 } else {
 
 
@@ -88,12 +113,14 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
         }
 
 
+
         val genderAdapter: ArrayAdapter<*> = ArrayAdapter<String>(
             view.context,
             android.R.layout.simple_dropdown_item_1line,
             getResources().getStringArray(R.array.Genders)
         )
         binding.spinnerGender3.setAdapter(genderAdapter)
+        controlGender.addAll(getResources().getStringArray(R.array.Genders))
 
 
 
@@ -130,6 +157,7 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
         }
 
         binding.spinnerCountry4.setOnItemClickListener(this)
+
         binding.spinnerCity4.setOnClickListener {
             binding.spinnerCity4.showDropDown()
         }
@@ -155,6 +183,14 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
                      "Please do not left blank space", Toast.LENGTH_SHORT
                  ).show();
 
+             }
+            else if(!isValidInformation(binding.spinnerCountry4.text.toString()
+                 ,binding.spinnerCity4.text.toString()
+                 ,binding.spinnerGender3.text.toString())){
+                 Toast.makeText(
+                     view.context,
+                     "Please enter proper country, city and gender", Toast.LENGTH_SHORT
+                 ).show();
              }
             else{
                  try {
@@ -183,6 +219,7 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
                                          "Your password needs to contain at least 8 letters", Toast.LENGTH_SHORT
                                      ).show()
                                  }
+
                                  else if(binding.editTextTextPassword7.text.toString().contains(" ")){
                                      Toast.makeText(
                                          view.context,
@@ -255,6 +292,8 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
     }
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        controlCity.clear()
+        binding.spinnerCity4.setText("")
         try {
             val apiService = ApiService()
             var country: CountryModel = CountryModel(binding.spinnerCountry4.text.toString())
@@ -268,6 +307,7 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
                         it!!
                     )
                     binding.spinnerCity4.setAdapter(cityAdapter)
+                    controlCity.addAll(it)
                     println("succes")
                 } else {
                     println("fail")
@@ -284,11 +324,28 @@ class UserInfoFragment : Fragment(), AdapterView.OnItemClickListener {
                 "(?=.*[a-z])" +         //at least 1 lower case letter
                 "(?=.*[A-Z])" +         //at least 1 upper case letter
                 "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +
+                "(?=.*[.,])" +
                 //no white spaces
                 ".{8,}" +
                 "$");
         return passwordREGEX.matcher(password).matches()
+    }
+
+    fun isValidInformation(country: String,city :String , gender:String): Boolean {
+        for(itemCountry in 0 until controlCountry.size){
+            if (controlCountry.get(itemCountry).equals(country)){
+                for(itemCity in 0 until controlCity.size){
+                    if(controlCity.get(itemCity).equals(city)){
+                        for(itemGender in 0 until controlGender.size){
+                            if(controlGender.get(itemGender).equals(gender)){
+                                return true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false
     }
 
 }
