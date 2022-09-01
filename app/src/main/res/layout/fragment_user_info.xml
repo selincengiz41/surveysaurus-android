@@ -17,6 +17,7 @@
         android:fontFamily="@font/inter_bold"
         android:gravity="center"
         android:outlineSpotShadowColor="@color/black"
+        android:paddingBottom="10dp"
         android:text="@string/Update_button"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -46,7 +47,7 @@
         android:id="@+id/spinner_country4"
         android:layout_width="193dp"
         android:layout_height="30dp"
-
+        android:completionThreshold="1"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="70dp"
         android:background="@drawable/rounded_text"
@@ -98,7 +99,7 @@
         android:id="@+id/spinner_city4"
         android:layout_width="193dp"
         android:layout_height="30dp"
-
+        android:completionThreshold="1"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="70dp"
         android:background="@drawable/rounded_text"
@@ -217,7 +218,7 @@
     <TextView
         android:id="@+id/gender_textview3"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="19dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/laila_medium"
         android:text="@string/view_gender_info"

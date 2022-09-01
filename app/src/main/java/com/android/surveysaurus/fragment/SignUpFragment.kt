@@ -28,6 +28,9 @@ class SignUpFragment : Fragment(), OnItemClickListener {
     private val binding get() = _binding!!
     private var isVisible: Boolean? =false
     private var isVisible2: Boolean? =false
+    private var controlCity:ArrayList<String> = ArrayList()
+    private var controlCountry :ArrayList<String> = ArrayList()
+    private var controlGender : ArrayList<String> = ArrayList()
     private val mainActivity: MainActivity = MainActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +58,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                         it!!
                     )
                     binding.spinnerCountry.setAdapter(countryAdapter)
-
+                   controlCountry.addAll(it)
 
                 } else {
 
@@ -75,6 +78,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
             getResources().getStringArray(R.array.Genders)
         )
         binding.spinnerGender.setAdapter(genderAdapter)
+        controlGender.addAll( getResources().getStringArray(R.array.Genders))
 
 
         return view
@@ -144,7 +148,17 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                         view.context,
                         "Please enter a correct email", Toast.LENGTH_SHORT
                     ).show()
-                } else if (password != confirmPassword) {
+
+                }
+                else if(!isValidInformation(binding.spinnerCountry.text.toString()
+                        ,binding.spinnerCity.text.toString()
+                        ,binding.spinnerGender.text.toString())){
+                    Toast.makeText(
+                        view.context,
+                        "Please enter proper country, city and gender", Toast.LENGTH_SHORT
+                    ).show();
+                }
+                else if (password != confirmPassword) {
                     Toast.makeText(
                         view.context,
                         "Your passwords needs to match", Toast.LENGTH_SHORT
@@ -263,6 +277,8 @@ class SignUpFragment : Fragment(), OnItemClickListener {
 
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        controlCity.clear()
+        binding.spinnerCity.setText("")
         try {
             val apiService = ApiService()
             var country:CountryModel= CountryModel(binding.spinnerCountry.text.toString())
@@ -276,6 +292,7 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                         it!!
                     )
                     binding.spinnerCity.setAdapter(cityAdapter)
+                    controlCity.addAll(it)
                     println("succes")
                 }
                 else{
@@ -293,11 +310,28 @@ class SignUpFragment : Fragment(), OnItemClickListener {
                 "(?=.*[a-z])" +         //at least 1 lower case letter
                 "(?=.*[A-Z])" +         //at least 1 upper case letter
                 "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +
+                "(?=.*[.,])" +
                 //no white spaces
                 ".{8,}" +
                 "$");
         return passwordREGEX.matcher(password).matches()
+    }
+
+    fun isValidInformation(country: String,city :String , gender:String): Boolean {
+        for(itemCountry in 0 until controlCountry.size){
+            if (controlCountry.get(itemCountry).equals(country)){
+                for(itemCity in 0 until controlCity.size){
+                    if(controlCity.get(itemCity).equals(city)){
+                        for(itemGender in 0 until controlGender.size){
+                            if(controlGender.get(itemGender).equals(gender)){
+                                return true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false
     }
 
 }

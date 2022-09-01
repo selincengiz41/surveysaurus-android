@@ -51,24 +51,41 @@ class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
             val apiService = ApiService()
 
 
-            apiService.getMySurvey {
+            apiService.getMySurvey {it,isThereSurvey->
 
-                if (it!= null) {
+                if (isThereSurvey!= null) {
                     Toast.makeText(
                         view.context,
                         "Succesful", Toast.LENGTH_SHORT
                     ).show();
-                    surveyAdapter = SurveyAdapter(it, this@MySurveyFragment)
-                    binding.mySurveysRecycler.adapter = surveyAdapter
-                    var options=ArrayList<String>()
-                    var count=ArrayList<Int>()
-                    var mySurveyModel:ListedSurvey = ListedSurvey( options,count,"","")
+                    if(it!=null){
+                        surveyAdapter = SurveyAdapter(it, this@MySurveyFragment)
+                        binding.mySurveysRecycler.adapter = surveyAdapter
+                        var options=ArrayList<String>()
+                        var count=ArrayList<Int>()
+                        var mySurveyModel:ListedSurvey = ListedSurvey( options,count,"","")
 
 
-                    it.add(mySurveyModel)
+                        it.add(mySurveyModel)
 
 
-                    surveyAdapter.notifyDataSetChanged()
+                        surveyAdapter.notifyDataSetChanged()
+                    }
+                    else{
+                        var list :ArrayList<ListedSurvey> = ArrayList()
+                        surveyAdapter = SurveyAdapter(list, this@MySurveyFragment)
+                        binding.mySurveysRecycler.adapter = surveyAdapter
+                        var options=ArrayList<String>()
+                        var count=ArrayList<Int>()
+                        var mySurveyModel:ListedSurvey = ListedSurvey( options,count,"","")
+
+
+                        list.add(mySurveyModel)
+
+
+                        surveyAdapter.notifyDataSetChanged()
+                    }
+
 
 
                 } else {

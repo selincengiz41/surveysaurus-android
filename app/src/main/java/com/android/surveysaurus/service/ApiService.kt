@@ -85,7 +85,7 @@ class ApiService {
         )
     }
 
-    fun getMySurvey(onResult: (ArrayList<ListedSurvey>?) -> Unit) {
+    fun getMySurvey(onResult: (ArrayList<ListedSurvey>?,Boolean?) -> Unit) {
         val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
         retrofit.getMySurvey(LoginSingleton.token).enqueue(
             object : Callback<com.android.surveysaurus.model.Response> {
@@ -94,29 +94,35 @@ class ApiService {
                     t: Throwable
                 ) {
                     println(t.message)
-                    onResult(null)
+                    onResult(null,null)
                 }
 
                 override fun onResponse(
                     call: Call<com.android.surveysaurus.model.Response>,
                     response: Response<com.android.surveysaurus.model.Response>
                 ) {
-                    var responseList = response.body()!!.data!!.surveys!!
-                    var listedSurveys: ArrayList<ListedSurvey> = ArrayList()
-                    for (item in 0 until responseList.size) {
-                        var listedSurvey: ListedSurvey = ListedSurvey(
-                            responseList.get(item).choices,
-                            responseList.get(item).counts,
-                            responseList.get(item).question,
-                            responseList.get(item).title
+                    if(response.body()?.data?.surveys!=null){
+                        var responseList = response.body()!!.data!!.surveys!!
+                        var listedSurveys: ArrayList<ListedSurvey> = ArrayList()
+                        for (item in 0 until responseList.size) {
+                            var listedSurvey: ListedSurvey = ListedSurvey(
+                                responseList.get(item).choices,
+                                responseList.get(item).counts,
+                                responseList.get(item).question,
+                                responseList.get(item).title
 
-                        )
-                        listedSurveys.add(listedSurvey)
+                            )
+                            listedSurveys.add(listedSurvey)
+                        }
+                        onResult(listedSurveys,true)
+                    }
+                 else{
+                     onResult(null,false)
                     }
 
-                    println(response.message())
+                    println(response.message().toString())
 
-                    onResult(listedSurveys)
+
                 }
             }
         )

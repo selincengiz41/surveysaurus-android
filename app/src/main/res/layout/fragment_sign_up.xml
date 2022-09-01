@@ -27,8 +27,8 @@
     <!-- Confirm Password Textbox -->
     <EditText
         android:id="@+id/editTextTextPassword2"
-        android:layout_width="193dp"
-        android:layout_height="30dp"
+        android:layout_width="187dp"
+        android:layout_height="29dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/rounded_text"
         android:ems="10"
@@ -140,6 +140,7 @@
         android:layout_width="187dp"
         android:layout_height="29dp"
         android:layout_marginTop="5dp"
+        android:completionThreshold="1"
         android:background="@drawable/rounded_text"
         android:contentDescription="@string/Login"
         android:fontFamily="@font/inter_medium"
