@@ -35,4 +35,5 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       
-   
+  test:
+    uses: bimser-intern/surveysaurus-qa/.github/workflows/TestTheUI.yml@master   
