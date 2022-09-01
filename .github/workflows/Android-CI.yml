@@ -31,7 +31,7 @@ jobs:
         cache: gradle
     - name: Run a Python script
       env:
-          AZURE_SECRET_TOKEN: ${{ secrets.JAVA_HOME }}
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: python .test/AndroidLoginBasarili.py
       
     - name: Grant execute permission for gradlew
