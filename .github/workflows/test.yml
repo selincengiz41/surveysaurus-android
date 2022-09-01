@@ -28,5 +28,5 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a Python script
         env:
-          GİTHUB_TOKEN: ${{ secrets.GİTHUB }}
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python .test.AndroidLoginBasarili.py
