@@ -23,6 +23,7 @@ class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
     private var _binding: FragmentMySurveyBinding? = null
     private val binding get() = _binding!!
     private lateinit var surveyAdapter: SurveyAdapter
+    private var controlMySurvey:Boolean=false
 
     private lateinit var mySurveyModels: ArrayList<ListedSurvey>
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,17 +60,21 @@ class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
                         "Succesful", Toast.LENGTH_SHORT
                     ).show();
                     if(it!=null){
-                        surveyAdapter = SurveyAdapter(it, this@MySurveyFragment)
-                        binding.mySurveysRecycler.adapter = surveyAdapter
-                        var options=ArrayList<String>()
-                        var count=ArrayList<Int>()
-                        var mySurveyModel:ListedSurvey = ListedSurvey( options,count,"","")
+                        if(controlMySurvey==false){
+                            surveyAdapter = SurveyAdapter(it, this@MySurveyFragment)
+                            binding.mySurveysRecycler.adapter = surveyAdapter
+                            var options=ArrayList<String>()
+                            var count=ArrayList<Int>()
+                            var mySurveyModel:ListedSurvey = ListedSurvey( options,count,"","")
 
 
-                        it.add(mySurveyModel)
+                            it.add(mySurveyModel)
 
 
-                        surveyAdapter.notifyDataSetChanged()
+                            surveyAdapter.notifyDataSetChanged()
+                            controlMySurvey=true
+                        }
+
                     }
                     else{
                         var list :ArrayList<ListedSurvey> = ArrayList()

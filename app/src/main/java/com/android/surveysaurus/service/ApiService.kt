@@ -166,6 +166,43 @@ class ApiService {
         )
     }
 
+    fun getAllSurveys(onResult: (ArrayList<ListedSurvey>?) -> Unit) {
+        val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
+        retrofit.getAllSurveys(0).enqueue(
+            object : Callback<com.android.surveysaurus.model.Response> {
+                override fun onFailure(
+                    call: Call<com.android.surveysaurus.model.Response>,
+                    t: Throwable
+                ) {
+                    println(t.message)
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<com.android.surveysaurus.model.Response>,
+                    response: Response<com.android.surveysaurus.model.Response>
+                ) {
+                    var responseList = response.body()!!.data!!.surveys!!
+                    var listedSurveys: ArrayList<ListedSurvey> = ArrayList()
+                    for (item in 0 until responseList.size) {
+                        var listedSurvey: ListedSurvey = ListedSurvey(
+                            responseList.get(item).choices,
+                            responseList.get(item).counts,
+                            responseList.get(item).question,
+                            responseList.get(item).title
+
+                        )
+                        listedSurveys.add(listedSurvey)
+                    }
+
+                    println(response.message().toString())
+
+                    onResult(listedSurveys)
+                }
+            }
+        )
+    }
+
     fun postFillSurvey(fillModel: FillModel, onResult: (ResponseBody?) -> Unit) {
         val retrofit = ServiceBuilder.buildService(SurveyAPI::class.java)
         retrofit.postFillSurvey(fillModel, LoginSingleton.token).enqueue(

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.allViews
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.android.surveysaurus.R
@@ -44,6 +45,9 @@ class SurveyAdapter(
     }
 
     override fun onBindViewHolder(holder: SurveyHolder, position: Int) {
+        holder.setIsRecyclable(false)
+
+
         if (!surveyList.get(position).question.isNullOrEmpty()) {
             holder.binding.questionRecycle.text = surveyList.get(position).question
             holder.binding.imageView13.setImageResource(imageList.get(position % 3))
@@ -67,6 +71,7 @@ class SurveyAdapter(
                     0,
                     0
                 )
+
                 holder.binding.root.addView(option1)
                 optionList.add(option1)
                 val params = option1.layoutParams as ConstraintLayout.LayoutParams

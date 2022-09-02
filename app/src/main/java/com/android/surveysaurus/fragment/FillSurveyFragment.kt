@@ -212,7 +212,7 @@ class FillSurveyFragment : Fragment() {
                                                         params.topMargin = dpToPx(20, view.context)
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
-                                                        if(it?.data?.percent?.get(item)==0||it?.data?.percent?.get(item)==null){
+                                                        if(it?.data?.percent!!.get(item)<=10f||it?.data?.percent?.get(item)==null){
                                                            params.width=ConstraintLayout.LayoutParams.WRAP_CONTENT
                                                         }
                                                         else{
@@ -261,7 +261,7 @@ class FillSurveyFragment : Fragment() {
 
                                                         params.height = dpToPx(40, view.context)
                                                         params.width = 0
-                                                        if(it?.data?.percent?.get(item)==0||it?.data?.percent?.get(item)==null){
+                                                        if(it?.data?.percent!!.get(item)<=10f||it?.data?.percent?.get(item)==null){
                                                             params.width=ConstraintLayout.LayoutParams.WRAP_CONTENT
                                                         }
                                                         else{
