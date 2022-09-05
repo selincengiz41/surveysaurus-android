@@ -103,7 +103,7 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
                     apiService.isFilled(isfilled) {
                         if (it.toString() != null) {
                             val action =
-                                ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(
+                                ViewPagerFragmentDirections.actionViewPagerFragmentToViewPagerFragment2(
                                     mySurveyModel,
                                     it
                                 )
@@ -111,7 +111,7 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
                             println("succes")
                         } else {
                             val action =
-                                ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(
+                                ViewPagerFragmentDirections.actionViewPagerFragmentToViewPagerFragment2(
                                     mySurveyModel
                                 )
                             Navigation.findNavController(binding.root).navigate(action)
@@ -124,7 +124,7 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
                 }
             } else {
                 val action =
-                    ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(
+                    ViewPagerFragmentDirections.actionViewPagerFragmentToViewPagerFragment2(
                         mySurveyModel
                     )
                 Navigation.findNavController(binding.root).navigate(action)

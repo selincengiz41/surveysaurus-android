@@ -32,6 +32,9 @@
             android:name="index"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_viewPagerFragment_to_viewPagerFragment2"
+            app:destination="@id/viewPagerFragment2" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -44,9 +47,6 @@
         <action
             android:id="@+id/action_loginFragment_to_createSurveyFragment"
             app:destination="@id/createSurveyFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_surveysFragment"
-            app:destination="@id/surveysFragment" />
         <argument
             android:name="survey"
             app:argType="com.android.surveysaurus.model.SurveyModel"
@@ -76,11 +76,6 @@
         android:label="fragment_user_info"
         tools:layout="@layout/fragment_user_info" />
     <fragment
-        android:id="@+id/surveysFragment"
-        android:name="com.android.surveysaurus.fragment.SurveysFragment"
-        android:label="fragment_surveys"
-        tools:layout="@layout/fragment_surveys" />
-    <fragment
         android:id="@+id/fillSurveyFragment"
         android:name="com.android.surveysaurus.fragment.FillSurveyFragment"
         android:label="FillSurveyFragment" >
@@ -93,9 +88,6 @@
         <action
             android:id="@+id/action_fillSurveyFragment_to_viewPagerFragment"
             app:destination="@id/viewPagerFragment" />
-        <action
-            android:id="@+id/action_fillSurveyFragment_to_surveysFragment"
-            app:destination="@id/surveysFragment" />
         <argument
             android:name="isFilled"
             app:argType="com.android.surveysaurus.model.ResponseIsFilled"
@@ -113,5 +105,28 @@
         <action
             android:id="@+id/action_mySurveyFragment_to_fillSurveyFragment"
             app:destination="@id/fillSurveyFragment" />
+        <action
+            android:id="@+id/action_mySurveyFragment_to_viewPagerFragment2"
+            app:destination="@id/viewPagerFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment2"
+        android:name="com.android.surveysaurus.fragment.ViewPagerFragment2"
+        android:label="fragment_view_pager2"
+        tools:layout="@layout/fragment_view_pager2" >
+        <action
+            android:id="@+id/action_viewPagerFragment2_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_viewPagerFragment2_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
+        <argument
+            android:name="surveyModel"
+            app:argType="com.android.surveysaurus.model.ListedSurvey" />
+        <argument
+            android:name="isFilled"
+            app:argType="com.android.surveysaurus.model.ResponseIsFilled"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

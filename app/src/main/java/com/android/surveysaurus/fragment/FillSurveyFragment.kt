@@ -20,17 +20,20 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.VirtualLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
 import androidx.navigation.Navigation
 import com.android.surveysaurus.R
 import com.android.surveysaurus.activity.MapActivity
 import com.android.surveysaurus.databinding.FragmentFillSurveyBinding
 import com.android.surveysaurus.model.FillModel
 import com.android.surveysaurus.model.IsFilledModel
+import com.android.surveysaurus.model.ListedSurvey
+import com.android.surveysaurus.model.ResponseIsFilled
 import com.android.surveysaurus.service.ApiService
 import com.android.surveysaurus.singleton.LoginSingleton
 
 
-class FillSurveyFragment : Fragment() {
+class FillSurveyFragment(val survey: ListedSurvey,val isFilled : ResponseIsFilled?) : Fragment() {
     private var _binding: FragmentFillSurveyBinding? = null
     private val binding get() = _binding!!
     private var index: Int? = null
@@ -57,9 +60,10 @@ class FillSurveyFragment : Fragment() {
         var optionRateList: ArrayList<TextView> = ArrayList()
         var linearList: ArrayList<LinearLayout> = ArrayList()
         println("Control")
-        arguments?.let {
-            val survey = FillSurveyFragmentArgs.fromBundle(it).surveyModel
-            val isFilled = FillSurveyFragmentArgs.fromBundle(it).isFilled
+
+           /* val survey = ViewPagerFragment2Args.fromBundle(parentFragmentManager.findFragmentById(R.id.viewPagerFragment2)!!.requireArguments()).surveyModel
+            val isFilled = ViewPagerFragment2Args.fromBundle(parentFragmentManager.findFragmentById(R.id.viewPagerFragment2)!!.requireArguments()).isFilled
+            */
 
             binding.addQuestionFill.text = survey.question
             binding.addTitleFill.text = survey.title
@@ -329,7 +333,7 @@ class FillSurveyFragment : Fragment() {
                             binding.addTitleFill.text.toString(), index!!
                         )
                         val action =
-                            FillSurveyFragmentDirections.actionFillSurveyFragmentToLoginFragment(null,fillModel)
+                            ViewPagerFragment2Directions.actionViewPagerFragment2ToLoginFragment(null,fillModel)
                         Navigation.findNavController(it).navigate(action)
                     }
 
@@ -347,7 +351,7 @@ class FillSurveyFragment : Fragment() {
                 startActivity(intent)
 
             }
-        }
+
 
 
     }
