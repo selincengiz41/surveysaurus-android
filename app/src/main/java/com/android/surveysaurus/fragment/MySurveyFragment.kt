@@ -141,5 +141,9 @@ class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
 
     }
 
+    override fun onItemClick2() {
+
+    }
+
 
 }
