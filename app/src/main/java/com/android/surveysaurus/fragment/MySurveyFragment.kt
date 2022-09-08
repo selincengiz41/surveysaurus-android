@@ -123,13 +123,13 @@ class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
             apiService.isFilled(isfilled){
                 if (it.toString()!=null) {
                     val action =
-                        MySurveyFragmentDirections.actionMySurveyFragmentToFillSurveyFragment(mySurveyModel,it)
+                        MySurveyFragmentDirections.actionMySurveyFragmentToViewPagerFragment2(mySurveyModel,it)
                     Navigation.findNavController(binding.root).navigate(action)
                     println("succes")
                 }
                 else{
                     val action =
-                        MySurveyFragmentDirections.actionMySurveyFragmentToFillSurveyFragment(mySurveyModel)
+                        MySurveyFragmentDirections.actionMySurveyFragmentToViewPagerFragment2(mySurveyModel)
                     Navigation.findNavController(binding.root).navigate(action)
                     println("fail")
                 }
@@ -138,6 +138,10 @@ class MySurveyFragment : Fragment(), SurveyAdapter.Listener {
             e.printStackTrace()
         }
 
+
+    }
+
+    override fun onItemClick2() {
 
     }
 

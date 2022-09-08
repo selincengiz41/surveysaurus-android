@@ -2,6 +2,7 @@ package com.android.surveysaurus.adapter
 
 import android.graphics.Color
 import android.graphics.Typeface
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View.generateViewId
 import android.view.ViewGroup
@@ -9,7 +10,9 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.allViews
+import androidx.core.view.isVisible
 import androidx.navigation.Navigation
+import androidx.navigation.navOptions
 import androidx.recyclerview.widget.RecyclerView
 import com.android.surveysaurus.R
 
@@ -26,7 +29,9 @@ class SurveyAdapter(
 
     interface Listener {
         fun onItemClick(mySurveyModel: ListedSurvey)
+        fun onItemClick2()
     }
+
 
     private val imageList: ArrayList<Int> =
         arrayListOf(R.drawable.survey, R.drawable.survey1, R.drawable.survey2)
@@ -85,12 +90,50 @@ class SurveyAdapter(
                 option1.requestLayout()
             }
         } else {
-            holder.binding.imageView13.setImageResource(R.drawable.add_survey)
-            holder.binding.imageView13.setOnClickListener {
-                val action =
-                    MySurveyFragmentDirections.actionMySurveyFragmentToCreateSurveyFragment()
-                Navigation.findNavController(holder.binding.root).navigate(action)
+
+            if(surveyList.get(position).counts.isNullOrEmpty()){
+                holder.binding.imageView13.setImageResource(R.drawable.add_survey)
+                holder.binding.imageView13.setOnClickListener {
+                    val action =
+                        MySurveyFragmentDirections.actionMySurveyFragmentToCreateSurveyFragment()
+                    Navigation.findNavController(holder.binding.root).navigate(action)
+                }
             }
+            else{
+                holder.binding.imageView13.isVisible=false
+                val optionShow: TextView = TextView(holder.binding.root.context)
+                optionShow.id = generateViewId()
+                optionShow.text = "Show More Surveys.. "
+                optionShow.setTextColor(Color.parseColor("#000000"))
+                optionShow.textSize= 10f
+                val typeface: Typeface? =
+                    ResourcesCompat.getFont(
+                        holder.binding.root.context!!,
+                        com.android.surveysaurus.R.font.laila_medium
+                    )
+                optionShow.setTypeface(typeface)
+
+                holder.binding.root.addView(optionShow)
+                var params= optionShow.layoutParams as ConstraintLayout.LayoutParams
+                params.startToStart=holder.binding.surveyLayout.id
+                params.endToEnd=holder.binding.surveyLayout.id
+                params.topToTop=holder.binding.surveyLayout.id
+                params.bottomToBottom=holder.binding.surveyLayout.id
+
+
+                optionShow.requestLayout()
+                optionShow.setOnClickListener{
+                    surveyList.removeAt(position)
+                    notifyItemRemoved(position)
+                    notifyItemRangeChanged(position,surveyList.size)
+                    notifyDataSetChanged()
+                    listener.onItemClick2()
+
+                }
+
+
+            }
+
         }
 
 
@@ -98,6 +141,7 @@ class SurveyAdapter(
         holder.itemView.setOnClickListener {
 
             listener.onItemClick(surveyList.get(position))
+
         }
 
     }
@@ -105,6 +149,7 @@ class SurveyAdapter(
     override fun getItemCount(): Int {
         return surveyList.size
     }
+
 
 
 }

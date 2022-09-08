@@ -26,6 +26,7 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
     private  var listedSurveys: ArrayList<ListedSurvey> = ArrayList()
     private var controlSample:Boolean=false
     private var controlSurveys:Boolean=false
+    private var index:Int=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -45,71 +46,41 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
         binding.surveysRecycler.adapter = surveyAdapter
 
         try {
-
             val apiService = ApiService()
+            apiService.getAllSurveys (index){ item->
+                if(item!=null){
+                    if(controlSurveys==false){
+                        SurveyModels.addAll(item)
+                        var options=ArrayList<String>()
+                        var count= arrayListOf<Int>(1)
+                        var mySurveyModel:ListedSurvey = ListedSurvey( options,count,"","")
 
-            apiService.getSurveys {
-
-                if (it != null) {
-                    Toast.makeText(
-                        view.context,
-                        "Succesful", Toast.LENGTH_SHORT
-                    ).show();
-                    if(controlSample==false){
-                        SurveyModels.addAll(it)
+                        SurveyModels.add(mySurveyModel)
                         surveyAdapter.notifyDataSetChanged()
+
 
                         binding.surveysRecycler.refreshDrawableState()
                         binding.surveysRecycler.requestLayout()
-                        controlSample=true
+                        println("oldu bu iş")
+                        controlSurveys=true
                     }
 
 
-                    try {
-                        val apiService = ApiService()
-                        apiService.getAllSurveys { item->
-                            if(item!=null){
-                                if(controlSurveys==false){
-                                    SurveyModels.addAll(item)
-                                    surveyAdapter.notifyDataSetChanged()
-
-                                    binding.surveysRecycler.refreshDrawableState()
-                                    binding.surveysRecycler.requestLayout()
-                                    println("oldu bu iş")
-                                    controlSurveys=true
-                                }
-
-
-                            }
-                            else {
-                                Toast.makeText(
-                                    view.context,
-                                    "Fail", Toast.LENGTH_SHORT
-                                ).show();
-
-                            }
-                        }
-                    }
-                    catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-
-                    println("Control")
-
-
-
-                } else {
+                }
+                else {
                     Toast.makeText(
                         view.context,
                         "Fail", Toast.LENGTH_SHORT
                     ).show();
 
                 }
-
             }
-        } catch (e: Exception) {
+        }
+        catch (e: Exception) {
             e.printStackTrace()
         }
+
+
 
 
         return view
@@ -119,38 +90,85 @@ class SurveysFragment : Fragment(), SurveyAdapter.Listener {
         super.onViewCreated(view, savedInstanceState)
 
 
-
     }
 
-    override fun onItemClick(mySurveyModel: ListedSurvey) {
-        if(LoginSingleton.isLogin){
+
+        override fun onItemClick(mySurveyModel: ListedSurvey) {
+            if (LoginSingleton.isLogin) {
+                try {
+                    val apiService = ApiService()
+                    val isfilled: IsFilledModel = IsFilledModel(mySurveyModel.title)
+
+
+                    apiService.isFilled(isfilled) {
+                        if (it.toString() != null) {
+                            val action =
+                                ViewPagerFragmentDirections.actionViewPagerFragmentToViewPagerFragment2(
+                                    mySurveyModel,
+                                    it
+                                )
+                            Navigation.findNavController(binding.root).navigate(action)
+                            println("succes")
+                        } else {
+                            val action =
+                                ViewPagerFragmentDirections.actionViewPagerFragmentToViewPagerFragment2(
+                                    mySurveyModel
+                                )
+                            Navigation.findNavController(binding.root).navigate(action)
+
+                        }
+
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            } else {
+                val action =
+                    ViewPagerFragmentDirections.actionViewPagerFragmentToViewPagerFragment2(
+                        mySurveyModel
+                    )
+                Navigation.findNavController(binding.root).navigate(action)
+
+            }
+
+        }
+
+    override fun onItemClick2() {
+
+        index = index + 1
+
+
         try {
             val apiService = ApiService()
-            val isfilled: IsFilledModel = IsFilledModel(mySurveyModel.title)
+            apiService.getAllSurveys(index) { item ->
+                if (item != null) {
+
+                    SurveyModels.addAll(item)
+                    surveyAdapter.notifyDataSetChanged()
+                    var options=ArrayList<String>()
+                    var count= arrayListOf<Int>(1)
+                    var mySurveyModel:ListedSurvey = ListedSurvey( options,count,"","")
+
+                    SurveyModels.add(mySurveyModel)
 
 
-            apiService.isFilled(isfilled){
-                if (it.toString()!=null) {
-                    val action =
-                        ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(mySurveyModel,it)
-                    Navigation.findNavController(binding.root).navigate(action)
-                    println("succes")
+                    binding.surveysRecycler.refreshDrawableState()
+                    binding.surveysRecycler.requestLayout()
+                    println("oldu bu iş")
+
+
+
+
+                } else {
+                    Toast.makeText(
+                        view?.context,
+                        "Fail", Toast.LENGTH_SHORT
+                    ).show();
+
                 }
-                else{
-                    val action =
-                        ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(mySurveyModel)
-                    Navigation.findNavController(binding.root).navigate(action)
-
-                }
-
-            }} catch (e: Exception) {
+            }
+        } catch (e: Exception) {
             e.printStackTrace()
-        }}
-        else{
-            val action =
-                ViewPagerFragmentDirections.actionViewPagerFragmentToFillSurveyFragment(mySurveyModel)
-            Navigation.findNavController(binding.root).navigate(action)
-
         }
 
     }
