@@ -10,10 +10,9 @@ In this project, our team wanted to create a survey app. In this app you can;
 We mostly used *Kotlin* instead of Java to create our app because Kotlin lets us to be more concise with out code. It's also compatible with Java.
 <br></br>
 
-# İçerikler # 
+# Contents # 
 
-- [surveysaurus-android](#surveysaurus-android)
-- [İçerikler](#i̇çerikler)
+
 - [How to Install](#how-to-install)
 - [Importing with Source Code](#importing-with-source-code)
 - [Installing to a Phone](#installing-to-a-phone)
