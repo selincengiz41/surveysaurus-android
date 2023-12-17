@@ -1,4 +1,4 @@
-# surveysaurus-android
+# SurveySaurus
 
 In this project, our team wanted to create a survey app. In this app you can;
 - Create Surveys
