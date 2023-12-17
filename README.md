@@ -57,8 +57,7 @@ In this page you can download the .apk to your phone and install it there. Or yo
 # How to Use The App #
 
 When you first open the app you will see the homepage.
-
-![homepage](https://user-images.githubusercontent.com/65497602/187679713-afe7df43-926b-4394-a92c-34392cb79af6.jpg)
+ <img src="https://user-images.githubusercontent.com/65497602/187679713-afe7df43-926b-4394-a92c-34392cb79af6.jpg" width="130" height="300"/> 
 
 In this page you can;
  - Click on the top left to login or sign up.
@@ -66,7 +65,8 @@ In this page you can;
  - Swipe to see the surveys that other people have created and reply to their surveys.
 
 When you click the button on the top left corner in the previous image, you will see this list. From here you can login or sign up. <br></br>
-![homeloginsignupbutton](https://user-images.githubusercontent.com/65497602/187876096-8d32f303-c265-400a-8b83-bde5e671ef38.jpg)
+ <img src="https://user-images.githubusercontent.com/65497602/187876096-8d32f303-c265-400a-8b83-bde5e671ef38.jpg" width="130" height="300"/> 
+
 <br></br>
 
 Or you can swipe left to see the surveys that are created by other users.
@@ -82,8 +82,7 @@ Or you can swipe left to see the surveys that are created by other users.
   - City
   - Password (8 letters, 1 uppercase letter, 1 lowercase letter, 1 number and a "," or ".")
 <br></br>
-
- ![signup](https://user-images.githubusercontent.com/65497602/187881900-da8ab5c0-a9ff-4534-b3b4-c76b15164bfd.jpg)
+ <img src="https://user-images.githubusercontent.com/65497602/187881900-da8ab5c0-a9ff-4534-b3b4-c76b15164bfd.jpg" width="130" height="300"/> 
 
 
 <br></br>
@@ -94,7 +93,9 @@ In the Login page;
 
 All you need to do is enter the e-mail you signed up with and enter your password to login.
 
-![login](https://user-images.githubusercontent.com/65497602/187887531-887bec30-2289-4233-b77b-017e70487f11.jpg)
+ <img src="https://user-images.githubusercontent.com/65497602/187887531-887bec30-2289-4233-b77b-017e70487f11.jpg" width="130" height="300"/> 
+
+
 
 
 <br></br>
@@ -109,7 +110,8 @@ In the create survey page;
 - You need to add at least 2 options to your survey.
 - Then you can press the create button to create it.
 
-![createasurvey](https://user-images.githubusercontent.com/65497602/187680622-535469c4-f4dd-4142-9448-49451f971f2b.jpg)
+ <img src="https://user-images.githubusercontent.com/65497602/187680622-535469c4-f4dd-4142-9448-49451f971f2b.jpg" width="130" height="300"/> 
+  
 
 <br></br>
 
@@ -119,7 +121,8 @@ In My Surveys Page;
 
 After creating your survey and logging in, you will be re-directed to your surveys page. In this page you can see your surveys and answer them. Or you can create a new one.
 
-![mysurveys2](https://user-images.githubusercontent.com/65497602/187892950-00699923-1a62-43c7-b009-bdd0b6322a68.jpg)
+ <img src="https://user-images.githubusercontent.com/65497602/187892950-00699923-1a62-43c7-b009-bdd0b6322a68.jpg" width="130" height="300"/> 
+
 
 <br></br>
 
@@ -129,7 +132,9 @@ Inside of a survey
 
  After clicking on a survey to answer it you will see the question and the name of the survey. You can choose one of the options and click done to submit your answer.
 
- ![insideofasurvey](https://user-images.githubusercontent.com/65497602/187897070-5e01b4e3-5cdd-4345-b8bb-a7cafaf8cae5.jpg)
+
+ <img src="https://user-images.githubusercontent.com/65497602/187897070-5e01b4e3-5cdd-4345-b8bb-a7cafaf8cae5.jpg" width="130" height="300"/> 
+ 
 
 <br></br>
 
@@ -138,8 +143,8 @@ User Info
 ---
 
 After logging in, you can use the top right corner to access your personal information, your surveys and you can also use that icon to log out of your account.
+ <img src="https://user-images.githubusercontent.com/65497602/187897658-e12fbafa-0439-44e3-9d81-38e156624a96.jpg" width="130" height="300"/> 
 
-![accountdropdown](https://user-images.githubusercontent.com/65497602/187897658-e12fbafa-0439-44e3-9d81-38e156624a96.jpg)
 
 After clicking User Info you will be directed to that page. On this page you can change your;
 
@@ -150,6 +155,7 @@ After clicking User Info you will be directed to that page. On this page you can
   
  **Remember that Names and e-mails are unique and cannot be changed.**
 
-![personalinfo](https://user-images.githubusercontent.com/65497602/187898161-4f7d726c-a38a-4c6a-9140-6237391913a2.jpg)
+ <img src="https://user-images.githubusercontent.com/65497602/187898161-4f7d726c-a38a-4c6a-9140-6237391913a2.jpg" width="130" height="300"/> 
+ 
 
 
